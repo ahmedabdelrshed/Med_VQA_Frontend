@@ -1,4 +1,6 @@
-import Input from "../components/common/Input";
+import { Link } from "react-router";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
 const Login = () => {
   return (
     <div className="bg-gray-50 h-[100vh] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -47,13 +49,7 @@ const Login = () => {
                 Forgot your password?
               </a>
             </div>
-            <button
-              data-testid="login"
-              type="submit"
-              className="  flex w-full cursor-pointer justify-center rounded-md bg-indigo-600 px-4 py-2 text-lg font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500"
-            >
-              Log In
-            </button>
+            <Button>Log in</Button>
           </form>
           <div className="mt-6 relative">
             <div className="absolute inset-0 flex items-center">
@@ -117,9 +113,9 @@ const Login = () => {
           </div>
           <div className="mt-6 text-center text-gray-600">
             Don't have an account?{" "}
-            <a className="font-semibold text-indigo-600" href="/register">
+            <Link className="font-semibold text-indigo-600" to="/register">
               Create Account
-            </a>
+            </Link>
           </div>
         </div>
       </div>
