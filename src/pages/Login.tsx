@@ -1,15 +1,18 @@
 import { Link } from "react-router";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
+import useLogin from "../hooks/useLogin";
+import ErrorMsg from "../ui/ErrorMsg";
 const Login = () => {
+  const { errors, handleSubmit, onSubmit, register } = useLogin();
   return (
     <div className="bg-gray-50 h-[100vh] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="text-center sm:mx-auto sm:w-full sm:max-w-md">
-        <h1 className="text-3xl font-bold italic  text-gray-900">Log in</h1>
-      </div>
+      <h1 className="text-3xl text-center sm:mx-auto sm:w-full sm:max-w-md font-bold italic  text-gray-900">
+        Login Page
+      </h1>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md sm:px-2 ">
         <div className="bg-white px-4 pb-4 pt-10 sm:rounded-lg sm:px-10 sm:pb-6 sm:shadow ">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label
                 htmlFor="email"
@@ -17,7 +20,11 @@ const Login = () => {
               >
                 Email address
               </label>
-              <Input placeholder="Please Enter your Email" />
+              <Input
+                placeholder="Please Enter your Email"
+                {...register("email")}
+              />
+              {errors.email && <ErrorMsg msg={errors.email?.message} />}
             </div>
             <div>
               <label
@@ -26,7 +33,12 @@ const Login = () => {
               >
                 Password
               </label>
-              <Input type="password" placeholder="Please Enter your Password" />
+              <Input
+                type="password"
+                placeholder="Please Enter your Password"
+                {...register("password")}
+              />
+              {errors.password && <ErrorMsg msg={errors.password?.message} />}
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -49,7 +61,7 @@ const Login = () => {
                 Forgot your password?
               </a>
             </div>
-            <Button>Log in</Button>
+            <Button type="submit">Log in</Button>
           </form>
           <div className="mt-6 relative">
             <div className="absolute inset-0 flex items-center">
