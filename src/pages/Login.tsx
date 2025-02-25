@@ -3,6 +3,7 @@ import Button from "../ui/Button";
 import Input from "../ui/Input";
 import useLogin from "../hooks/useLogin";
 import ErrorMsg from "../ui/ErrorMsg";
+import InputPassword from "../ui/InputPassword";
 const Login = () => {
   const { errors, handleSubmit, onSubmit, register } = useLogin();
   return (
@@ -33,8 +34,7 @@ const Login = () => {
               >
                 Password
               </label>
-              <Input
-                type="password"
+              <InputPassword
                 placeholder="Please Enter your Password"
                 {...register("password")}
               />

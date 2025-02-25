@@ -3,6 +3,7 @@ import Button from "../ui/Button";
 import Input from "../ui/Input";
 import useRegister from "../hooks/useRegister";
 import ErrorMsg from "../ui/ErrorMsg";
+import InputPassword from "../ui/InputPassword";
 
 const Register = () => {
   const { errors, handleSubmit, onSubmit, register } = useRegister();
@@ -60,8 +61,7 @@ const Register = () => {
               >
                 Password
               </label>
-              <Input
-                type="password"
+              <InputPassword
                 placeholder="Please Enter your Password"
                 {...register("password")}
               />
@@ -74,8 +74,7 @@ const Register = () => {
               >
                 Confirm Password
               </label>
-              <Input
-                type="password"
+              <InputPassword
                 placeholder="Repeat Enter your Password"
                 {...register("confirmPassword")}
               />
