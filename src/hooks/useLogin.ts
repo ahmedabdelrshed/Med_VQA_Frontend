@@ -2,31 +2,35 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ILogin } from "../interfaces";
 import loginSchema from "../validations/loginSchema";
-import { useAppDispatch } from "../store/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import actAuthLogin from "../store/auth/act/actAuthLogin";
+import { useNavigate } from "react-router";
 
 const useLogin = () => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate();
+    const {error,loading} = useAppSelector(state => state.auth)
     const {
         register,
         handleSubmit,
-
         formState: { errors },
     } = useForm<ILogin>({
         resolver: yupResolver(loginSchema),
         mode: "onBlur"
     });
 
-    const onSubmit: SubmitHandler<ILogin> = (data) => {
-        console.log("Form Data:", data);
-        dispatch(actAuthLogin(data))
+    const onSubmit: SubmitHandler<ILogin> = async (data) => {
+        await dispatch(actAuthLogin(data)).unwrap().then(() => {
+            navigate('/')
+        })
     };
-
     return {
         register,
         handleSubmit,
         errors,
         onSubmit,
+        error,
+        loading,
     }
 }
 

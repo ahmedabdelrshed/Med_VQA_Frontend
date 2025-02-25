@@ -5,15 +5,21 @@ import useLogin from "../hooks/useLogin";
 import ErrorMsg from "../ui/ErrorMsg";
 import InputPassword from "../ui/InputPassword";
 const Login = () => {
-  const { errors, handleSubmit, onSubmit, register } = useLogin();
+  const { errors, handleSubmit, onSubmit, register, error, loading } =
+        useLogin();
   return (
     <div className="bg-gray-50 h-[100vh] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <h1 className="text-3xl text-center sm:mx-auto sm:w-full sm:max-w-md font-bold italic  text-gray-900">
         Login Page
       </h1>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md sm:px-2 ">
-        <div className="bg-white px-4 pb-4 pt-10 sm:rounded-lg sm:px-10 sm:pb-6 sm:shadow ">
-          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+        <div className="bg-white px-4 pb-4 pt-8 sm:rounded-lg sm:px-10 sm:pb-6 sm:shadow ">
+          {error && (
+            <div className="text-center  mb-5">
+              <ErrorMsg msg={error} />
+            </div>
+          )}
+          <form className="mt-2 space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label
                 htmlFor="email"
@@ -61,7 +67,11 @@ const Login = () => {
                 Forgot your password?
               </a>
             </div>
-            <Button type="submit" disabled={Object.keys(errors).length > 0}>
+            <Button
+              type="submit"
+              disabled={Object.keys(errors).length > 0 || loading}
+              isLoading={loading}
+            >
               Log in
             </Button>
           </form>
