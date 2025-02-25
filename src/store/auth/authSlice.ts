@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actAuthLogin from "./act/actAuthLogin";
+import actAuthRegister from "./act/actAuthRegister";
 
 interface IAuthState {
     user: {
@@ -34,6 +35,17 @@ const authSlice = createSlice({
             state.token = action.payload.token;
         });
         builder.addCase(actAuthLogin.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload as string;
+        });
+        builder.addCase(actAuthRegister.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        builder.addCase(actAuthRegister.fulfilled, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(actAuthRegister.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload as string;
         });
