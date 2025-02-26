@@ -1,4 +1,6 @@
 import * as yup from "yup";
+import emailSchema from "./emailSchema";
+import passwordSchema from "./passwordSchema";
 
 const registerSchema = yup.object({
     firstName: yup
@@ -11,15 +13,8 @@ const registerSchema = yup.object({
         .required("Last name is required")
         .min(3, "Last name must be at least 3 characters")
         .max(12, "Last name cannot exceed 12 characters"),
-    email: yup.string().required("Email is required").email("Invalid email"),
-    password: yup
-        .string()
-        .required("Password is required")
-        .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
-        .matches(/[a-z]/, "Password must contain at least one lowercase letter")
-        .matches(/\d/, "Password must contain at least one number")
-        .matches(/[@$!%*?&#]/, "Password must contain at least one special character (@$!%*?&#)")
-        .min(8, "Password must be at least 8 characters"),
+    email: emailSchema,
+    password: passwordSchema,
     confirmPassword: yup
         .string()
         .oneOf([yup.ref("password"),], "Passwords must match")
