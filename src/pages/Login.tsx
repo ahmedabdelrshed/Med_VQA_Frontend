@@ -60,12 +60,12 @@ const Login = () => {
                   Remember me
                 </label>
               </div>
-              <a
+              <Link
                 className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                href="#"
+               to={"/reset_password"}
               >
                 Forgot your password?
-              </a>
+              </Link>
             </div>
             <Button
               type="submit"

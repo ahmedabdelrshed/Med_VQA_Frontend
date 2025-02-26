@@ -9,7 +9,7 @@ const ResetPassword = () => {
   return (
     <div className="min-h-screen bg-gray-100 py-28 ">
       <div className="bg-white shadow-lg rounded-lg p-8 m-auto max-w-sm  md:max-w-md w-full">
-        <h2 className="text-2xl font-bold text-gray-800 text-center">
+        <h2 className="text-2xl mb-5 font-bold text-gray-800 text-center">
           Reset Your Password
         </h2>
         <p className="text-gray-600 text-center mt-2">
