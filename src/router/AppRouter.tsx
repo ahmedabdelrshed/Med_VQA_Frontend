@@ -8,16 +8,18 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Home from "../pages/Home";
 import ConfirmationEmail from "../pages/ConfirmationEmail";
-import ResetPassword from "../pages/ResetPassword";
+import ForgetPassword from "../pages/ForgetPassword";
+import ResetPasswordEmail from "../pages/ResetPasswordEmail";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-          <Route path="/">
-              <Route index element={<Home/> } />
+      <Route path="/">
+        <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="confirmEmail" element={<ConfirmationEmail />} />
-        <Route path="reset_password" element={<ResetPassword />} />
+        <Route path="forget_password" element={<ForgetPassword />} />
+        <Route path="reset_password_email" element={<ResetPasswordEmail />} />
         <Route path="register" element={<Register />} />
       </Route>
     </>

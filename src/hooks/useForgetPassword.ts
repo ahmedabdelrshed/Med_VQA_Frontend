@@ -1,17 +1,16 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ILogin } from "../interfaces";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import actAuthLogin from "../store/auth/act/actAuthLogin";
 import { useNavigate } from "react-router";
 import emailSchema from "../validations/emailSchema";
-type TResetPassword = {
+import actForgetPassword from "../store/auth/act/actForgetPassword";
+export type TResetPassword = {
     email: string
 }
 const useResetPassword = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate();
-    const {error,loading} = useAppSelector(state => state.auth)
+    const { error, loading } = useAppSelector(state => state.auth)
     const {
         register,
         handleSubmit,
@@ -21,9 +20,9 @@ const useResetPassword = () => {
         mode: "onBlur"
     });
 
-    const onSubmit: SubmitHandler<ILogin> = async (data) => {
-        await dispatch(actAuthLogin(data)).unwrap().then(() => {
-            navigate('/')
+    const onSubmit: SubmitHandler<TResetPassword> = async (data) => {
+        await dispatch(actForgetPassword(data)).unwrap().then(() => {
+            navigate('/reset_password_email')
         })
     };
     return {
