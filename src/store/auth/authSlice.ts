@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import actAuthLogin from "./act/actAuthLogin";
 import actAuthRegister from "./act/actAuthRegister";
 import actForgetPassword from "./act/actForgetPassword";
+import actChangePassword from "./act/actChangePassword";
 
 interface IAuthState {
     user: {
@@ -69,6 +70,18 @@ const authSlice = createSlice({
             state.loading = false;
         });
         builder.addCase(actForgetPassword.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload as string;
+        });
+        //  Change password
+        builder.addCase(actChangePassword.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        builder.addCase(actChangePassword.fulfilled, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(actChangePassword.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload as string;
         });
