@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router";
 import emailSchema from "../validations/emailSchema";
 import actForgetPassword from "../store/auth/act/actForgetPassword";
+import { setUserEmail } from "../store/auth/authSlice";
 export type TResetPassword = {
     email: string
 }
@@ -21,6 +22,8 @@ const useResetPassword = () => {
     });
 
     const onSubmit: SubmitHandler<TResetPassword> = async (data) => {
+        const { email } = data;
+        dispatch(setUserEmail(email))
         await dispatch(actForgetPassword(data)).unwrap().then(() => {
             navigate('/reset_password_email')
         })

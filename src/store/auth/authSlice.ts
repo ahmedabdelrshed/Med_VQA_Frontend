@@ -9,13 +9,18 @@ interface IAuthState {
         email: string;
         firstName: string;
         lastName: string;
-    } | null;
+    };
     token: string | null;
     loading: boolean;
     error: string | null;
 }
 const initialState: IAuthState = {
-    user: null,
+    user: {
+        id: 0,
+        email: "",
+        firstName: "",
+        lastName: "",
+    },
     token: null,
     loading: false,
     error: null,
@@ -24,7 +29,11 @@ const initialState: IAuthState = {
 const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {},
+    reducers: {
+        setUserEmail: (state, payload) => {
+            state.user.email = payload.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(actAuthLogin.pending, (state) => {
             state.loading = true;
@@ -68,3 +77,4 @@ const authSlice = createSlice({
 })
 
 export default authSlice.reducer;
+export const { setUserEmail } = authSlice.actions;
