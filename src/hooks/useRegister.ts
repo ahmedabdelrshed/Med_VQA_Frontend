@@ -5,6 +5,7 @@ import { IRegister } from "../interfaces";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router";
 import actAuthRegister from "../store/auth/act/actAuthRegister";
+import { setUserEmail } from "../store/auth/authSlice";
 
 const useRegister = () => {
     const dispatch = useAppDispatch()
@@ -20,6 +21,7 @@ const useRegister = () => {
     });
 
     const onSubmit: SubmitHandler<IRegister> = async (data) => {
+        dispatch(setUserEmail(data.email))
         await dispatch(actAuthRegister(data)).unwrap().then(() => {
             navigate('/confirmEmail')
         })

@@ -3,6 +3,7 @@ import actAuthLogin from "./act/actAuthLogin";
 import actAuthRegister from "./act/actAuthRegister";
 import actForgetPassword from "./act/actForgetPassword";
 import actChangePassword from "./act/actChangePassword";
+import actResendVerifyEmail from "./act/actResendVerifyEmail";
 
 interface IAuthState {
     user: {
@@ -82,6 +83,18 @@ const authSlice = createSlice({
             state.loading = false;
         });
         builder.addCase(actChangePassword.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload as string;
+        });
+        // Resend Verification Email
+        builder.addCase(actResendVerifyEmail.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        builder.addCase(actResendVerifyEmail.fulfilled, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(actResendVerifyEmail.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload as string;
         });
