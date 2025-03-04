@@ -4,6 +4,7 @@ import actAuthRegister from "./act/actAuthRegister";
 import actForgetPassword from "./act/actForgetPassword";
 import actChangePassword from "./act/actChangePassword";
 import actResendVerifyEmail from "./act/actResendVerifyEmail";
+import actConfirmVerifyEmail from "./act/actConfirmVerifyEmail";
 
 interface IAuthState {
     user: {
@@ -98,7 +99,18 @@ const authSlice = createSlice({
             state.loading = false;
             state.error = action.payload as string;
         });
-
+        // Confirm Verify Email
+        builder.addCase(actConfirmVerifyEmail.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        builder.addCase(actConfirmVerifyEmail.fulfilled, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(actConfirmVerifyEmail.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload as string;
+        });
     }
 })
 
