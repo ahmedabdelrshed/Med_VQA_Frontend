@@ -12,12 +12,14 @@ import ForgetPassword from "../pages/ForgetPassword";
 import ResetPasswordEmail from "../pages/ResetPasswordEmail";
 import ChangePassword from "../pages/ChangePassword";
 import ConfirmVerificationEmail from "../pages/ConfirmVerificationEmail";
+import Profile from "../pages/Profile";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/">
         <Route index element={<Home />} />
+        <Route path="profile" element={<Profile/> } />
         <Route path="login" element={<Login />} />
         <Route path="confirmEmail" element={<ConfirmationEmail />} />
         <Route path="confirm_Verification_Email/:token" element={<ConfirmVerificationEmail />} />
