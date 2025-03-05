@@ -5,6 +5,8 @@ import actForgetPassword from "./act/actForgetPassword";
 import actChangePassword from "./act/actChangePassword";
 import actResendVerifyEmail from "./act/actResendVerifyEmail";
 import actConfirmVerifyEmail from "./act/actConfirmVerifyEmail";
+import Cookies from "js-cookie";
+
 
 interface IAuthState {
     user: {
@@ -18,13 +20,13 @@ interface IAuthState {
     error: string | null;
 }
 const initialState: IAuthState = {
-    user: {
+    user: Cookies.get("user") ? JSON.parse(Cookies.get("user")!) : {
         id: 0,
         email: "",
         firstName: "",
         lastName: "",
     },
-    token: null,
+    token: Cookies.get("token") || null,
     loading: false,
     error: null,
 };
@@ -45,7 +47,9 @@ const authSlice = createSlice({
         builder.addCase(actAuthLogin.fulfilled, (state, action) => {
             state.loading = false;
             state.user = action.payload.user;
+            Cookies.set("token", action.payload.token, { expires: 1 });
             state.token = action.payload.token;
+            Cookies.set("user", JSON.stringify(action.payload.user), { expires: 1 });
         });
         builder.addCase(actAuthLogin.rejected, (state, action) => {
             state.loading = false;
