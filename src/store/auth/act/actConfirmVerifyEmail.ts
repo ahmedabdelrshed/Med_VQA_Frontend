@@ -9,7 +9,7 @@ const actConfirmVerifyEmail = createAsyncThunk(
       console.log(token)
     
     try {
-        const res = await axiosInstance.get("/user/emailVerification",
+        const res = await axiosInstance.get("/auth/emailVerification",
           {
             headers: {
               Authorization: `Bearer ${token.token}`,

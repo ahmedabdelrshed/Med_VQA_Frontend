@@ -8,7 +8,7 @@ const actResendVerifyEmail = createAsyncThunk(
   async (data:TResetPassword, thunk) => {
     const { rejectWithValue } = thunk;
     try {
-      const res = await axiosInstance.post("/user/resendVerification", data);
+      const res = await axiosInstance.post("/auth/resendVerification", data);
       return res.data;
     } catch (error) {
       return rejectWithValue(axiosErrorHandler(error));
