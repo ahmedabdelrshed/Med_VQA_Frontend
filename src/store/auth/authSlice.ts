@@ -6,6 +6,7 @@ import actChangePassword from "./act/actChangePassword";
 import actResendVerifyEmail from "./act/actResendVerifyEmail";
 import actConfirmVerifyEmail from "./act/actConfirmVerifyEmail";
 import Cookies from "js-cookie";
+import calExpiresDate from "../../utils/decodedToken";
 
 
 interface IAuthState {
@@ -47,9 +48,10 @@ const authSlice = createSlice({
         builder.addCase(actAuthLogin.fulfilled, (state, action) => {
             state.loading = false;
             state.user = action.payload.user;
-            Cookies.set("token", action.payload.token, { expires: 1 });
             state.token = action.payload.token;
-            Cookies.set("user", JSON.stringify(action.payload.user), { expires: 1 });
+            const expireDay =  calExpiresDate(state.token)
+            Cookies.set("token", action.payload.token, { expires: expireDay });
+            Cookies.set("user", JSON.stringify(action.payload.user), { expires: expireDay });
         });
         builder.addCase(actAuthLogin.rejected, (state, action) => {
             state.loading = false;
