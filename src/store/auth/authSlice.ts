@@ -38,6 +38,10 @@ const authSlice = createSlice({
     reducers: {
         setUserEmail: (state, payload) => {
             state.user.email = payload.payload;
+        },
+        setUser: (state, action) => {
+            state.user = action.payload.user
+            state.token = action.payload.token;
         }
     },
     extraReducers: (builder) => {
@@ -49,7 +53,7 @@ const authSlice = createSlice({
             state.loading = false;
             state.user = action.payload.user;
             state.token = action.payload.token;
-            const expireDay =  calExpiresDate(state.token)
+            const expireDay = calExpiresDate(state.token)
             Cookies.set("token", action.payload.token, { expires: expireDay });
             Cookies.set("user", JSON.stringify(action.payload.user), { expires: expireDay });
         });
@@ -121,4 +125,4 @@ const authSlice = createSlice({
 })
 
 export default authSlice.reducer;
-export const { setUserEmail } = authSlice.actions;
+export const { setUserEmail, setUser } = authSlice.actions;

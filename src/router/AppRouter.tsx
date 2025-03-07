@@ -13,6 +13,7 @@ import ResetPasswordEmail from "../pages/ResetPasswordEmail";
 import ChangePassword from "../pages/ChangePassword";
 import ConfirmVerificationEmail from "../pages/ConfirmVerificationEmail";
 import Profile from "../pages/Profile";
+import AuthSuccess from "../components/Auth/AuthSuccess";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
         <Route path="reset_password_email" element={<ResetPasswordEmail />} />
         <Route path="change_password/:token" element={<ChangePassword />} />
         <Route path="register" element={<Register />} />
+        <Route path="authSuccess" element={<AuthSuccess/> } />
       </Route>
     </>
   )
