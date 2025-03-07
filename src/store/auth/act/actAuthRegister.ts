@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IRegister } from "../../../interfaces";
+import { IRegister } from "../../../Types";
 import axiosInstance from "../../../config/axios.config";
 import axiosErrorHandler from "../../../utils/axiosErrorHandler";
 

@@ -7,6 +7,7 @@ import actResendVerifyEmail from "./act/actResendVerifyEmail";
 import actConfirmVerifyEmail from "./act/actConfirmVerifyEmail";
 import Cookies from "js-cookie";
 import calExpiresDate from "../../utils/decodedToken";
+import actUpdateUser from "../user/act/actUpdateUser";
 
 
 interface IAuthState {
@@ -15,6 +16,7 @@ interface IAuthState {
         email: string;
         firstName: string;
         lastName: string;
+        avatar: string;
     };
     token: string | null;
     loading: boolean;
@@ -118,6 +120,21 @@ const authSlice = createSlice({
             state.loading = false;
         });
         builder.addCase(actConfirmVerifyEmail.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload as string;
+        });
+        // Update User
+        builder.addCase(actUpdateUser.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        builder.addCase(actUpdateUser.fulfilled, (state,action) => {
+            state.loading = false;
+            state.user = action.payload.updatedUser;
+            const expire = calExpiresDate(state.token as string)
+            Cookies.set("user", JSON.stringify(action.payload.updatedUser),{expires: expire});
+        });
+        builder.addCase(actUpdateUser.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload as string;
         });

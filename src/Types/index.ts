@@ -12,3 +12,10 @@ export interface ILogin {
     rememberMe?: boolean;
 }
 
+export type TUserUpdated = {
+    firstName: string;
+    lastName: string;
+    password?: string;
+    oldPassword?: string;
+    file?: File | null;
+}

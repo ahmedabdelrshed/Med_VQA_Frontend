@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ILogin } from "../../../interfaces";
+import { ILogin } from "../../../Types";
 import axiosInstance from "../../../config/axios.config";
 import axiosErrorHandler from "../../../utils/axiosErrorHandler";
 
@@ -9,6 +9,7 @@ type TResponse = {
         email: string;
         firstName: string;
         lastName: string;
+        avatar: string;
     };
     token: string;
 };

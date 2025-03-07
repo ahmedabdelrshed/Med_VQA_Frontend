@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import registerSchema from "../validations/registerSchema";
-import { IRegister } from "../interfaces";
+import { IRegister } from "../Types";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router";
 import actAuthRegister from "../store/auth/act/actAuthRegister";
