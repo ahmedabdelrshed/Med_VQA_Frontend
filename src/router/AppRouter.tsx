@@ -14,21 +14,32 @@ import ChangePassword from "../pages/ChangePassword";
 import ConfirmVerificationEmail from "../pages/ConfirmVerificationEmail";
 import Profile from "../pages/Profile";
 import AuthSuccess from "../components/Auth/AuthSuccess";
+import ProtectedRoute from "../components/Auth/ProtectedRoute";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/">
         <Route index element={<Home />} />
-        <Route path="profile" element={<Profile/> } />
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
         <Route path="login" element={<Login />} />
         <Route path="confirmEmail" element={<ConfirmationEmail />} />
-        <Route path="confirm_Verification_Email/:token" element={<ConfirmVerificationEmail />} />
+        <Route
+          path="confirm_Verification_Email/:token"
+          element={<ConfirmVerificationEmail />}
+        />
         <Route path="forget_password" element={<ForgetPassword />} />
         <Route path="reset_password_email" element={<ResetPasswordEmail />} />
         <Route path="change_password/:token" element={<ChangePassword />} />
         <Route path="register" element={<Register />} />
-        <Route path="authSuccess" element={<AuthSuccess/> } />
+        <Route path="authSuccess" element={<AuthSuccess />} />
       </Route>
     </>
   )
