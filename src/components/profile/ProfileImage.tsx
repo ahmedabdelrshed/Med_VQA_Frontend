@@ -39,7 +39,7 @@ const ProfileImage = ({
     setUserUpdated((prev) => ({ ...prev, file: null }));
   };
   return (
-    <div className="bg-white shadow-lg rounded-lg  m-auto mt-10 px-8 py-6 max-w-sm  md:max-w-md  lg:min-w-lg">
+    <div className="bg-white shadow-lg rounded-lg  m-auto  md:mt-10 px-8 py-6 max-w-sm  md:max-w-md  lg:min-w-lg">
       {error && (
         <div className="text-center  mt-[-8px] mb-5">
           <ErrorMsg msg={error} />

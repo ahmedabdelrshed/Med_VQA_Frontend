@@ -3,6 +3,7 @@ import ProfileImage from "../components/profile/ProfileImage";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { TUserUpdated } from "../Types";
 import actUpdateUser from "../store/user/act/actUpdateUser";
+import ProfileData from "../components/profile/ProfileData";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ const Profile = () => {
         loading={loading}
         onUserUpdated={onUserUpdated}
       />
+      <ProfileData/>
     </div>
   );
 };
