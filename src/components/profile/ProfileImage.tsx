@@ -10,7 +10,8 @@ interface IProps {
   fullName: string;
   loading: boolean;
   error: string | null;
-  onUserUpdated: () => void;
+  userUpdated:TUserUpdated;
+  onUserUpdated: (userUpdated: TUserUpdated) => void;
 }
 const ProfileImage = ({
   avatar,
@@ -18,6 +19,7 @@ const ProfileImage = ({
   fullName,
   error,
   loading,
+  userUpdated,
   onUserUpdated,
 }: IProps) => {
   const [selectedImage, setSelectedImage] = useState<null | string>(null);
@@ -31,7 +33,7 @@ const ProfileImage = ({
     }
   };
   const onSaveImage = async () => {
-    await onUserUpdated();
+    await onUserUpdated(userUpdated);
     setSelectedImage(null);
   };
   const onCancelUpload = () => {

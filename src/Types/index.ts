@@ -17,5 +17,6 @@ export type TUserUpdated = {
     lastName: string;
     password?: string;
     oldPassword?: string;
+    confirmPassword?: string;
     file?: File | null;
 }

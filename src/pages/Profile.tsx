@@ -7,15 +7,15 @@ import ProfileData from "../components/profile/ProfileData";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
-  const { user,error,loading } = useAppSelector((state) => state.auth);
+  const { user, error, loading } = useAppSelector((state) => state.auth);
   const [userUpdated, setUserUpdated] = useState<TUserUpdated>(user);
-  const onUserUpdated = async() => { 
+  const onUserUpdated = async (userUpdated:TUserUpdated) => {
     await dispatch(actUpdateUser(userUpdated))
-     .unwrap()
-     .then(() => {
+      .unwrap()
+      .then(() => {
         setUserUpdated(user);
       });
-  }
+  };
   return (
     <div className="bg-gray-100 p-5 min-h-screen ">
       <ProfileImage
@@ -25,8 +25,16 @@ const Profile = () => {
         error={error}
         loading={loading}
         onUserUpdated={onUserUpdated}
+        userUpdated={userUpdated}
       />
-      <ProfileData/>
+      <ProfileData
+        error={error}
+        loading={loading}
+        onUserUpdated={onUserUpdated}
+        setUserUpdated={setUserUpdated}
+        firstName={user.firstName}
+        lastName={user.lastName}
+      />
     </div>
   );
 };
