@@ -6,35 +6,64 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router";
 import actAuthRegister from "../store/auth/act/actAuthRegister";
 import { setUserEmail } from "../store/auth/authSlice";
+import useCheckEmailAvailability from "./useCheckEmailAvailability";
 
 const useRegister = () => {
-    const dispatch = useAppDispatch()
-    const navigate = useNavigate();
-    const { error, loading } = useAppSelector(state => state.auth)
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<IRegister>({
-        resolver: yupResolver(registerSchema),
-        mode: "onBlur"
-    });
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { error, loading } = useAppSelector((state) => state.auth);
+  const {
+    register,
+    handleSubmit,
+    getFieldState,
+    trigger,
+    formState: { errors },
+  } = useForm<IRegister>({
+    resolver: yupResolver(registerSchema),
+    mode: "onBlur",
+  });
+  const {
+    checkEmailAvailability,
+    emailAvailabilityStatus,
+    enteredEmail,
+    resetCheckEmailAvailability,
+  } = useCheckEmailAvailability();
 
-    const onSubmit: SubmitHandler<IRegister> = async (data) => {
-        dispatch(setUserEmail(data.email))
-        await dispatch(actAuthRegister(data)).unwrap().then(() => {
-            navigate('/confirmEmail')
-        })
-    };
-
-    return {
-        register,
-        handleSubmit,
-        errors,
-        onSubmit,
-        error,
-        loading,
+  const onSubmit: SubmitHandler<IRegister> = async (data) => {
+    if (emailAvailabilityStatus === "Available ✅") {
+      dispatch(setUserEmail(data.email));
+      await dispatch(actAuthRegister(data))
+        .unwrap()
+        .then(() => {
+          navigate("/confirmEmail");
+        });
     }
-}
+  };
+
+  const emailOnBlurHandler = async (e: React.FocusEvent<HTMLInputElement>) => {
+    await trigger("email");
+    const value = e.target.value;
+    const { isDirty, invalid } = getFieldState("email");
+
+    if (isDirty && !invalid && enteredEmail !== value) {
+      // checking
+      checkEmailAvailability(value);
+    }
+
+    if (isDirty && invalid && enteredEmail) {
+      resetCheckEmailAvailability();
+    }
+  };
+  return {
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    error,
+    loading,
+    emailAvailabilityStatus,
+    emailOnBlurHandler,
+  };
+};
 
 export default useRegister;

@@ -6,11 +6,19 @@ import ErrorMsg from "../ui/ErrorMsg";
 import InputPassword from "../ui/InputPassword";
 
 const Register = () => {
-  const { errors, handleSubmit, onSubmit, register, error, loading } =
-    useRegister();
+  const {
+    errors,
+    handleSubmit,
+    onSubmit,
+    register,
+    error,
+    loading,
+    emailOnBlurHandler,
+    emailAvailabilityStatus,
+  } = useRegister();
   return (
-    <div className="bg-gray-50 h-[100vh] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <h1 className="text-3xl text-center sm:mx-auto sm:w-full sm:max-w-md font-bold italic  text-gray-900">
+    <div className="bg-gray-50 h-[100vh] flex flex-col justify-center py-12 sm:px-6 lg:px-8 ">
+      <h1 className="text-3xl text-center sm:mx-auto max-w-sm  md:max-w-md  lg:min-w-lg font-bold italic  text-gray-900">
         Register Page
       </h1>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md sm:px-2 ">
@@ -20,7 +28,7 @@ const Register = () => {
               <ErrorMsg msg={error} />
             </div>
           )}
-          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label
                 htmlFor="firstName"
@@ -57,7 +65,19 @@ const Register = () => {
               <Input
                 placeholder="Please Enter your Email"
                 {...register("email")}
+                onBlur={emailOnBlurHandler}
               />
+              {emailAvailabilityStatus && (
+                <span
+                  className={`block ${
+                    emailAvailabilityStatus === "Not Available"
+                      ? "text-red-600"
+                      : "text-green-600"
+                  }  text-right font-semibold text-sm text-[14px] mb-[-25px] mt-1`}
+                >
+                  {emailAvailabilityStatus}
+                </span>
+              )}
               {errors.email && <ErrorMsg msg={errors.email?.message} />}
             </div>
             <div>
@@ -91,7 +111,7 @@ const Register = () => {
 
             <Button
               type="submit"
-              disabled={Object.keys(errors).length > 0 || loading}
+              disabled={Object.keys(errors).length > 0 || loading || emailAvailabilityStatus === "Not Available"}
               isLoading={loading}
             >
               Register
