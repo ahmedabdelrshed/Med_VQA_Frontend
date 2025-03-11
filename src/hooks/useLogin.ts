@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import actAuthLogin from "../store/auth/act/actAuthLogin";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
+import { setUserEmail } from "../store/auth/authSlice";
 
 const useLogin = () => {
     const dispatch = useAppDispatch()
@@ -21,6 +22,7 @@ const useLogin = () => {
     });
 
     const onSubmit: SubmitHandler<ILogin> = async (data) => {
+        dispatch(setUserEmail(data.email))
         await dispatch(actAuthLogin(data)).unwrap().then(() => {
             toast.success('Login successful')
             setTimeout(() => {

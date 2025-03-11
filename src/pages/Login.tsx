@@ -6,6 +6,7 @@ import ErrorMsg from "../ui/ErrorMsg";
 import InputPassword from "../ui/InputPassword";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import VerifyEmailModal from "../components/Modals/VerifyEmailModal";
 const Login = () => {
   const { errors, handleSubmit, onSubmit, register, error, loading } =
     useLogin();
@@ -152,6 +153,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <VerifyEmailModal/>
     </div>
   );
 };

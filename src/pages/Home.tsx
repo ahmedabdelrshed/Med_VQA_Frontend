@@ -14,7 +14,8 @@ const Home = () => {
     navigate("/login");
   };
   return (
-    <div className=" h-[100vh] p-3 flex flex-col justify-center items-center max-w-sm md:max-w-3xl m-auto">
+    <div className="bg-[#1d232a]">
+      <div className=" h-[100vh] p-3 flex flex-col justify-center  items-center max-w-sm md:max-w-3xl  m-auto">
       {token && (
         <div className="mb-36 flex justify-between items-center w-full">
           <Button width="w-fit" className="px-4 ">
@@ -32,7 +33,7 @@ const Home = () => {
       <h1 className="text-blue-500 mb-10 text-3xl md:text-5xl  font-bold">
         Welcome to MedVQA!
       </h1>
-      <p className="text-gray-600 text-center">
+      <p className="text-gray-300 text-center">
         MedVQA is a web application that allows you to upload an image of a
         medical scan and get a prediction of the diagnosis.
       </p>
@@ -44,6 +45,7 @@ const Home = () => {
       >
         Get Started
       </Button>
+    </div>
     </div>
   );
 };

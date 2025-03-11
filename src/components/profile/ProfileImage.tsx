@@ -66,7 +66,7 @@ const ProfileImage = ({
               </span>
             )}
           </div>
-          <div className="text-sm ml-4 mt-[-5px] hidden md:block">
+          <div className="text-sm ml-4 mt-[-5px] hidden md:block text-black">
             <p className="font-semibold mb-2 text-[10px] lg:text-xl">
               Upload a New Photo
             </p>
