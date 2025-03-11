@@ -15,11 +15,13 @@ import ConfirmVerificationEmail from "../pages/ConfirmVerificationEmail";
 import Profile from "../pages/Profile";
 import AuthSuccess from "../components/Auth/AuthSuccess";
 import ProtectedRoute from "../components/Auth/ProtectedRoute";
+import ErrorHandler from "../errors/ErrorHandler";
+import PageNotFound from "../errors/PageNotFound";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/">
+      <Route path="/" errorElement={<ErrorHandler />}>
         <Route index element={<Home />} />
         <Route
           path="profile"
@@ -41,6 +43,7 @@ const router = createBrowserRouter(
         <Route path="register" element={<Register />} />
         <Route path="authSuccess" element={<AuthSuccess />} />
       </Route>
+      <Route path="*" element={<PageNotFound />} />
     </>
   )
 );
