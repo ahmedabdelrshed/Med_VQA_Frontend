@@ -5,6 +5,7 @@ import { TUserUpdated } from "../Types";
 import actUpdateUser from "../store/user/act/actUpdateUser";
 import ProfileData from "../components/profile/ProfileData";
 import toast from "react-hot-toast";
+import DelProfileImageModal from "../components/Modals/DelProfileImageModal";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
@@ -37,6 +38,7 @@ const Profile = () => {
         firstName={user.firstName}
         lastName={user.lastName}
       />
+      <DelProfileImageModal/>
     </div>
   );
 };

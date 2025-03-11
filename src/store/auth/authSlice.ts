@@ -8,6 +8,7 @@ import actConfirmVerifyEmail from "./act/actConfirmVerifyEmail";
 import Cookies from "js-cookie";
 import calExpiresDate from "../../utils/decodedToken";
 import actUpdateUser from "../user/act/actUpdateUser";
+import actDelProfileImage from "../user/actDelProfileImage";
 
 
 interface IAuthState {
@@ -148,6 +149,18 @@ const authSlice = createSlice({
             Cookies.set("user", JSON.stringify(action.payload.updatedUser), { expires: expire });
         });
         builder.addCase(actUpdateUser.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload as string;
+        });
+        // Delete Profile Image
+        builder.addCase(actDelProfileImage.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        builder.addCase(actDelProfileImage.fulfilled, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(actDelProfileImage.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload as string;
         });

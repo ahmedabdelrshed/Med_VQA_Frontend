@@ -40,6 +40,10 @@ const ProfileImage = ({
     setSelectedImage(null);
     setUserUpdated((prev) => ({ ...prev, file: null }));
   };
+  const onDeleteImage = () => {
+    const modal = document.getElementById("DelProfileImageMod") as HTMLDialogElement | null;
+                modal?.showModal();
+  };
   return (
     <div className="bg-white shadow-lg rounded-lg  m-auto  md:mt-10 px-8 py-6 max-w-sm  md:max-w-md  lg:min-w-lg">
       {error && (
@@ -62,7 +66,7 @@ const ProfileImage = ({
 
             {avatar && (
               <span className="bg-red-400 hover:bg-red-600 w-5 h-5 rounded-full flex items-center justify-center cursor-pointer text-white absolute  right-[-5px] bottom-[8px]">
-                <MdDelete />
+                <MdDelete onClick={onDeleteImage}/>
               </span>
             )}
           </div>
