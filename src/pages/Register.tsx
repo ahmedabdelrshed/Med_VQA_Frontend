@@ -4,6 +4,8 @@ import Input from "../ui/Input";
 import useRegister from "../hooks/useRegister";
 import ErrorMsg from "../ui/ErrorMsg";
 import InputPassword from "../ui/InputPassword";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const {
@@ -16,6 +18,13 @@ const Register = () => {
     emailOnBlurHandler,
     emailAvailabilityStatus,
   } = useRegister();
+  useEffect(() => {
+    if (error) {
+      toast.error(error, {
+        duration:1000
+      })
+    }
+  },[error])
   return (
     <div className="bg-gray-50 h-[100vh] flex flex-col justify-center py-12 sm:px-6 lg:px-8 ">
       <h1 className="text-3xl text-center sm:mx-auto max-w-sm  md:max-w-md  lg:min-w-lg font-bold italic  text-gray-900">
@@ -23,11 +32,6 @@ const Register = () => {
       </h1>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md sm:px-2 ">
         <div className="bg-white px-4 pb-4 pt-10 sm:rounded-lg sm:px-10 sm:pb-6 sm:shadow ">
-          {error && (
-            <div className="text-center  mb-5">
-              <ErrorMsg msg={error} />
-            </div>
-          )}
           <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label

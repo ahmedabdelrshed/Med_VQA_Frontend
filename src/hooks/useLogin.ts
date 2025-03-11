@@ -5,6 +5,7 @@ import loginSchema from "../validations/loginSchema";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import actAuthLogin from "../store/auth/act/actAuthLogin";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const useLogin = () => {
     const dispatch = useAppDispatch()
@@ -21,7 +22,10 @@ const useLogin = () => {
 
     const onSubmit: SubmitHandler<ILogin> = async (data) => {
         await dispatch(actAuthLogin(data)).unwrap().then(() => {
-            navigate('/')
+            toast.success('Login successful')
+            setTimeout(() => {
+                navigate('/')
+            }, 1000)
         })
     };
     return {

@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { TUserUpdated } from "../Types";
 import actUpdateUser from "../store/user/act/actUpdateUser";
 import ProfileData from "../components/profile/ProfileData";
+import toast from "react-hot-toast";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
@@ -13,6 +14,7 @@ const Profile = () => {
     await dispatch(actUpdateUser(userUpdated))
       .unwrap()
       .then(() => {
+        toast.success('Profile updated successfully')
         setUserUpdated(user);
       });
   };
