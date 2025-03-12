@@ -92,7 +92,7 @@ const Login = () => {
             </div>
           </div>
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A4000%2Fauth%2Fgoogle%2Fcallback&scope=profile%20email&client_id=470173933279-g9o6naq878gl3dtf590gflj24dnp85bq.apps.googleusercontent.com&service=lso&o2v=2&ddm=1&flowName=GeneralOAuthFlow">
+            <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&redirect_uri=https%3A%2F%2Fmed-vqa-backend.vercel.app%2Fauth%2Fgoogle%2Fcallback&scope=profile%20email&client_id=470173933279-g9o6naq878gl3dtf590gflj24dnp85bq.apps.googleusercontent.com&service=lso&o2v=2&ddm=1&flowName=GeneralOAuthFlow">
               <button className="flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-md font-bold text-gray-500 hover:bg-gray-50 ">
                 <span className=""> Google</span>
                 <svg
@@ -128,7 +128,7 @@ const Login = () => {
                 </svg>
               </button>
             </a>
-            <a href="https://github.com/login?client_id=Ov23liNYWZSWloWf77Al&return_to=%2Flogin%2Foauth%2Fauthorize%3Fclient_id%3DOv23liNYWZSWloWf77Al%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A4000%252Fauth%252Fgithub%252Fcallback%26response_type%3Dcode%26scope%3Duser%253Aemail">
+            <a href="https://github.com/login?client_id=Ov23liNYWZSWloWf77Al&return_to=%2Flogin%2Foauth%2Fauthorize%3Fclient_id%3DOv23liNYWZSWloWf77Al%26redirect_uri%3Dhttps%253A%252F%252Fmed-vqa-backend.vercel.app%252Fauth%252Fgithub%252Fcallback%26response_type%3Dcode%26scope%3Duser%253Aemail">
               <button className="flex w-full items-center justify-center cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 text-md font-bold text-gray-500 hover:bg-gray-50 ">
                 <span className=""> Github</span>
                 <svg
