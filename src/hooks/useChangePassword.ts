@@ -3,7 +3,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import passwordSchema from "../validations/passwordSchema";
 import actChangePassword from "../store/auth/act/actChangePassword";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { resetUi } from "../store/auth/authSlice";
 export type TChangePassword = {
     password: string
     confirmPassword: string
@@ -31,6 +32,11 @@ const useChangePassword = ({ token }: { token: string }) => {
             setSuccess(true)
         })
     };
+    useEffect(() => {
+        return () => {
+            dispatch(resetUi());
+        };
+    }, [dispatch]);
     return {
         register,
         handleSubmit,

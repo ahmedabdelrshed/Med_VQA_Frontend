@@ -24,7 +24,8 @@ const Register = () => {
         duration:1000
       })
     }
-  },[error])
+  }, [error])
+  
   return (
     <div className="bg-gray-50 h-[100vh] flex flex-col justify-center py-12 sm:px-6 lg:px-8 ">
       <h1 className="text-3xl text-center sm:mx-auto max-w-sm  md:max-w-md  lg:min-w-lg font-bold italic  text-gray-900">
@@ -74,7 +75,7 @@ const Register = () => {
               {emailAvailabilityStatus && (
                 <span
                   className={`block ${
-                    emailAvailabilityStatus === "Not Available"
+                    emailAvailabilityStatus === "User already Exists"
                       ? "text-red-600"
                       : "text-green-600"
                   }  text-right font-semibold text-sm text-[14px] mb-[-25px] mt-1`}

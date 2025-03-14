@@ -6,7 +6,8 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import actAuthLogin from "../store/auth/act/actAuthLogin";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
-import { setUserEmail } from "../store/auth/authSlice";
+import { resetUi, setUserEmail } from "../store/auth/authSlice";
+import { useEffect } from "react";
 
 const useLogin = () => {
     const dispatch = useAppDispatch()
@@ -30,6 +31,12 @@ const useLogin = () => {
             }, 1000)
         })
     };
+    useEffect(() => {
+        return () => {
+          dispatch(resetUi());
+        };
+      }, [dispatch]);
+    
     return {
         register,
         handleSubmit,

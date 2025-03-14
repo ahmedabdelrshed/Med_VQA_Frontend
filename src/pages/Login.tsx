@@ -7,16 +7,20 @@ import InputPassword from "../ui/InputPassword";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 import VerifyEmailModal from "../components/Modals/VerifyEmailModal";
+import { useAppDispatch } from "../store/hooks";
+import { resetUi } from "../store/auth/authSlice";
 const Login = () => {
   const { errors, handleSubmit, onSubmit, register, error, loading } =
     useLogin();
+  const dispatch = useAppDispatch()
   useEffect(() => {
     if (error) {
       toast.error(error, {
         duration: 1000,
       });
+      dispatch(resetUi())
     }
-  }, [error]);
+  }, [error,dispatch]);
   return (
     <div className="bg-gray-50 h-[100vh] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <h1 className="text-3xl text-center sm:mx-auto sm:w-full sm:max-w-md font-bold italic  text-gray-900">

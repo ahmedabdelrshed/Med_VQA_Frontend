@@ -5,9 +5,10 @@ import { IRegister } from "../Types";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router";
 import actAuthRegister from "../store/auth/act/actAuthRegister";
-import { setUserEmail } from "../store/auth/authSlice";
+import { resetUi, setUserEmail } from "../store/auth/authSlice";
 import useCheckEmailAvailability from "./useCheckEmailAvailability";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const useRegister = () => {
     const dispatch = useAppDispatch();
@@ -58,6 +59,11 @@ const useRegister = () => {
             resetCheckEmailAvailability();
         }
     };
+    useEffect(() => {
+            return () => {
+              dispatch(resetUi());
+            };
+          }, [dispatch]);
     return {
         register,
         handleSubmit,

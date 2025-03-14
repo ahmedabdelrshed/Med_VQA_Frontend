@@ -4,7 +4,8 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useNavigate } from "react-router";
 import emailSchema from "../validations/emailSchema";
 import actForgetPassword from "../store/auth/act/actForgetPassword";
-import { setUserEmail } from "../store/auth/authSlice";
+import { resetUi, setUserEmail } from "../store/auth/authSlice";
+import { useEffect } from "react";
 export type TResetPassword = {
     email: string
 }
@@ -28,6 +29,11 @@ const useResetPassword = () => {
             navigate('/reset_password_email')
         })
     };
+    useEffect(() => {
+        return () => {
+            dispatch(resetUi());
+        };
+    }, [dispatch]);
     return {
         register,
         handleSubmit,
