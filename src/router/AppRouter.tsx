@@ -17,6 +17,7 @@ import AuthSuccess from "../components/Auth/AuthSuccess";
 import ProtectedRoute from "../components/Auth/ProtectedRoute";
 import ErrorHandler from "../errors/ErrorHandler";
 import PageNotFound from "../errors/PageNotFound";
+import ChatPage from "../pages/ChatPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,6 +43,7 @@ const router = createBrowserRouter(
         <Route path="change_password/:token" element={<ChangePassword />} />
         <Route path="register" element={<Register />} />
         <Route path="authSuccess" element={<AuthSuccess />} />
+        <Route path="chats" element={ <ChatPage/>} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </>
