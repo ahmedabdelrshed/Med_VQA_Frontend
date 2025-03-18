@@ -1,4 +1,4 @@
-import {  NavLink } from "react-router";
+import ChatTitle from "./ChatTitle";
 
 const SideBarChats = () => {
   return (
@@ -13,24 +13,10 @@ const SideBarChats = () => {
         ></label>
         <ul className="menu bg-gray-300  text-base-content min-h-full w-60 p-3 pt-10">
           {/* Sidebar content here */}
-          <li className="mb-5 font-medium">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `text-blue-400 hover:bg-white hover:rounded-2xl ${
-                  isActive ? "bg-white text-black" : ""
-                }`
-              }
-            >
-              Sidebar Item 1
-            </NavLink>
-          </li>
-          <li className="hover:bg-white text-blue-400 font-medium hover:rounded-2xl  mb-5">
-            <a>Sidebar Item 2</a>
-          </li>
-          <li className="hover:bg-white text-blue-400 font-medium hover:rounded-2xl  mb-5">
-            <a>Sidebar Item 2</a>
-          </li>
+          <ChatTitle chatNumber={1}/>
+          <ChatTitle chatNumber={2}/>
+          <ChatTitle chatNumber={3}/>
+          <ChatTitle chatNumber={4}/>
         </ul>
       </div>
     </div>
