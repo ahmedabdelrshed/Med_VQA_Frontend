@@ -20,3 +20,8 @@ export type TUserUpdated = {
     confirmPassword?: string;
     file?: File | null;
 }
+
+export type TChat = {
+    _id: string,
+    title: string
+}

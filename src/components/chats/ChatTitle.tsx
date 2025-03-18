@@ -5,14 +5,15 @@ import { useState } from "react";
 import ChatTitleMenu from "./ChatTitleMenu";
 
 interface IProps {
-  chatNumber: number;
+  chatTitle: string;
+  chatId: string;
 }
-const ChatTitle = ({ chatNumber }: IProps) => {
-    const [showMenu, setShowMenu] = useState<boolean>(false);
+const ChatTitle = ({ chatId, chatTitle }: IProps) => {
+  const [showMenu, setShowMenu] = useState<boolean>(false);
   return (
     <li className="mb-8 font-medium relative">
       <NavLink
-        to={`/chats/chat/${chatNumber}`}
+        to={`/chats/chat/${chatId}`}
         className={({ isActive }) =>
           `text-blue-400  w-full  block hover:bg-white hover:rounded-2xl ${
             isActive ? "bg-white  rounded-2xl" : ""
@@ -20,7 +21,7 @@ const ChatTitle = ({ chatNumber }: IProps) => {
         }
       >
         <div className="flex justify-between items-center w-full">
-          <span>Sidebar Item {chatNumber}</span>
+          <span>{chatTitle}</span>
           <span
             onClick={(event) => {
               event.preventDefault();
