@@ -1,4 +1,5 @@
 import ChatTitle from "./ChatTitle";
+import ChatTitleSkeleton from "./ChatTitleSkeleton";
 
 const SideBarChats = () => {
   return (
@@ -13,10 +14,10 @@ const SideBarChats = () => {
         ></label>
         <ul className="menu bg-gray-300  text-base-content min-h-full w-60 p-3 pt-10">
           {/* Sidebar content here */}
-          <ChatTitle chatNumber={1}/>
-          <ChatTitle chatNumber={2}/>
-          <ChatTitle chatNumber={3}/>
-          <ChatTitle chatNumber={4}/>
+          <ChatTitle chatNumber={1} />
+          {Array.from({ length: 8 }, (_, index) => (
+            <ChatTitleSkeleton key={index} />
+          ))}
         </ul>
       </div>
     </div>

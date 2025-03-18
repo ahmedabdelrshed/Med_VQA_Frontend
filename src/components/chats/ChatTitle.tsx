@@ -8,14 +8,14 @@ interface IProps {
   chatNumber: number;
 }
 const ChatTitle = ({ chatNumber }: IProps) => {
-  const [showMenu, setShowMenu] = useState<boolean>(false);
+    const [showMenu, setShowMenu] = useState<boolean>(false);
   return (
     <li className="mb-8 font-medium relative">
       <NavLink
         to={`/chats/chat/${chatNumber}`}
         className={({ isActive }) =>
-          `text-blue-400 w-full block hover:bg-white hover:rounded-2xl ${
-            isActive ? "bg-white text-black rounded-2xl" : ""
+          `text-blue-400  w-full  block hover:bg-white hover:rounded-2xl ${
+            isActive ? "bg-white  rounded-2xl" : ""
           }`
         }
       >
