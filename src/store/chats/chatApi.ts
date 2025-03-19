@@ -11,14 +11,30 @@ export const chatAPI = createApi({
         }
     }
     )
-    ,
+    , tagTypes: ["chats"],
     endpoints: (builder) => ({
         getChats: builder.query<{ data: TChat[] }, void>({
             query: () => ({
                 url: `/chat`
-            })
+            }),
+            providesTags: (result) =>
+                result?.data
+                    ? [
+                        ...result.data.map(({ _id }) => ({ type: "chats" as const, id: _id })),
+                        { type: "chats" as const, id: "LIST" },
+                    ]
+                    : [{ type: "chats" as const, id: "LIST" }],
+        }),
+        createChat: builder.mutation<{ data: TChat }, void>({
+            query: () => ({
+                url: `/chat`,
+                method: 'POST',
+            }),
+            invalidatesTags: [
+                { type: "chats" as const, id: "LIST" }
+            ]
         })
     })
 })
 
-export const { useGetChatsQuery } = chatAPI
+export const { useGetChatsQuery, useCreateChatMutation } = chatAPI

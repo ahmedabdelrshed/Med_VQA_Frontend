@@ -14,7 +14,7 @@ const SideBarChats = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-gray-300  text-base-content min-h-full w-60 p-3 pt-10">
+        <ul className="menu bg-gray-300  text-base-content min-h-full w-60 px-3 ">
           {isLoading
             ? Array.from({ length: 8 }, (_, index) => (
                 <ChatTitleSkeleton key={index} />
