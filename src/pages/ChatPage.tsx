@@ -3,6 +3,7 @@ import SideBarChats from "../components/chats/SideBarChats";
 import { BsMenuButtonWide } from "react-icons/bs";
 import { IoCreateOutline } from "react-icons/io5";
 import { useCreateChatMutation } from "../store/chats/chatApi";
+import DelChatModal from "../components/Modals/DelChatModal";
 
 const ChatPage = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const ChatPage = () => {
       navigate(`/chats/chat/${res.data?.data._id}`);
     });
   };
+  
   return (
     <div className="flex max-h-screen">
       <div className="flex flex-col">
@@ -35,6 +37,7 @@ const ChatPage = () => {
           <Outlet />
         </div>
       </div>
+      <DelChatModal />
     </div>
   );
 };

@@ -33,8 +33,15 @@ export const chatAPI = createApi({
             invalidatesTags: [
                 { type: "chats" as const, id: "LIST" }
             ]
+        }),
+        deleteChat: builder.mutation({
+            query: (id: string) => ({
+                url: `/chat/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: [{ type: "chats" as const, id: "LIST" }]
         })
     })
 })
 
-export const { useGetChatsQuery, useCreateChatMutation } = chatAPI
+export const { useGetChatsQuery, useCreateChatMutation, useDeleteChatMutation } = chatAPI
