@@ -3,7 +3,8 @@ import SideBarChats from "../components/chats/SideBarChats";
 import { BsMenuButtonWide } from "react-icons/bs";
 import { IoCreateOutline } from "react-icons/io5";
 import { useCreateChatMutation } from "../store/chats/chatApi";
-import DelChatModal from "../components/Modals/DelChatModal";
+import DelChatModal from "../components/Modals/chat/DelChatModal";
+import UpdateChatModal from "../components/Modals/chat/UpdateChatModal";
 
 const ChatPage = () => {
   const navigate = useNavigate();
@@ -26,13 +27,6 @@ const ChatPage = () => {
         />
       </div>
       <div className="flex flex-col">
-        <div className="bg-gray-300 w-full hidden pb-2 pt-9 px-6 lg:flex justify-between  ">
-          <BsMenuButtonWide className="w-8 h-8 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer" />
-          <IoCreateOutline
-            onClick={onCreateChat}
-            className="w-8 h-8 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer"
-          />
-        </div>
         <SideBarChats />
       </div>
       <div className=" p-5">
@@ -41,6 +35,7 @@ const ChatPage = () => {
         </div>
       </div>
       <DelChatModal />
+      <UpdateChatModal/>
     </div>
   );
 };

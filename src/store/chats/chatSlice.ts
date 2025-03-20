@@ -2,10 +2,18 @@ import { createSlice } from "@reduxjs/toolkit"
 
 interface IChatSlice {
     deleteChatID: string
+    updatedChat: {
+        id: string,
+        title: string
+    }
 }
 
 const initialState: IChatSlice = {
-    deleteChatID: ""
+    deleteChatID: "",
+    updatedChat: {
+        id: "",
+        title: ""
+    }
 }
 
 const chatSlice = createSlice({
@@ -14,9 +22,12 @@ const chatSlice = createSlice({
     reducers: {
         setDeleteChatID: (state, action) => {
             state.deleteChatID = action.payload
+        },
+        setUpdatedChat: (state, action) => {
+            state.updatedChat = action.payload
         }
     }
 })
 
 export default chatSlice.reducer
-export const { setDeleteChatID } = chatSlice.actions
+export const { setDeleteChatID, setUpdatedChat } = chatSlice.actions

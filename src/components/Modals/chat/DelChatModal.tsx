@@ -1,6 +1,6 @@
-import { useDeleteChatMutation } from "../../store/chats/chatApi";
-import { useAppSelector } from "../../store/hooks";
-import Button from "../../ui/Button";
+import { useDeleteChatMutation } from "../../../store/chats/chatApi";
+import { useAppSelector } from "../../../store/hooks";
+import Button from "../../../ui/Button";
 
 const DelChatModal = () => {
   const [deleteChat, { isLoading }] = useDeleteChatMutation();

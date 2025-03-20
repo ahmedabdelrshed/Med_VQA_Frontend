@@ -33,7 +33,13 @@ const ChatTitle = ({ chatId, chatTitle }: IProps) => {
           </span>
         </div>
       </NavLink>
-      {showMenu && <ChatTitleMenu setShowMenu={setShowMenu} id={chatId} />}
+      {showMenu && (
+        <ChatTitleMenu
+          setShowMenu={setShowMenu}
+          id={chatId}
+          title={chatTitle}
+        />
+      )}
     </li>
   );
 };

@@ -41,7 +41,7 @@ const Home = () => {
       <Button
         width="w-fit"
         className="px-4 bg-indigo-500"
-        onClick={() => navigate("/login")}
+        onClick={() => navigate("/chats")}
       >
         Get Started
       </Button>

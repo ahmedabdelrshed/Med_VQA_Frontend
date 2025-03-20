@@ -43,8 +43,22 @@ const router = createBrowserRouter(
         <Route path="change_password/:token" element={<ChangePassword />} />
         <Route path="register" element={<Register />} />
         <Route path="authSuccess" element={<AuthSuccess />} />
-        <Route path="chats" element={<ChatPage />} >
-          <Route path="chat/:id" element={ <h1>Hello From Chat</h1>} />
+        <Route
+          path="chats"
+          element={
+            <ProtectedRoute>
+              <ChatPage />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            path="chat/:id"
+            element={
+              <ProtectedRoute>
+                <h1>Hello From Chat</h1>
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Route>
       <Route path="*" element={<PageNotFound />} />
