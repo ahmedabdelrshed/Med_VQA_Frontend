@@ -13,11 +13,20 @@ const ChatPage = () => {
       navigate(`/chats/chat/${res.data?.data._id}`);
     });
   };
-  
+
   return (
-    <div className="flex max-h-screen">
+    <div className="lg:flex max-h-screen">
+      <div className=" bg-gray-300  lg:hidden  pb-4 pt-5 px-6 flex justify-between">
+        <label htmlFor="my-drawer">
+          <BsMenuButtonWide className="w-9 h-9 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer" />
+        </label>
+        <IoCreateOutline
+          onClick={onCreateChat}
+          className="w-10 h-10 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer"
+        />
+      </div>
       <div className="flex flex-col">
-        <div className="bg-gray-300 w-full pb-2 pt-9 px-6 flex justify-between">
+        <div className="bg-gray-300 w-full hidden pb-2 pt-9 px-6 lg:flex justify-between  ">
           <BsMenuButtonWide className="w-8 h-8 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer" />
           <IoCreateOutline
             onClick={onCreateChat}
@@ -27,12 +36,6 @@ const ChatPage = () => {
         <SideBarChats />
       </div>
       <div className=" p-5">
-        <label
-          htmlFor="my-drawer"
-          className="btn btn-primary drawer-button lg:hidden"
-        >
-          Open drawer
-        </label>
         <div className="mt-4">
           <Outlet />
         </div>

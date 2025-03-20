@@ -35,7 +35,7 @@ const DelChatModal = () => {
           </p>
           <div className="flex space-x-3 mt-2">
             <Button
-              className=" bg-red-400 hover:bg-red-600"
+              className=" bg-red-400 hover:bg-red-600 disabled:bg-red-400"
               isLoading={isLoading}
               onClick={onDeleteChat}
             >
