@@ -1,14 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import Cookies from "js-cookie";
 import { TChat } from '../../Types';
+import { RootState } from '../store';
 
 
 export const chatAPI = createApi({
     reducerPath: "chatAPI",
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://med-vqa-backend.vercel.app', headers: {
-            Authorization: `Bearer ${Cookies.get("token")}`,
-        }
+        baseUrl: 'https://med-vqa-backend.vercel.app', prepareHeaders: (headers, { getState }) => {
+            const token = (getState() as RootState).auth.token;
+            if (token) {
+                headers.set("Authorization", `Bearer ${token}`);
+            }
+            return headers;
+        },
     }
     )
     , tagTypes: ["chats"],
