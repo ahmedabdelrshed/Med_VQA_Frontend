@@ -1,35 +1,16 @@
-import { useEffect, useState } from "react";
-import { useAppSelector } from "../../../store/hooks";
+import useUpdateChat from "../../../hooks/useUpdateChat";
 import Button from "../../../ui/Button";
 import Input from "../../../ui/Input";
-import { useUpdateChatMutation } from "../../../store/chats/chatApi";
 
 const UpdateChatModal = () => {
-  const { updatedChat } = useAppSelector((state) => state.chat);
-  const [title, setTile] = useState(updatedChat.title);
-  const [updateChat, { isLoading }] = useUpdateChatMutation();
-  useEffect(() => {
-    setTile(updatedChat.title);
-  }, [updatedChat.title]);
-  const closeModal = () => {
-    const modal = document.getElementById(
-      "UpdateChatModal"
-    ) as HTMLDialogElement | null;
-    modal?.close();
-  };
-  const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTile(e.target.value);
-  };
-  const onUpdateChat = () => {
-    updateChat({
-      id: updatedChat.id,
-      body: {
-        title,
-      },
-    }).then(() => {
-      closeModal();
-    });
-  };
+  const {
+    closeModal,
+    isLoading,
+    onChangeTitle,
+    onUpdateChat,
+    title,
+    updatedChat,
+  } = useUpdateChat();
   return (
     <dialog
       id="UpdateChatModal"

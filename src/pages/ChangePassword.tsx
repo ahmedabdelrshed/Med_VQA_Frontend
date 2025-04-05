@@ -50,7 +50,6 @@ const ChangePassword = () => {
                 <ErrorMsg msg={errors.confirmPassword?.message} />
               )}
             </div>
-
             <Button
               type="submit"
               disabled={Object.keys(errors).length > 0 || loading}

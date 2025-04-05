@@ -1,22 +1,8 @@
-import { useDeleteChatMutation } from "../../../store/chats/chatApi";
-import { useAppSelector } from "../../../store/hooks";
+import useDeleteChat from "../../../hooks/useDeleteChat";
 import Button from "../../../ui/Button";
 
 const DelChatModal = () => {
-  const [deleteChat, { isLoading }] = useDeleteChatMutation();
-  const { deleteChatID } = useAppSelector((state) => state.chat);
-  const closeModal = () => {
-    const modal = document.getElementById(
-      "DelChatModal"
-    ) as HTMLDialogElement | null;
-    modal?.close();
-  };
-  const onDeleteChat = async () => {
-    await deleteChat(deleteChatID).then(() => {
-      closeModal();
-    });
-  };
-
+  const { isLoading, closeModal, onDeleteChat } = useDeleteChat();
   return (
     <dialog
       id="DelChatModal"

@@ -8,7 +8,7 @@ import actConfirmVerifyEmail from "./act/actConfirmVerifyEmail";
 import Cookies from "js-cookie";
 import calExpiresDate from "../../utils/decodedToken";
 import actUpdateUser from "../user/act/actUpdateUser";
-import actDelProfileImage from "../user/actDelProfileImage";
+import actDelProfileImage from "../user/act/actDelProfileImage";
 
 
 interface IAuthState {
@@ -172,4 +172,4 @@ const authSlice = createSlice({
 })
 
 export default authSlice.reducer;
-export const { setUserEmail, setUser ,actLogout,resetUi} = authSlice.actions;
+export const { setUserEmail, setUser, actLogout, resetUi } = authSlice.actions;

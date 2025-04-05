@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import actUpdateUser from "../../store/user/act/actUpdateUser";
-import actDelProfileImage from "../../store/user/actDelProfileImage";
+import actDelProfileImage from "../../store/user/act/actDelProfileImage";
 import Button from "../../ui/Button";
 
 const DelProfileImageModal = () => {

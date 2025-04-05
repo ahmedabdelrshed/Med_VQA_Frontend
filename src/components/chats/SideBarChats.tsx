@@ -20,7 +20,7 @@ const SideBarChats = () => {
   return (
     <div className="drawer lg:drawer-open max-h-[60hv]  w-fit">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">{/* Page content here */}</div>
+      <div className="drawer-content"></div>
       <div className="drawer-side    ">
         <label
           htmlFor="my-drawer"
