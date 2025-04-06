@@ -1,4 +1,29 @@
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: false;
+}
+
+.text-gradient-hello {
+  background: linear-gradient(to right,
+      oklch(60% 0.25 240),
+      oklch(65% 0.3 260),
+      oklch(70% 0.28 280));
+
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.text-gradient-name {
+  background: oklch(48.8% 0.243 264.376);
+
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }

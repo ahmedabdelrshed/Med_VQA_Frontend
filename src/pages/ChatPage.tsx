@@ -29,13 +29,11 @@ const ChatPage = () => {
       <div className="flex flex-col">
         <SideBarChats />
       </div>
-      <div className=" p-5">
-        <div className="mt-4">
-          <Outlet />
-        </div>
+      <div className="  flex-1">
+        <Outlet />
       </div>
       <DelChatModal />
-      <UpdateChatModal/>
+      <UpdateChatModal />
     </div>
   );
 };
