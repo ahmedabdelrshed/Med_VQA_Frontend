@@ -13,7 +13,7 @@ const QuestionInput = () => {
     });
   };
   return (
-    <div className="absolute  border-3 border-[#6178ff] rounded-xl    bottom-25 left-1/2 transform -translate-x-1/2 bg-white px-4 py-4 shadow-lg w-[90%] max-w-xl ">
+    <div className="absolute  border-3 border-[#6178ff] rounded-xl  bottom-3  lg:bottom-25 left-1/2 transform -translate-x-1/2 bg-white px-4 py-4 shadow-lg w-[90%] max-w-xl ">
       <input
         id="myInput"
         type="text"

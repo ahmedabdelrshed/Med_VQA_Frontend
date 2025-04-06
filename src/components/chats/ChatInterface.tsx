@@ -3,7 +3,7 @@ import WelcomeMessage from "./WelcomeMessage"
 
 const ChatInterface = () => {
   return (
-      <div className="h-screen relative">
+      <div className="h-screen relative z-0">
           <WelcomeMessage />
           <QuestionInput />
     </div>

@@ -26,7 +26,7 @@ const ChatPage = () => {
           className="w-10 h-10 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer"
         />
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col relative z-50">
         <SideBarChats />
       </div>
       <div className="  flex-1">
