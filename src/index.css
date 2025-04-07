@@ -27,3 +27,9 @@
   color: transparent;
 }
 
+.gradient-bg {
+  background: linear-gradient(to right,
+      oklch(60% 0.25 240),
+      oklch(65% 0.3 260),
+      oklch(70% 0.28 280));
+}
