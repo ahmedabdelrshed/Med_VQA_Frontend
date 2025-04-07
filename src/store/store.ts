@@ -2,16 +2,18 @@ import { configureStore } from '@reduxjs/toolkit'
 import authReducer from './auth/authSlice'
 import { chatAPI } from './chats/chatApi'
 import chatReducer from './chats/chatSlice'
+import { questionsApi } from './questions/questionsApi'
 export const store = configureStore({
     reducer: {
         auth: authReducer,
         [chatAPI.reducerPath]: chatAPI.reducer,
-        chat: chatReducer
+        chat: chatReducer,
+        [questionsApi.reducerPath]: questionsApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,
-        }).concat(chatAPI.middleware)
+        }).concat(chatAPI.middleware).concat(questionsApi.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

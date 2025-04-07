@@ -25,3 +25,12 @@ export type TChat = {
     _id: string,
     title: string
 }
+
+export type TQuestion = {
+    _id: string,
+    question: string,
+    imageUrl: string,
+    answer: string,
+    chatId: string,
+    createdAt: string,
+}

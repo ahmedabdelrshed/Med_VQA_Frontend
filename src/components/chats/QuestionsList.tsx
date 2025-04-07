@@ -1,8 +1,12 @@
 import { useEffect, useRef } from "react";
 import Question from "./Question";
 import QuestionResponse from "./QuestionResponse";
+import { TQuestion } from "../../Types";
 
-const QuestionsList = () => {
+interface IProps {
+  Questions: TQuestion[];
+}
+const QuestionsList = ({ Questions }: IProps) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -14,11 +18,12 @@ const QuestionsList = () => {
   }, []);
   return (
     <div className="h-[65vh] lg:h-[72vh] lg:max-w-2xl overflow-auto over m-auto  pt-10 px-3   ">
-      <Question />
-      <QuestionResponse />
-      <Question />
-      <QuestionResponse /> <Question />
-      <QuestionResponse />
+      {Questions.map((question) => (
+        <div key={question._id}>
+          <Question imageUrl={question.imageUrl} question={question.question} />
+          <QuestionResponse response={question.answer} />
+        </div>
+      ))}
       <div ref={messagesEndRef} />
     </div>
   );
