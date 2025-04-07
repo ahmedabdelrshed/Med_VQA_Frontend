@@ -1,6 +1,6 @@
 import QuestionInput from "./QuestionInput";
 import QuestionsList from "./QuestionsList";
-import WelcomeMessage from "./WelcomeMessage";
+// import WelcomeMessage from "./WelcomeMessage";
 
 const ChatInterface = () => {
  
