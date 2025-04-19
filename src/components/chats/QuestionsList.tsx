@@ -15,7 +15,7 @@ const QuestionsList = ({ Questions }: IProps) => {
 
   useEffect(() => {
     scrollToBottom();
-  }, []);
+  });
   return (
     <div className="h-[58vh] lg:h-[72vh] lg:max-w-2xl overflow-auto over m-auto  lg:pt-10 px-3   ">
       {Questions.map((question) => (

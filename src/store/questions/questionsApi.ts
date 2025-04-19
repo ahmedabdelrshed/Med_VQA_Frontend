@@ -16,7 +16,7 @@ export const questionsApi = createApi({
     }),
     tagTypes: ["questions"],
     endpoints: (builder) => ({
-        getQuestions: builder.query<{ data: TQuestion[] },string>({
+        getQuestions: builder.query<{ data: TQuestion[] }, string>({
             query: (id: string) => ({
                 url: `/chat/${id}`,
             }),
@@ -31,7 +31,17 @@ export const questionsApi = createApi({
                     ]
                     : [{ type: "questions" as const, id: "LIST" }],
         }),
-    })
-})
+        addQuestion: builder.mutation<void, { chatId: string; body: FormData }>({
+            query: ({ chatId, body }) => ({
+                url: `/question/${chatId}`,
+                method: "POST",
+                body,
+            }),
+            invalidatesTags: [{ type: "questions", id: "LIST" }],
+        })
+    }),
+    keepUnusedDataFor: 0
+});
 
-export const { useGetQuestionsQuery } = questionsApi
+export const { useGetQuestionsQuery, useAddQuestionMutation } =
+    questionsApi;

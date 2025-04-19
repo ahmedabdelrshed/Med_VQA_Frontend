@@ -18,8 +18,8 @@ import ProtectedRoute from "../components/Auth/ProtectedRoute";
 import ErrorHandler from "../errors/ErrorHandler";
 import PageNotFound from "../errors/PageNotFound";
 import ChatPage from "../pages/ChatPage";
-import ChatInterface from "../components/chats/ChatInterface";
 import WelcomeMessage from "../components/chats/WelcomeMessage";
+import ChatWrapper from "../components/chats/ChatWrapper";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -58,7 +58,7 @@ const router = createBrowserRouter(
             path="chat/:id"
             element={
               <ProtectedRoute>
-                <ChatInterface />
+                <ChatWrapper />
               </ProtectedRoute>
             }
           />

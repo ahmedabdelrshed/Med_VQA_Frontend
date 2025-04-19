@@ -1,15 +1,18 @@
-import React, { useState } from "react";
 import { CiImageOn } from "react-icons/ci";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { MdCancel } from "react-icons/md";
 
 interface ImageUploadProps {
   onImageSelect: (file: File | null) => void;
+  preview: string | null;
+  setPreview: (preview: string | null) => void;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ onImageSelect }) => {
-  const [preview, setPreview] = useState<string | null>(null);
-
+const ImageUpload: React.FC<ImageUploadProps> = ({
+  onImageSelect,
+  preview,
+  setPreview,
+}) => {
   const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] || null;
     if (file) {
