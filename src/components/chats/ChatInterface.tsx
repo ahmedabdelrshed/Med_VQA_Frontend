@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import QuestionInput from "./QuestionInput";
+import QuestionForm from "./QuestionForm";
 import QuestionsList from "./QuestionsList";
 import { useGetQuestionsQuery } from "../../store/questions/questionsApi";
 // import WelcomeMessage from "./WelcomeMessage";
@@ -11,7 +11,7 @@ const ChatInterface = () => {
     <div className="h-[80vh] lg:h-screen relative  z-0">
       {questions && <QuestionsList Questions={questions.data} />}
       {/* <WelcomeMessage /> */}
-      <QuestionInput />
+      <QuestionForm />
     </div>
   );
 };
