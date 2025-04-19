@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import Question from "./Question";
 import QuestionResponse from "./QuestionResponse";
 import { TQuestion } from "../../Types";
+import DelQuestionModal from "../Modals/question/DelQuestionModel";
 
 interface IProps {
   Questions: TQuestion[];
@@ -20,11 +21,16 @@ const QuestionsList = ({ Questions }: IProps) => {
     <div className="h-[58vh] lg:h-[72vh] lg:max-w-2xl overflow-auto over m-auto  lg:pt-10 px-3   ">
       {Questions.map((question) => (
         <div key={question._id}>
-          <Question imageUrl={question.imageUrl} question={question.question} />
+          <Question
+            imageUrl={question.imageUrl}
+            question={question.question}
+            id={question._id}
+          />
           <QuestionResponse response={question.answer} />
         </div>
       ))}
       <div ref={messagesEndRef} />
+      <DelQuestionModal />
     </div>
   );
 };

@@ -3,12 +3,14 @@ import authReducer from './auth/authSlice'
 import { chatAPI } from './chats/chatApi'
 import chatReducer from './chats/chatSlice'
 import { questionsApi } from './questions/questionsApi'
+import questionReducer from './questions/questionSlice'
 export const store = configureStore({
     reducer: {
         auth: authReducer,
         [chatAPI.reducerPath]: chatAPI.reducer,
         chat: chatReducer,
         [questionsApi.reducerPath]: questionsApi.reducer,
+        question: questionReducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
