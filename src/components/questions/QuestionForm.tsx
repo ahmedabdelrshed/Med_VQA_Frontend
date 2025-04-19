@@ -1,8 +1,8 @@
 import { useState } from "react";
-import TextInput from "./TextInput";
-import ImageUpload from "./ImageUpload";
+import TextInput from "../chats/TextInput";
+import ImageUpload from "../chats/ImageUpload";
 import toast from "react-hot-toast";
-import SubmitButton from "./SubmitButton";
+import SubmitButton from "../chats/SubmitButton";
 import { useAddQuestionMutation } from "../../store/questions/questionsApi";
 import { useParams } from "react-router";
 const QuestionForm = () => {

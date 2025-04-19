@@ -1,9 +1,9 @@
 import { useParams } from "react-router";
-import QuestionForm from "./QuestionForm";
-import QuestionsList from "./QuestionsList";
+import QuestionForm from "../questions/QuestionForm";
+import QuestionsList from "../questions/QuestionsList";
 import { useGetQuestionsQuery } from "../../store/questions/questionsApi";
 import WelcomeMessage from "./WelcomeMessage";
-import RenderQuestionSkeleton from "./RenderQuestionSkeleton";
+import RenderQuestionSkeleton from "../questions/RenderQuestionSkeleton";
 
 const ChatInterface = () => {
   const { id } = useParams();
