@@ -19,6 +19,7 @@ import ErrorHandler from "../errors/ErrorHandler";
 import PageNotFound from "../errors/PageNotFound";
 import ChatPage from "../pages/ChatPage";
 import ChatInterface from "../components/chats/ChatInterface";
+import WelcomeMessage from "../components/chats/WelcomeMessage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -52,6 +53,7 @@ const router = createBrowserRouter(
             </ProtectedRoute>
           }
         >
+          <Route index element={<WelcomeMessage />} />
           <Route
             path="chat/:id"
             element={
