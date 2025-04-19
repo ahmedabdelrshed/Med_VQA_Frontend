@@ -3,6 +3,7 @@ import Question from "./Question";
 import QuestionResponse from "./QuestionResponse";
 import { TQuestion } from "../../Types";
 import DelQuestionModal from "../Modals/question/DelQuestionModel";
+import UpdateQuestionModal from "../Modals/question/updateQuestionModel";
 
 interface IProps {
   Questions: TQuestion[];
@@ -31,6 +32,7 @@ const QuestionsList = ({ Questions }: IProps) => {
       ))}
       <div ref={messagesEndRef} />
       <DelQuestionModal />
+      <UpdateQuestionModal />
     </div>
   );
 };

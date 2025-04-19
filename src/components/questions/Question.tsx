@@ -3,7 +3,10 @@ import ImageWithSkeleton from "./ImageWithSkeleton";
 import { MdDelete } from "react-icons/md";
 import { useState } from "react";
 import { useAppDispatch } from "../../store/hooks";
-import { setDeleteQuestionID } from "../../store/questions/questionSlice";
+import {
+  setDeleteQuestionID,
+  setUpdatedQuestion,
+} from "../../store/questions/questionSlice";
 
 interface IProps {
   question: string;
@@ -17,6 +20,13 @@ const Question = ({ imageUrl, question, id }: IProps) => {
     dispatch(setDeleteQuestionID(id));
     const modal = document.getElementById(
       "DelQuestionModal"
+    ) as HTMLDialogElement | null;
+    modal?.showModal();
+  };
+  const onUpdateQuestion = () => {
+    dispatch(setUpdatedQuestion({ id, question }));
+    const modal = document.getElementById(
+      "UpdateQuestionModal"
     ) as HTMLDialogElement | null;
     modal?.showModal();
   };
@@ -36,7 +46,10 @@ const Question = ({ imageUrl, question, id }: IProps) => {
           isHovered ? "opacity-100" : "opacity-0"
         }  transition-opacity duration-200`}
       >
-        <BiSolidEdit className="w-4 text-indigo-600 cursor-pointer" />
+        <BiSolidEdit
+          className="w-4 text-indigo-600 cursor-pointer"
+          onClick={onUpdateQuestion}
+        />
         <MdDelete
           className="w-4 text-red-600 cursor-pointer"
           onClick={onDeleteQuestion}

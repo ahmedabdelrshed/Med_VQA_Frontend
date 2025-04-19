@@ -45,9 +45,17 @@ export const questionsApi = createApi({
             }),
             invalidatesTags: [{ type: "questions", id: "LIST" }],
         }),
+        updateQuestion: builder.mutation({
+            query: ({ id, body }: { id: string; body: { question: string } }) => ({
+                url: `/question/${id}`,
+                method: "PATCH",
+                body,
+            }),
+            invalidatesTags: [{ type: "questions", id: "LIST" }],
+        }),
     }),
     keepUnusedDataFor: 0
 });
 
-export const { useGetQuestionsQuery, useAddQuestionMutation, useDeleteQuestionMutation } =
+export const { useGetQuestionsQuery, useAddQuestionMutation, useDeleteQuestionMutation, useUpdateQuestionMutation } =
     questionsApi;
