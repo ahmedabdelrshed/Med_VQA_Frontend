@@ -39,7 +39,7 @@ const NavBar = () => {
           </ul>
         </div>
         <a className="px-10 hidden lg:inline-flex">
-          <img src="../../../public/images/logo.png" className="w-32" alt="" />
+          <img src="/images/logo.png" className="w-32" alt="" />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -49,7 +49,7 @@ const NavBar = () => {
       </div>
       <NavLink to={"/"} className="lg:hidden">
         <img
-          src="../../../public/images/logo.png"
+          src="/images/logo.png"
           className="w-38 mr-5"
           alt=""
         />
