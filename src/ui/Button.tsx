@@ -11,14 +11,17 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = ({
   children,
   width = "w-full",
-  className,
+  className = "",
   isLoading,
   ...rest
 }: IProps) => {
+  const bgColor = className.includes("bg-") ? "" : "bg-blue-600";
+  const textColor = className.includes("text-") ? "" : "text-white";
+
   return (
     <button
       disabled={isLoading}
-      className={`${width} ${className}  disabled:hover:bg-blue-400, disabled:cursor-not-allowed cursor-pointer hover:bg-blue-700 disabled:bg-blue-400 transition bg-blue-600 p-2  rounded-lg font-medium text-white `}
+      className={`${width} disabled:hover:bg-blue-400 disabled:cursor-not-allowed cursor-pointer hover:bg-blue-700 disabled:bg-blue-400 transition ${bgColor} p-2 rounded-lg font-medium ${textColor} ${className}`}
       {...rest}
     >
       {isLoading && <LoadingSpinner />}
@@ -26,5 +29,4 @@ const Button = ({
     </button>
   );
 };
-
 export default Button;
