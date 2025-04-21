@@ -4,6 +4,10 @@
   themes: false;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .text-gradient-hello {
   background: linear-gradient(to right,
       oklch(60% 0.25 240),

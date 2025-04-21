@@ -2,13 +2,19 @@ const MenuItems = () => {
   return (
     <>
       <li>
-        <a className="hover:text-blue-500">Home</a>
+        <a href="#home" className="hover:text-blue-500">
+          Home
+        </a>
       </li>
       <li>
-        <a className="hover:text-blue-500">Features</a>
+        <a href="#features" className="hover:text-blue-500">
+          Features
+        </a>
       </li>
       <li>
-        <a className="hover:text-blue-500">How it works</a>
+        <a href="#how-it-works" className="hover:text-blue-500">
+          How it works
+        </a>
       </li>
     </>
   );

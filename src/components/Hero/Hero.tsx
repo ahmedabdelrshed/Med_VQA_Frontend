@@ -4,7 +4,7 @@ import Button from "../../ui/Button";
 const Hero = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex-1  bg-[#f0f8ff] ">
+    <div className="flex-1  bg-[#f0f8ff] " id="home">
       <div className="flex mx-auto items-center max-w-7xl px-6 h-full  lg:px-8">
         <div className="text-center lg:text-left w-3xl ">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">

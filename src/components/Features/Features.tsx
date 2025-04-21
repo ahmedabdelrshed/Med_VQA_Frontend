@@ -28,7 +28,7 @@ const features = [
 ];
 const Features = () => {
   return (
-    <div className="py-32 lg:py-24 lg:h-[90vh] bg-[#f9fafb]">
+    <div className="py-32 lg:py-24 lg:h-[90vh] bg-[#f9fafb]" id="features">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className=" font-bold tracking-tight text-[#2a6da6] text-4xl lg:text-3xl">
