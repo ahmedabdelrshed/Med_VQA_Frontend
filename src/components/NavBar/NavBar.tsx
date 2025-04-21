@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router";
 import Cookies from "js-cookie";
-import { useAppSelector } from "../../../store/hooks";
+import { useAppSelector } from "../../store/hooks";
 import MenuItems from "./MenuItems";
 import { useState } from "react";
 import ProfileMenu from "./ProfileMenu";
@@ -11,7 +11,7 @@ const NavBar = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const { avatar } = useAppSelector((state) => state.auth.user);
   return (
-    <div className="navbar justify-between px-6 py-2 bg-base-100 shadow-sm">
+    <div className="navbar fixed z-50 justify-between px-6 py-2 bg-[#f0f8ff] shadow-sm">
       <div className="navbar-start w-fit lg:w-[50%]">
         <div className="dropdown">
           <div tabIndex={0} role="button" className=" lg:hidden">
@@ -48,11 +48,7 @@ const NavBar = () => {
         </ul>
       </div>
       <NavLink to={"/"} className="lg:hidden">
-        <img
-          src="/images/logo.png"
-          className="w-38 mr-5"
-          alt=""
-        />
+        <img src="/images/logo.png" className="w-38 mr-5" alt="" />
       </NavLink>
       <div className=" lg:hidden"></div>
       <div className="navbar-end hidden pr-30 lg:inline-flex">
