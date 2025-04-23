@@ -1,3 +1,4 @@
+import ContactUS from "../components/ContactUS/ContactUS";
 import Features from "../components/Features/Features";
 import Hero from "../components/Hero/Hero";
 import HowItWorks from "../components/HowItWork/HowItWork";
@@ -12,6 +13,7 @@ const Home = () => {
       </div>
       <Features />
       <HowItWorks />
+      <ContactUS />
     </div>
   );
 };
