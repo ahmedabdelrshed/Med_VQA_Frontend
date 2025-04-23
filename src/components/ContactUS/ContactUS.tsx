@@ -12,7 +12,7 @@ const ContactUS = () => {
           Got a technical issue? Want to send feedback about a any feature? Need
           details about our Business plan? Let us know.
         </p>
-        <div className="p-6 lg:py-10 bg-white w-sm md:w-[768px]  m-auto space-y-6 rounded-lg shadow-md">
+        <div className="p-6 lg:py-10 bg-white max-w-sm md:w-[768px]  m-auto space-y-6 rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row lg:space-x-4  mb-4">
             <div className="w-full mb-4 md:mb-0">
               <label
