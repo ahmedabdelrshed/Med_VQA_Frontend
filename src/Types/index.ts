@@ -34,3 +34,11 @@ export type TQuestion = {
     chatId: string,
     createdAt: string,
 }
+
+
+export interface IContact {
+    firstName: string;
+    lastName: string;
+    email: string;
+    message: string;
+}

@@ -1,8 +1,41 @@
 import Button from "../../ui/Button";
-
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { IContact } from "../../Types";
+import contactSchema from "../../validations/contactSchema";
+import ErrorMsg from "../../ui/ErrorMsg";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+import actContactUs from "../../store/user/act/actContactUs";
 const ContactForm = () => {
+  const dispatch = useAppDispatch();
+  const { error, loading } = useAppSelector((state) => state.auth);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IContact>({
+    resolver: yupResolver(contactSchema),
+  });
+  const onSubmit: SubmitHandler<IContact> = async (data) => {
+    await dispatch(actContactUs(data))
+      .unwrap()
+      .then(() => {
+        const modal = document.getElementById(
+          "doneContactMod"
+        ) as HTMLDialogElement | null;
+        modal?.showModal();
+      });
+  };
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error, dispatch]);
   return (
     <form
+      onSubmit={handleSubmit(onSubmit)}
       autoComplete="off"
       className="p-6 lg:py-10 w-[100%]  xl:w-[50%]   flex flex-col  rounded-lg shadow-lg"
     >
@@ -17,11 +50,12 @@ const ContactForm = () => {
           <input
             type="text"
             id="firstName"
+            {...register("firstName")}
             placeholder="First Name"
             autoComplete="new-password"
             className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-3 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
           />
-          {/* {errors.firstName && <ErrorMsg msg={errors.firstName?.message} />} */}
+          {errors.firstName && <ErrorMsg msg={errors.firstName?.message} />}
         </div>
         <div className="w-full ">
           <label
@@ -33,11 +67,12 @@ const ContactForm = () => {
           <input
             type="text"
             id="lastName"
+            {...register("lastName")}
             placeholder="Last Name"
             autoComplete="new-password"
             className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-3 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
           />
-          {/* {errors.firstName && <ErrorMsg msg={errors.firstName?.message} />} */}
+          {errors.firstName && <ErrorMsg msg={errors.firstName?.message} />}
         </div>
       </div>
       <div className="my-6">
@@ -51,10 +86,11 @@ const ContactForm = () => {
           type="text"
           id="email"
           placeholder="Email Address"
+          {...register("email")}
           autoComplete="new-password"
           className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-3 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
         />
-        {/* {errors.email && <ErrorMsg msg={errors.email?.message} />} */}
+        {errors.email && <ErrorMsg msg={errors.email?.message} />}
       </div>
       <div className="my-3">
         <label
@@ -65,12 +101,18 @@ const ContactForm = () => {
         </label>
         <textarea
           id="message"
+          {...register("message")}
           rows={4}
           className="block p-2.5 w-full shadow-sm text-lg text-gray-900  mt-3 rounded-lg border-[1.5px] border-gray-300  focus:outline-none  focus:ring-blue-500  focus:border-blue-500 "
           placeholder="Write your message here..."
         ></textarea>
+        {errors.message && <ErrorMsg msg={errors.message?.message} />}
       </div>
-      <Button width="w-fit" className="bg-blue-600 mt-2 px-6 hover:bg-blue-500">
+      <Button
+        width="w-fit"
+        className="bg-blue-600 mt-2 px-6 hover:bg-blue-500"
+        disabled={Object.keys(errors).length > 0 || loading}
+      >
         Send Message
       </Button>
     </form>

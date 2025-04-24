@@ -1,6 +1,7 @@
 import contact from "../../Animations/Contact.json";
 import Lottie from "lottie-react";
 import ContactForm from "./ContactForm";
+import DoneContact from "../Modals/DoneContact";
 
 const ContactUS = () => {
   return (
@@ -20,6 +21,7 @@ const ContactUS = () => {
           </div>
         </div>
       </div>
+      <DoneContact />
     </section>
   );
 };

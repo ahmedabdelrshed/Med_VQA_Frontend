@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import calExpiresDate from "../../utils/decodedToken";
 import actUpdateUser from "../user/act/actUpdateUser";
 import actDelProfileImage from "../user/act/actDelProfileImage";
+import actContactUs from "../user/act/actContactUs";
 
 
 interface IAuthState {
@@ -165,6 +166,18 @@ const authSlice = createSlice({
             state.loading = false;
         });
         builder.addCase(actDelProfileImage.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload as string;
+        });
+         // Contact Us Submit
+         builder.addCase(actContactUs.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+        })
+        builder.addCase(actContactUs.fulfilled, (state) => {
+            state.loading = false;
+        });
+        builder.addCase(actContactUs.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload as string;
         });
