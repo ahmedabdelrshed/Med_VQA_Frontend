@@ -16,6 +16,11 @@ const MenuItems = () => {
           How it works
         </a>
       </li>
+      <li>
+        <a href="#contact" className="hover:text-blue-500">
+          Contact Us
+        </a>
+      </li>
     </>
   );
 };

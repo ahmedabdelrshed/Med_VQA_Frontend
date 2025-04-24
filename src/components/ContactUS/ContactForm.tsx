@@ -14,6 +14,7 @@ const ContactForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IContact>({
     resolver: yupResolver(contactSchema),
@@ -26,6 +27,7 @@ const ContactForm = () => {
           "doneContactMod"
         ) as HTMLDialogElement | null;
         modal?.showModal();
+        reset();
       });
   };
   useEffect(() => {
@@ -110,6 +112,7 @@ const ContactForm = () => {
       </div>
       <Button
         width="w-fit"
+        isLoading={loading}
         className="bg-blue-600 mt-2 px-6 hover:bg-blue-500"
         disabled={Object.keys(errors).length > 0 || loading}
       >

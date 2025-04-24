@@ -5,7 +5,7 @@ import DoneContact from "../Modals/DoneContact";
 
 const ContactUS = () => {
   return (
-    <section className="bg-slate-100  mb-4 lg:px-16">
+    <section className="bg-slate-100  mb-4 lg:px-16" id="contact">
       <div className="py-8 px-4 ">
         <h2 className="mb-4 text-4xl italic  font-bold  tracking-wide text-blue-600  text-center  ">
           Contact US
