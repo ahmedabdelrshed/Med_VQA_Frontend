@@ -1,10 +1,23 @@
 import contact from "../../Animations/Contact.json";
-import Lottie from "lottie-react";
+import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import ContactForm from "./ContactForm";
 import DoneContact from "../Modals/DoneContact";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const ContactUS = () => {
+  const lottieRef = useRef<LottieRefCurrentProps | null>(null);
+  useEffect(() => {
+    const lottie = lottieRef.current;
+    if (!lottie) return;
+
+    // 3 seconds = frame 90 (assuming 30fps)
+    const startFrame = 55;
+    const endFrame = contact.op;
+
+    // Play only from 3s to the end and loop
+    lottie.playSegments([startFrame, endFrame], true);
+  }, []);
   return (
     <section className="bg-slate-100 mb-4 lg:px-16" id="contact">
       <div className="py-8 px-4">
@@ -44,6 +57,9 @@ const ContactUS = () => {
           >
             <Lottie
               animationData={contact}
+              loop
+              autoplay={false} // We manually control it
+              lottieRef={lottieRef}
             />
           </motion.div>
         </div>

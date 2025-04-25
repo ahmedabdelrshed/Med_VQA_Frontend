@@ -21,7 +21,14 @@ const useLogin = () => {
         resolver: yupResolver(loginSchema),
         mode: "onBlur"
     });
-
+    useEffect(() => {
+        if (error) {
+            toast.error(error, {
+                duration: 1000,
+            });
+            dispatch(resetUi());
+        }
+    }, [error, dispatch]);
     const onSubmit: SubmitHandler<ILogin> = async (data) => {
         dispatch(setUserEmail(data.email))
         await dispatch(actAuthLogin(data)).unwrap().then(() => {
@@ -33,10 +40,10 @@ const useLogin = () => {
     };
     useEffect(() => {
         return () => {
-          dispatch(resetUi());
+            dispatch(resetUi());
         };
-      }, [dispatch]);
-    
+    }, [dispatch]);
+
     return {
         register,
         handleSubmit,
