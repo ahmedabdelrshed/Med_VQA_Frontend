@@ -8,6 +8,8 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import actContactUs from "../../store/user/act/actContactUs";
+import { motion } from "framer-motion";
+
 const ContactForm = () => {
   const dispatch = useAppDispatch();
   const { error, loading } = useAppSelector((state) => state.auth);
@@ -36,10 +38,14 @@ const ContactForm = () => {
     }
   }, [error, dispatch]);
   return (
-    <form
+    <motion.form
       onSubmit={handleSubmit(onSubmit)}
       autoComplete="off"
-      className="p-6 lg:py-10 w-[100%]  xl:w-[50%]   flex flex-col  rounded-lg shadow-lg"
+      className="p-6  w-[100%]  xl:w-[50%]   flex flex-col  rounded-lg shadow-lg"
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: 0.6 }}
+      viewport={{ once: true }}
     >
       <div className="flex flex-col md:flex-row md:space-x-4  ">
         <div className="w-full mb-4 md:mb-0">
@@ -55,7 +61,7 @@ const ContactForm = () => {
             {...register("firstName")}
             placeholder="First Name"
             autoComplete="new-password"
-            className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-3 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
+            className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-2.5 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
           />
           {errors.firstName && <ErrorMsg msg={errors.firstName?.message} />}
         </div>
@@ -72,12 +78,12 @@ const ContactForm = () => {
             {...register("lastName")}
             placeholder="Last Name"
             autoComplete="new-password"
-            className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-3 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
+            className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-2.5 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
           />
-          {errors.firstName && <ErrorMsg msg={errors.firstName?.message} />}
+          {errors.lastName && <ErrorMsg msg={errors.lastName?.message} />}
         </div>
       </div>
-      <div className="my-6">
+      <div className="my-4">
         <label
           htmlFor="email"
           className="block text-sm font-medium text-gray-700"
@@ -90,11 +96,11 @@ const ContactForm = () => {
           placeholder="Email Address"
           {...register("email")}
           autoComplete="new-password"
-          className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-3 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
+          className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-2.5 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
         />
         {errors.email && <ErrorMsg msg={errors.email?.message} />}
       </div>
-      <div className="my-3">
+      <div className="my-2">
         <label
           htmlFor="message"
           className="block text-sm font-medium text-gray-700"
@@ -118,7 +124,7 @@ const ContactForm = () => {
       >
         Send Message
       </Button>
-    </form>
+    </motion.form>
   );
 };
 
