@@ -32,17 +32,17 @@ const useRegister = () => {
     } = useCheckEmailAvailability();
 
     const onSubmit: SubmitHandler<IRegister> = async (data) => {
-        if (emailAvailabilityStatus === "Available ✅") {
-            dispatch(setUserEmail(data.email));
-            await dispatch(actAuthRegister(data))
-                .unwrap()
-                .then(() => {
-                    toast.success(" Registration successful ")
-                    setTimeout(() => {
-                        navigate("/confirmEmail");
-                    },1000)
-                });
-        }
+
+        dispatch(setUserEmail(data.email));
+        await dispatch(actAuthRegister(data))
+            .unwrap()
+            .then(() => {
+                toast.success(" Registration successful ")
+                setTimeout(() => {
+                    navigate("/confirmEmail");
+                }, 1000)
+            });
+
     };
 
     const emailOnBlurHandler = async (e: React.FocusEvent<HTMLInputElement>) => {
@@ -60,10 +60,10 @@ const useRegister = () => {
         }
     };
     useEffect(() => {
-            return () => {
-              dispatch(resetUi());
-            };
-          }, [dispatch]);
+        return () => {
+            dispatch(resetUi());
+        };
+    }, [dispatch]);
     return {
         register,
         handleSubmit,
