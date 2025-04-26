@@ -4,18 +4,18 @@ import { motion } from "framer-motion";
 const steps = [
   {
     number: "01",
-    title: "Upload Image",
-    description: "Upload your medical image to our secure platform",
+    title: "Login or Register",
+    description: "Create an account or log in to access our platform securely.",
   },
   {
     number: "02",
-    title: "Ask Question",
-    description: "Type your specific question about the image",
+    title: "Upload Image",
+    description: "Upload your medical image easily through our secure system.",
   },
   {
     number: "03",
-    title: "Get Answer",
-    description: "Receive detailed AI-powered analysis and explanation",
+    title: "Get Medical Report",
+    description: "Receive a detailed AI-generated report about your medical image.",
   },
 ];
 
