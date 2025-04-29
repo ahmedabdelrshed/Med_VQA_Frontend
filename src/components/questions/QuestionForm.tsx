@@ -5,11 +5,13 @@ import toast from "react-hot-toast";
 import SubmitButton from "../chats/SubmitButton";
 import { useAddQuestionMutation } from "../../store/questions/questionsApi";
 import { useParams } from "react-router";
+import getPredictionFromModel from "../../utils/getPredictionFromModel";
 const QuestionForm = () => {
   const { id: chatId } = useParams<{ id: string }>();
   const [question, setQuestion] = useState("");
   const [preview, setPreview] = useState<string | null>(null);
   const [image, setImage] = useState<File | null>(null);
+  const [loadingPrediction, setLoadingPrediction] = useState(false);
   const [addQuestion, { isLoading }] = useAddQuestionMutation();
   const validateForm = () => {
     if (!image || question.length < 1) {
@@ -23,14 +25,20 @@ const QuestionForm = () => {
     }
     return true;
   };
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validateForm()) return;
     const body = new FormData();
+    setPreview(null);
     body.append("question", question);
     body.append("image", image as File);
+    setLoadingPrediction(true);
+    const response = await getPredictionFromModel(
+      image as File,
+      setLoadingPrediction
+    );
+    body.append("response", response as string);
     if (chatId) addQuestion({ chatId, body });
     setImage(null);
-    setPreview(null);
     setQuestion("");
   };
   return (
@@ -42,7 +50,10 @@ const QuestionForm = () => {
           preview={preview}
           setPreview={setPreview}
         />
-        <SubmitButton handleSubmit={handleSubmit} isLoading={isLoading} />
+        <SubmitButton
+          handleSubmit={handleSubmit}
+          isLoading={isLoading || loadingPrediction}
+        />
       </div>
     </div>
   );
