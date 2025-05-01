@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { set } from "react-hook-form"
 
 interface IChatSlice {
     deleteChatID: string
@@ -6,6 +7,7 @@ interface IChatSlice {
         id: string,
         title: string
     }
+    shareChatLink: string
 }
 
 const initialState: IChatSlice = {
@@ -13,7 +15,8 @@ const initialState: IChatSlice = {
     updatedChat: {
         id: "",
         title: ""
-    }
+    },
+    shareChatLink: ""
 }
 
 const chatSlice = createSlice({
@@ -25,9 +28,12 @@ const chatSlice = createSlice({
         },
         setUpdatedChat: (state, action) => {
             state.updatedChat = action.payload
+        },
+        setShareChatLink: (state, action) => {
+            state.shareChatLink = action.payload
         }
     }
 })
 
 export default chatSlice.reducer
-export const { setDeleteChatID, setUpdatedChat } = chatSlice.actions
+export const { setDeleteChatID, setUpdatedChat ,setShareChatLink} = chatSlice.actions

@@ -5,6 +5,7 @@ import { IoCreateOutline } from "react-icons/io5";
 import { useCreateChatMutation } from "../store/chats/chatApi";
 import DelChatModal from "../components/Modals/chat/DelChatModal";
 import UpdateChatModal from "../components/Modals/chat/UpdateChatModal";
+import ShareChatModal from "../components/Modals/chat/ShareShatModal";
 
 const ChatPage = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const ChatPage = () => {
         <label htmlFor="my-drawer">
           <BsMenuButtonWide className="w-7 h-7 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer" />
         </label>
+        <img src="/images/logo.png" className="w-34" alt="" />
         <IoCreateOutline
           onClick={onCreateChat}
           className="w-7 h-7 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer"
@@ -34,6 +36,7 @@ const ChatPage = () => {
       </div>
       <DelChatModal />
       <UpdateChatModal />
+      <ShareChatModal/>
     </div>
   );
 };

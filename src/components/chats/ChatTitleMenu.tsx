@@ -3,6 +3,8 @@ import { GoPencil } from "react-icons/go";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { useAppDispatch } from "../../store/hooks";
 import { setDeleteChatID, setUpdatedChat } from "../../store/chats/chatSlice";
+import { IoShareOutline } from "react-icons/io5";
+import useShareChat from "../../hooks/useShareChat";
 interface IProps {
   setShowMenu: (val: boolean) => void;
   id: string;
@@ -11,6 +13,8 @@ interface IProps {
 const ChatTitleMenu = ({ setShowMenu, id, title }: IProps) => {
   const dispatch = useAppDispatch();
   const refDiv = useRef<HTMLDivElement>(null);
+  const { onShareChat } = useShareChat();
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (refDiv.current && !refDiv.current.contains(event.target as Node)) {
@@ -46,6 +50,12 @@ const ChatTitleMenu = ({ setShowMenu, id, title }: IProps) => {
             className=" flex  items-center mb-2 py-1 cursor-pointer px-3  hover:bg-gray-400 rounded-md "
           >
             <GoPencil className="w-4 h-4 mr-2" /> Rename
+          </span>
+          <span
+            onClick={onShareChat}
+            className=" flex  items-center mb-2 text-blue-500 py-1 cursor-pointer px-3  hover:bg-blue-500 hover:text-white rounded-md "
+          >
+            <IoShareOutline className="w-4 h-4 mr-2" /> Share
           </span>
           <span
             className="flex items-center mb-2 py-1 text-red-500 cursor-pointer px-3 hover:bg-gray-300 rounded-md "

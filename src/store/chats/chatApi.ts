@@ -53,6 +53,12 @@ export const chatAPI = createApi({
       }),
       invalidatesTags: [{ type: "chats" as const, id: "LIST" }],
     }),
+    shareChat: builder.mutation({
+      query: (id: string) => ({
+        url: `/chat/share/${id}`,
+        method: "POST",
+      }),
+    }),
   }),
 });
 
@@ -61,4 +67,5 @@ export const {
   useCreateChatMutation,
   useDeleteChatMutation,
   useUpdateChatMutation,
+  useShareChatMutation,
 } = chatAPI;
