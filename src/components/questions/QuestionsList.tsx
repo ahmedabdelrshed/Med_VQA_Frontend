@@ -19,7 +19,7 @@ const QuestionsList = ({ Questions }: IProps) => {
     scrollToBottom();
   });
   return (
-    <div className="h-[58vh] lg:h-[72vh] lg:max-w-2xl overflow-auto over m-auto  lg:pt-10 px-3   ">
+    <div className=" lg:max-w-2xl overflow-auto over m-auto h-full lg:pt-10 px-3   ">
       {Questions.map((question) => (
         <div key={question._id}>
           <Question
