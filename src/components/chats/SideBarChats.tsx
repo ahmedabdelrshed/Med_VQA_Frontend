@@ -7,6 +7,8 @@ import ChatTitle from "./ChatTitle";
 import ChatTitleSkeleton from "./ChatTitleSkeleton";
 import { IoCreateOutline } from "react-icons/io5";
 import { useNavigate } from "react-router";
+import { CgProfile } from "react-icons/cg";
+import { CiLogout } from "react-icons/ci";
 
 const SideBarChats = () => {
   const { isLoading, data } = useGetChatsQuery();
@@ -48,6 +50,21 @@ const SideBarChats = () => {
                   />
                 );
               })}
+          <div className="fixed bottom-30 w-full px-3">
+            <div
+              className=" flex items-center space-x-14 px-5 w-full text-gray-600   cursor-pointer"
+              onClick={() => navigate("/profile")}
+            >
+              <CgProfile className="w-6 h-6   " />
+              <span className="text-[18px]">Profile</span>
+            </div>
+          </div>
+          <div className="fixed bottom-12 w-full px-3">
+            <div className=" flex items-center space-x-14 px-5 w-full text-gray-600   cursor-pointer">
+              <CiLogout className="w-6 h-6   " />
+              <span className="text-[18px]">Log out</span>
+            </div>
+          </div>
         </ul>
       </div>
     </div>
