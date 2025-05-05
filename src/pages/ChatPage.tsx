@@ -11,6 +11,7 @@ import LogoutModel from "../components/Modals/LogoutModel";
 const ChatPage = () => {
   const navigate = useNavigate();
   const [createChat] = useCreateChatMutation();
+  
   const onCreateChat = () => {
     createChat().then((res) => {
       navigate(`/chats/chat/${res.data?.data._id}`);
@@ -29,7 +30,7 @@ const ChatPage = () => {
           className="w-7 h-7 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer"
         />
       </div>
-      <div className="flex flex-col relative z-50">
+      <div className="flex flex-col relative z-50 min-w-60">
         <SideBarChats />
       </div>
       <div className="  flex-1">
