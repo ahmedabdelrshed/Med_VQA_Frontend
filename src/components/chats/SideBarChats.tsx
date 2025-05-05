@@ -37,7 +37,7 @@ const SideBarChats = () => {
               className="w-8 h-8 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer"
             />
           </div>
-          <div className="h-[62vh] overflow-auto  over overflow-x-hidden">
+          <div className="h-[65vh] overflow-auto  over overflow-x-hidden">
           {isLoading
             ? Array.from({ length: 7 }, (_, index) => (
                 <ChatTitleSkeleton key={index} />

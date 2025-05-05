@@ -10,6 +10,15 @@ interface IProps {
 }
 const ChatTitle = ({ chatId, chatTitle }: IProps) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 });
+const handleMenuClick = (e: React.MouseEvent) => {
+  const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+  setMenuPosition({
+    top: rect.bottom + window.scrollY,
+    left: rect.left + window.scrollX,
+  });
+  setShowMenu(true);
+};
   return (
     <li className="mb-8 font-medium relative">
       <NavLink
@@ -26,7 +35,7 @@ const ChatTitle = ({ chatId, chatTitle }: IProps) => {
             onClick={(event) => {
               event.preventDefault();
               event.stopPropagation();
-              setShowMenu(true);
+              handleMenuClick(event);
             }}
           >
             <HiDotsHorizontal className="w-5 h-5" />
@@ -38,6 +47,7 @@ const ChatTitle = ({ chatId, chatTitle }: IProps) => {
           setShowMenu={setShowMenu}
           id={chatId}
           title={chatTitle}
+          position={menuPosition}
         />
       )}
     </li>

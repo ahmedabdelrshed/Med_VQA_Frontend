@@ -9,7 +9,6 @@ const useShareChat = () => {
     const [shareChat, { isLoading }] = useShareChatMutation()
     const onShareChat = () => {
         shareChat(id as string).unwrap().then(({sharedLink}:{sharedLink:string}) => {
-            console.log(sharedLink);
             dispatch(setShareChatLink(sharedLink))
             const modal = document.getElementById(
                 "ShareChatModal"
