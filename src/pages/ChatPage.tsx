@@ -6,6 +6,7 @@ import { useCreateChatMutation } from "../store/chats/chatApi";
 import DelChatModal from "../components/Modals/chat/DelChatModal";
 import UpdateChatModal from "../components/Modals/chat/UpdateChatModal";
 import ShareChatModal from "../components/Modals/chat/ShareShatModal";
+import LogoutModel from "../components/Modals/LogoutModel";
 
 const ChatPage = () => {
   const navigate = useNavigate();
@@ -36,7 +37,8 @@ const ChatPage = () => {
       </div>
       <DelChatModal />
       <UpdateChatModal />
-      <ShareChatModal/>
+      <ShareChatModal />
+      <LogoutModel />
     </div>
   );
 };

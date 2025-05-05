@@ -8,6 +8,17 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  overflow: hidden;
+  width: 100vw;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .text-gradient-hello {
   background: linear-gradient(to right,
       oklch(60% 0.25 240),

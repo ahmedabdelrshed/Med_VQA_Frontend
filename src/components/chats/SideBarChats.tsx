@@ -37,8 +37,9 @@ const SideBarChats = () => {
               className="w-8 h-8 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer"
             />
           </div>
+          <div className="h-[62vh] overflow-auto  over overflow-x-hidden">
           {isLoading
-            ? Array.from({ length: 8 }, (_, index) => (
+            ? Array.from({ length: 7 }, (_, index) => (
                 <ChatTitleSkeleton key={index} />
               ))
             : data?.data?.map((chat) => {
@@ -50,19 +51,28 @@ const SideBarChats = () => {
                   />
                 );
               })}
-          <div className="fixed bottom-30 w-full px-3">
+          </div>
+          <div className="fixed bottom-20 lg:bottom-25 w-full px-3">
             <div
               className=" flex items-center space-x-14 px-5 w-full text-gray-600   cursor-pointer"
               onClick={() => navigate("/profile")}
             >
               <CgProfile className="w-6 h-6   " />
-              <span className="text-[18px]">Profile</span>
+              <span className="xl:text-[18px]">Profile</span>
             </div>
           </div>
-          <div className="fixed bottom-12 w-full px-3">
-            <div className=" flex items-center space-x-14 px-5 w-full text-gray-600   cursor-pointer">
-              <CiLogout className="w-6 h-6   " />
-              <span className="text-[18px]">Log out</span>
+          <div className="fixed bottom-8 lg:bottom-12 w-full px-3">
+            <div
+              className=" flex items-center space-x-14 px-5 w-full text-gray-600   cursor-pointer"
+              onClick={() => {
+                const modal = document.getElementById(
+                  "logoutModal"
+                ) as HTMLDialogElement | null;
+                modal?.showModal();
+              }}
+            >
+              <CiLogout className="w-5 h-5 xl:w-6 xl:h-6   " />
+              <span className="xl:text-[18px]">Log out</span>
             </div>
           </div>
         </ul>

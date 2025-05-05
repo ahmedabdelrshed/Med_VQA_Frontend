@@ -60,7 +60,7 @@ const ProfileData = ({
               First Name
             </label>
             <Input
-              placeholder=" Enter your First Name"
+              placeholder="First Name"
               {...register("firstName")}
             />
             {errors.firstName && <ErrorMsg msg={errors.firstName?.message} />}
@@ -73,7 +73,7 @@ const ProfileData = ({
               Last Name
             </label>
             <Input
-              placeholder=" Enter your Last Name"
+              placeholder="Last Name"
               {...register("lastName")}
             />
             {errors.lastName && <ErrorMsg msg={errors.lastName?.message} />}
@@ -87,7 +87,7 @@ const ProfileData = ({
             Old Password
           </label>
           <InputPassword
-            placeholder="Please Enter your Old Password"
+            placeholder="Old Password"
             {...register("oldPassword")}
           />
           {errors.oldPassword && <ErrorMsg msg={errors.oldPassword?.message} />}
@@ -100,7 +100,7 @@ const ProfileData = ({
             New Password
           </label>
           <InputPassword
-            placeholder="Please Enter your New Password"
+            placeholder="New Password"
             {...register("password")}
           />
           {errors.password && <ErrorMsg msg={errors.password?.message} />}
