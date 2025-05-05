@@ -3,12 +3,15 @@ import { useShareChatMutation } from "../store/chats/chatApi";
 import { useAppDispatch } from "../store/hooks";
 import { setShareChatLink } from "../store/chats/chatSlice";
 
-const useShareChat = () => {
+const useShareChat = ( chatId?: string ) => {
     const { id } = useParams();
+    if (!chatId) {
+        chatId = id
+    }
     const dispatch = useAppDispatch();
     const [shareChat, { isLoading }] = useShareChatMutation()
     const onShareChat = () => {
-        shareChat(id as string).unwrap().then(({sharedLink}:{sharedLink:string}) => {
+        shareChat(chatId as string).unwrap().then(({ sharedLink }: { sharedLink: string }) => {
             dispatch(setShareChatLink(sharedLink))
             const modal = document.getElementById(
                 "ShareChatModal"
@@ -16,7 +19,7 @@ const useShareChat = () => {
             modal?.showModal();
         });
     }
-    return { onShareChat,shareChatLoading:isLoading }
+    return { onShareChat, shareChatLoading: isLoading }
 }
 
 export default useShareChat

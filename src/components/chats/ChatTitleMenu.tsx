@@ -7,7 +7,6 @@ import { setDeleteChatID, setUpdatedChat } from "../../store/chats/chatSlice";
 import { IoShareOutline } from "react-icons/io5";
 import useShareChat from "../../hooks/useShareChat";
 import { openModel } from "../../utils/openMode";
-import { useLocation } from "react-router";
 
 interface IProps {
   setShowMenu: (val: boolean) => void;
@@ -18,10 +17,8 @@ interface IProps {
 
 const ChatTitleMenu = ({ setShowMenu, id, title, position }: IProps) => {
   const dispatch = useAppDispatch();
-  const location = useLocation();
-  const isOpen = location.pathname.includes(id);
   const refDiv = useRef<HTMLDivElement>(null);
-  const { onShareChat } = useShareChat();
+  const { onShareChat } = useShareChat(id);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -60,14 +57,14 @@ const ChatTitleMenu = ({ setShowMenu, id, title, position }: IProps) => {
         >
           <GoPencil className="w-4 h-4 mr-2" /> Rename
         </span>
-        {isOpen && (
+       
           <span
             onClick={onShareChat}
             className="flex items-center mb-2 text-blue-500 py-1 cursor-pointer px-3 hover:bg-blue-500 hover:text-white rounded-md"
           >
             <IoShareOutline className="w-4 h-4 mr-2" /> Share
           </span>
-        )}
+     
         <span
           onClick={onDeleteChat}
           className="flex items-center mb-2 py-1 text-red-500 cursor-pointer px-3 hover:bg-gray-300 rounded-md"
