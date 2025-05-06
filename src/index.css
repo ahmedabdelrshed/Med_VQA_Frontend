@@ -8,11 +8,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  overflow: hidden;
-  width: 100vw;
-}
-
 html,
 body {
   margin: 0;

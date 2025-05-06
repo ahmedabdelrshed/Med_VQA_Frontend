@@ -48,10 +48,9 @@ const NavBar = () => {
         </ul>
       </div>
       <NavLink to={"/"} className="lg:hidden">
-        <img src="/images/logo.png" className="w-38 mr-5" alt="" />
+        <img src="/images/logo.png" className="w-32 " alt="" />
       </NavLink>
-      <div className=" lg:hidden"></div>
-      <div className="navbar-end hidden pr-30 lg:inline-flex">
+      <div className="navbar-end w-fit lg:w-[50%] lg:pr-30 inline-flex">
         {token ? (
           <div className="relative inline-flex justify-center items-center  ">
             <img
@@ -59,7 +58,7 @@ const NavBar = () => {
                 avatar ||
                 "https://res.cloudinary.com/du04klrm0/image/upload/v1739842866/med_VQA_Data/profile-pictures/rlndzdsxm7lfi3alv60n.png"
               }
-              className="object-cover cursor-pointer w-12 h-12 p-1 rounded-full ring-2 ring-blue-600 "
+              className="object-cover cursor-pointer w-12 h-12 p-[2px] rounded-full ring-2 ring-blue-600 "
               alt="Avatar"
               onClick={() => setShowProfileMenu((prev) => !prev)}
             />
@@ -69,7 +68,7 @@ const NavBar = () => {
           </div>
         ) : (
           <button
-            className="bg-white cursor-pointer border py-2 px-4 w-fit  rounded-lg font-medium border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300 ease-in-out"
+            className="bg-white hidden lg:flex cursor-pointer border py-2 px-4 w-fit  rounded-lg font-medium border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300 ease-in-out"
             onClick={() => navigate("/login")}
           >
             Login
