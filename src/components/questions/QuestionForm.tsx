@@ -40,6 +40,12 @@ const QuestionForm = () => {
     if (chatId) addQuestion({ chatId, body });
     setImage(null);
     setQuestion("");
+    const inputElement = document.getElementById(
+      "inputImage"
+    ) as HTMLInputElement;
+    if (inputElement) {
+      inputElement.value = ""; // Reset the value of the file input
+    }
   };
   return (
     <div className="absolute  border-3 border-[#6178ff] rounded-xl  bottom-3  lg:bottom-16 left-1/2 transform -translate-x-1/2 bg-white px-4 py-4 shadow-lg w-[90%] max-w-xl ">

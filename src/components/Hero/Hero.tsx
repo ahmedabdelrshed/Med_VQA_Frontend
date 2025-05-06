@@ -1,7 +1,13 @@
 import { useNavigate } from "react-router";
 import Button from "../../ui/Button";
 import { motion } from "framer-motion";
-import { buttonVariants, containerVariants, imageVariants } from "./HeroAnimationVariants";
+import {
+  buttonVariants,
+  containerVariants,
+  imageVariants,
+} from "./HeroAnimationVariants";
+import { TypeAnimation } from "react-type-animation";
+
 const Hero = () => {
   const navigate = useNavigate();
   return (
@@ -18,12 +24,18 @@ const Hero = () => {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}
           >
-            AI-Powered Medical Image Analysis
+            <TypeAnimation
+              sequence={["AI-Powered Medical Image Analysis", 1000]}
+              cursor={false}
+              speed={45}
+              className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6"
+            />
           </motion.h1>
+
           <motion.p
             className="mt-2 text-lg leading-8 text-gray-600 max-w-2xl mb-8"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0, transition: { duration: 1 } }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 1.5 } }}
           >
             Get instant, accurate answers to your medical imaging questions
             using our advanced AI system. Designed for healthcare professionals.

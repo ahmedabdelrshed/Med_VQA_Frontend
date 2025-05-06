@@ -24,6 +24,12 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   const onCancelUpload = () => {
     setPreview(null);
     onImageSelect(null);
+    const inputElement = document.getElementById(
+      "inputImage"
+    ) as HTMLInputElement;
+    if (inputElement) {
+      inputElement.value = ""; // Reset the value of the file input
+    }
   };
 
   return (
