@@ -4,6 +4,8 @@ export interface IRegister {
     email: string;
     password: string;
     confirmPassword: string;
+    gender: string;
+    DateOfBirth: Date;
 }
 
 export interface ILogin {
