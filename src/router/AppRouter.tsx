@@ -22,6 +22,7 @@ import WelcomeMessage from "../components/chats/WelcomeMessage";
 import ChatWrapper from "../components/chats/ChatWrapper";
 import ShareChat from "../pages/ShareChat";
 import HealthyProfile from "../pages/HealthyProfile";
+import HealthyLayout from "../layouts/HealthyLayout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -66,7 +67,9 @@ const router = createBrowserRouter(
           />
         </Route>
         <Route path="/share/:id" element={<ShareChat />} />
-        <Route path="healthy-profile" element={<HealthyProfile />} />
+        <Route path="healthy-profile" element={<HealthyLayout />} >
+          <Route index element={<HealthyProfile />} />
+          </Route>
       </Route>
 
       <Route path="*" element={<PageNotFound />} />

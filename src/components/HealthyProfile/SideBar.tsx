@@ -26,7 +26,7 @@ const SideBar = () => {
   const activeHoverStyle = "bg-blue-100 text-blue-600";
 
   return (
-    <>
+    <div className=" lg:h-screen bg-[#f1f5f9] ">
       {showOpenButton && !open && (
         <div className="px-9 pt-6 pb-2 hidden lg:block">
           <GrMenu
@@ -119,7 +119,7 @@ const SideBar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 
