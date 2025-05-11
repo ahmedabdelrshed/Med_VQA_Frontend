@@ -22,10 +22,14 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-  
-const BloodSugarChar = ({mockDataPrediction}:{mockDataPrediction: PredictionDiabetes[]}) => {
+
+const BloodSugarChar = ({
+  mockDataPrediction,
+}: {
+  mockDataPrediction: PredictionDiabetes[];
+}) => {
   // Define the levels and their corresponding colors
-const mockData = mockDataPrediction;
+  const mockData = mockDataPrediction;
   interface LevelInfo {
     value: number;
     color: string;
@@ -34,7 +38,6 @@ const mockData = mockDataPrediction;
   type LevelMap = Record<LevelTypeDiabetes, LevelInfo>;
 
   // Define type for data points
-  
 
   // Define the levels with proper typing
   const levels: LevelMap = {
@@ -43,22 +46,22 @@ const mockData = mockDataPrediction;
     Dangerous: { value: 2, color: "rgb(255, 99, 132)" },
   };
 
-  // Sample data with proper datetime values
-  
-  // Function to format date for display
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
+
+    // Format options
+    const options: Intl.DateTimeFormatOptions = {
       month: "short",
       day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-    });
+      hour12: true,
+      timeZone: "UTC", // Explicitly use UTC
+    };
+
+    return date.toLocaleString("en-US", options);
   };
 
- 
-
-  // Chart Data with proper typing
   const data: ChartData<"line"> = {
     labels: mockData.map((item) => formatDate(item.createdAt)),
     datasets: [
@@ -116,11 +119,7 @@ const mockData = mockDataPrediction;
     },
   };
 
-  return (
-    
-      <Line data={data} options={options} />
-    
-  );
+  return <Line data={data} options={options} />;
 };
 
 export default BloodSugarChar;
