@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CiLogout } from "react-icons/ci";
-import { openModel } from "../../utils/openMode";
+import { openModel } from "../../utils/modelsFuns";
 import { GrMenu } from "react-icons/gr";
 import { IoHomeOutline } from "react-icons/io5";
 import { GiHealingShield } from "react-icons/gi";

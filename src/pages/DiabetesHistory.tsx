@@ -3,6 +3,8 @@ import BloodSugarChar from "../components/HealthyProfile/BloodSugarChar";
 import LogoutModel from "../components/Modals/LogoutModel";
 import { useGetBloodSugarResultsQuery } from "../store/BloodSugar/bloodSugarApi";
 import { PredictionDiabetes } from "../Types";
+import AssignNewStatusMod from "../components/HealthyProfile/AssignNewStatusMod";
+import { openModel } from "../utils/modelsFuns";
 
 const DiabetesHistory = () => {
   const [startDate, setStartDate] = useState("");
@@ -79,7 +81,7 @@ const DiabetesHistory = () => {
 
           <div className="w-full md:w-1/3 flex justify-start md:justify-end gap-4">
             <button
-              onClick={() => alert("Assign new status clicked!")}
+              onClick={() => openModel("assignNewStatusModal")}
               className="bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-semibold px-6 py-2 rounded-lg shadow-md mt-1 md:mt-6"
             >
               Assign New Status
@@ -109,6 +111,7 @@ const DiabetesHistory = () => {
         </p>
       </div>
       <LogoutModel />
+      <AssignNewStatusMod />
     </div>
   );
 };

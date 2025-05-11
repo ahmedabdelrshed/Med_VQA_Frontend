@@ -30,6 +30,12 @@ const ProfileMenu = ({ setShowMenu }: IProps) => {
         >
           Profile
         </NavLink>
+         <NavLink
+          to={"/healthy-profile"}
+          className="flex text-blue-500  items-center mb-2 py-1 cursor-pointer px-3 hover:bg-blue-400 hover:text-white rounded-md "
+        >
+         Healthy Profile
+        </NavLink>
         <span
           className="flex items-center mb-2 py-1 text-red-500 cursor-pointer px-3 hover:bg-red-400 hover:text-white rounded-md "
           onClick={() => {

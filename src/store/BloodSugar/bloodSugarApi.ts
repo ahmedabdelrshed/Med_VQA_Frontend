@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { PredictionDiabetes } from "../../Types";
+import { BloodSugarDataRequest, PredictionDiabetes } from "../../Types";
 import { RootState } from "../store";
 
 export const bloodSugarAPI = createApi({
@@ -20,29 +20,21 @@ export const bloodSugarAPI = createApi({
             query: ({ startDate, endDate }: { startDate: string, endDate: string }) => ({
                 url: `/api/sugarPatient/getPredictions?startDate=${startDate}&endDate=${endDate}`,
             }),
-            //   providesTags: (result) =>
-            //     result?.data
-            //       ? [
-            //           ...result.data.map(({ _id }) => ({
-            //             type: "predictions" as const,
-            //             id: _id,
-            //           })),
-            //           { type: "predictions" as const, id: "LIST" },
-            //         ]
-            //       : [{ type: "predictions" as const, id: "LIST" }],
+            providesTags: ['predictions'],
         }),
-        // createChat: builder.mutation<{ data: TChat }, void>({
-        //     query: () => ({
-        //         url: `/chat`,
-        //         method: "POST",
-        //     }),
-        //     //   invalidatesTags: [{ type: "predictions" as const, id: "LIST" }],
-        // }),
+        newStatus: builder.mutation<{ body: BloodSugarDataRequest }, BloodSugarDataRequest>({
+            query: (body: BloodSugarDataRequest) => ({
+                url: `/api/sugarPatient/analyzeSugar`,
+                method: "POST",
+                body,
+            }),
+            invalidatesTags: ['predictions'],
+        }),
 
     }),
 });
 
 export const {
     useGetBloodSugarResultsQuery,
-
+    useNewStatusMutation
 } = bloodSugarAPI;

@@ -1,4 +1,4 @@
-import {  useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { GoPencil } from "react-icons/go";
 import { RiDeleteBin5Line } from "react-icons/ri";
@@ -6,7 +6,7 @@ import { useAppDispatch } from "../../store/hooks";
 import { setDeleteChatID, setUpdatedChat } from "../../store/chats/chatSlice";
 import { IoShareOutline } from "react-icons/io5";
 import useShareChat from "../../hooks/useShareChat";
-import { openModel } from "../../utils/openMode";
+import { openModel } from "../../utils/modelsFuns";
 
 interface IProps {
   setShowMenu: (val: boolean) => void;
@@ -45,7 +45,7 @@ const ChatTitleMenu = ({ setShowMenu, id, title, position }: IProps) => {
       ref={refDiv}
       className="absolute z-[100] p-0"
       style={{
-        top: position?.top ,
+        top: position?.top,
         left: position?.left,
         position: "absolute",
       }}
@@ -57,14 +57,14 @@ const ChatTitleMenu = ({ setShowMenu, id, title, position }: IProps) => {
         >
           <GoPencil className="w-4 h-4 mr-2" /> Rename
         </span>
-       
-          <span
-            onClick={onShareChat}
-            className="flex items-center mb-2 text-blue-500 py-1 cursor-pointer px-3 hover:bg-blue-500 hover:text-white rounded-md"
-          >
-            <IoShareOutline className="w-4 h-4 mr-2" /> Share
-          </span>
-     
+
+        <span
+          onClick={onShareChat}
+          className="flex items-center mb-2 text-blue-500 py-1 cursor-pointer px-3 hover:bg-blue-500 hover:text-white rounded-md"
+        >
+          <IoShareOutline className="w-4 h-4 mr-2" /> Share
+        </span>
+
         <span
           onClick={onDeleteChat}
           className="flex items-center mb-2 py-1 text-red-500 cursor-pointer px-3 hover:bg-gray-300 rounded-md"
