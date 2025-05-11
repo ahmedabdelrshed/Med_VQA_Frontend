@@ -53,12 +53,11 @@ const BloodSugarChar = ({
     const options: Intl.DateTimeFormatOptions = {
       month: "short",
       day: "numeric",
-      hour: "2-digit",
+      hour: "numeric",
       minute: "2-digit",
       hour12: true,
-      timeZone: "UTC", // Explicitly use UTC
+      timeZone: "Africa/Cairo",
     };
-
     return date.toLocaleString("en-US", options);
   };
 
