@@ -3,6 +3,7 @@ import authReducer from './auth/authSlice'
 import { chatAPI } from './chats/chatApi'
 import chatReducer from './chats/chatSlice'
 import { questionsApi } from './questions/questionsApi'
+import { bloodSugarAPI } from './BloodSugar/bloodSugarApi'
 import questionReducer from './questions/questionSlice'
 export const store = configureStore({
     reducer: {
@@ -10,12 +11,13 @@ export const store = configureStore({
         [chatAPI.reducerPath]: chatAPI.reducer,
         chat: chatReducer,
         [questionsApi.reducerPath]: questionsApi.reducer,
-        question: questionReducer
+        question: questionReducer,
+        [bloodSugarAPI.reducerPath]: bloodSugarAPI.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,
-        }).concat(chatAPI.middleware).concat(questionsApi.middleware),
+        }).concat(chatAPI.middleware).concat(questionsApi.middleware).concat(bloodSugarAPI.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

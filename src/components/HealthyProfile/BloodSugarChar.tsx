@@ -23,9 +23,9 @@ ChartJS.register(
   Legend
 );
   
-const BloodSugarChar = ({mockData}:{mockData: PredictionDiabetes[]}) => {
+const BloodSugarChar = ({mockDataPrediction}:{mockDataPrediction: PredictionDiabetes[]}) => {
   // Define the levels and their corresponding colors
-
+const mockData = mockDataPrediction;
   interface LevelInfo {
     value: number;
     color: string;
@@ -56,10 +56,7 @@ const BloodSugarChar = ({mockData}:{mockData: PredictionDiabetes[]}) => {
     });
   };
 
-  // Sort data by date
-  mockData.sort(
-    (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-  );
+ 
 
   // Chart Data with proper typing
   const data: ChartData<"line"> = {

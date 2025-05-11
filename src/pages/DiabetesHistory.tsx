@@ -1,44 +1,32 @@
 import { useState } from "react";
 import BloodSugarChar from "../components/HealthyProfile/BloodSugarChar";
+import LogoutModel from "../components/Modals/LogoutModel";
+import { useGetBloodSugarResultsQuery } from "../store/BloodSugar/bloodSugarApi";
 import { PredictionDiabetes } from "../Types";
-const mockData: PredictionDiabetes[] = [
-  {
-    createdAt: "2025-05-04T14:30:15.817Z",
-    result: "Normal",
-  },
-  {
-    createdAt: "2025-05-05T09:22:43.475Z",
-    result: "Potentially Dangerous",
-  },
-  {
-    createdAt: "2025-05-06T11:15:58.723Z",
-    result: "Normal",
-  },
-  {
-    createdAt: "2025-05-07T16:44:07.123Z",
-    result: "Dangerous",
-  },
-  {
-    createdAt: "2025-05-08T21:14:30.817Z",
-    result: "Dangerous",
-  },
-  {
-    createdAt: "2025-05-09T16:27:58.723Z",
-    result: "Normal",
-  },
-  {
-    createdAt: "2025-05-10T21:44:07.000Z",
-    result: "Potentially Dangerous",
-  },
-  {
-    createdAt: "2025-05-11T02:22:11.000Z", // Current date/time
-    result: "Normal",
-  }
-];
 
 const DiabetesHistory = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const shouldFetch = (!startDate && !endDate) || (startDate && endDate);
+  const { isLoading, data, isFetching } = useGetBloodSugarResultsQuery(
+    {
+      startDate,
+      endDate,
+    },
+    {
+      skip: !shouldFetch
+    }
+  );
+  const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newStartDate = e.target.value;
+    setStartDate(newStartDate);
+    
+  };
+
+  const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newEndDate = e.target.value;
+    setEndDate(newEndDate);
+  };
 
   return (
     <div className="h-screen bg-blue-50 py-10 px-4 flex items-center">
@@ -66,7 +54,8 @@ const DiabetesHistory = () => {
               type="date"
               id="startDate"
               value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
+              onChange={handleStartDateChange}
+              max={endDate || undefined}
               className="mt-1 px-4 py-2 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -82,12 +71,13 @@ const DiabetesHistory = () => {
               type="date"
               id="endDate"
               value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
+              onChange={handleEndDateChange}
+              min={startDate || undefined}
               className="mt-1 px-4 py-2 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          <div className="w-full md:w-1/3 flex justify-start md:justify-end">
+          <div className="w-full md:w-1/3 flex justify-start md:justify-end gap-4">
             <button
               onClick={() => alert("Assign new status clicked!")}
               className="bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-semibold px-6 py-2 rounded-lg shadow-md mt-1 md:mt-6"
@@ -96,12 +86,21 @@ const DiabetesHistory = () => {
             </button>
           </div>
         </div>
-
-        {/* Chart Section */}
         <div className="w-full h-[380px]">
-          <BloodSugarChar mockData={mockData}/>
+          {isLoading || isFetching ? (
+            <div className="flex items-center justify-center h-full">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+            </div>
+          ) : (
+            data?.data && (
+              <BloodSugarChar
+                mockDataPrediction={data.data as PredictionDiabetes[]}
+              />
+            )
+          )}
         </div>
       </div>
+      <LogoutModel />
     </div>
   );
 };
