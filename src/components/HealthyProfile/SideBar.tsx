@@ -81,7 +81,7 @@ const SideBar = () => {
                   </NavLink>
 
                   <NavLink
-                    to="/diabetes-history"
+                    to="/healthy-profile/diabetes-history"
                     className={({ isActive }: { isActive: boolean }) =>
                       `${navLinkBase} ${
                         isActive

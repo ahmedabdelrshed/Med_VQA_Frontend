@@ -23,6 +23,7 @@ import ChatWrapper from "../components/chats/ChatWrapper";
 import ShareChat from "../pages/ShareChat";
 import HealthyProfile from "../pages/HealthyProfile";
 import HealthyLayout from "../layouts/HealthyLayout";
+import DiabetesHistory from "../pages/DiabetesHistory";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -67,9 +68,10 @@ const router = createBrowserRouter(
           />
         </Route>
         <Route path="/share/:id" element={<ShareChat />} />
-        <Route path="healthy-profile" element={<HealthyLayout />} >
+        <Route path="healthy-profile" element={<HealthyLayout />}>
           <Route index element={<HealthyProfile />} />
-          </Route>
+          <Route path="diabetes-history" element={<DiabetesHistory />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<PageNotFound />} />

@@ -44,3 +44,10 @@ export interface IContact {
     email: string;
     message: string;
 }
+
+export type LevelTypeDiabetes = "Normal" | "Potentially Dangerous" | "Dangerous";
+
+export interface PredictionDiabetes {
+    createdAt: string;
+    result: LevelTypeDiabetes;
+}
