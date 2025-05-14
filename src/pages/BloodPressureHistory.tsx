@@ -1,49 +1,22 @@
 import { useState } from "react";
-import { openModel } from "../utils/modelsFuns";
 import BloodPressureBubbleChart from "../components/HealthyProfile/BloodPressureChar";
+import { useGetBloodPressureResultsQuery } from "../store/bloodPressure/bloodPressureApi";
+import { Prediction } from "../Types";
 
 const BloodPressureHistory = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const data = [
+  const shouldFetch = (!startDate && !endDate) || (startDate && endDate);
+  const { isLoading, isFetching, data } = useGetBloodPressureResultsQuery(
     {
-      createdAt: "2025-05-14 22:09:51",
-      result: "Danger",
+      startDate,
+      endDate,
     },
     {
-      createdAt: "2025-05-14 22:10:21",
-      result: "Danger",
-    },
-    {
-      createdAt: "2025-05-14 22:07:21",
-      result: "At Risk",
-    },
-    {
-      createdAt: "2025-05-14 22:08:21",
-      result: "Normal",
-      },
-     {
-      createdAt: "2025-05-14 22:08:22",
-      result: "Normal",
-      },
-      {
-      createdAt: "2025-05-14 22:09:22",
-      result: "Normal",
-      },
-      {
-      createdAt: "2025-05-14 22:10:22",
-      result: "Normal",
-      },
+      skip: !shouldFetch,
+    }
+  );
 
-    {
-      createdAt: "2025-05-14 22:10:23",
-      result: "Borderline",
-    },
-    {
-      createdAt: "2025-05-14 22:14:23",
-      result: "Warning",
-    },
-  ];
   const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newStartDate = e.target.value;
     setStartDate(newStartDate);
@@ -102,7 +75,7 @@ const BloodPressureHistory = () => {
 
           <div className="w-full md:w-1/3 flex justify-start md:justify-end gap-4">
             <button
-              onClick={() => openModel("assignNewStatusModal")}
+              //   onClick={() => openModel("assignNewStatusModal")}
               className="bg-indigo-500 hover:bg-blue-600 cursor-pointer text-white font-semibold px-6 py-2 rounded-lg shadow-md mt-1 md:mt-6"
             >
               Assign New Status
@@ -110,7 +83,17 @@ const BloodPressureHistory = () => {
           </div>
         </div>
         <div className="w-full h-[380px]">
-          <BloodPressureBubbleChart mockDataPrediction={data} />
+          {isLoading || isFetching ? (
+            <div className="flex items-center justify-center h-full">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+            </div>
+          ) : (
+            data?.data && (
+              <BloodPressureBubbleChart
+                mockDataPrediction={data.data as Prediction[]}
+              />
+            )
+          )}
         </div>
         <p className="text-sm text-gray-500 text-center m-0 ">
           This chart shows your blood sugar levels
