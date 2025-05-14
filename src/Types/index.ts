@@ -47,7 +47,7 @@ export interface IContact {
 
 export type LevelTypeDiabetes = "Normal" | "Potentially Dangerous" | "Dangerous";
 
-export interface PredictionDiabetes {
+export interface Prediction {
     createdAt: string;
     result: LevelTypeDiabetes;
 }

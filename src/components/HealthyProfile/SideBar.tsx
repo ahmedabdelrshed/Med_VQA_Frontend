@@ -5,6 +5,7 @@ import { GiHealingShield } from "react-icons/gi";
 import { BsBarChart } from "react-icons/bs";
 import CustomNavLink from "./CustomNavLink";
 import BottomLinks from "./BottomLinks";
+import { LuChartScatter } from "react-icons/lu";
 
 const SideBar = () => {
   const [open, setOpen] = useState(true);
@@ -67,6 +68,11 @@ const SideBar = () => {
                     to="/healthy-profile/diabetes-history"
                     icon={BsBarChart}
                     text="Diabetes History"
+                  />
+                  <CustomNavLink
+                    to="/healthy-profile/blood-pressure-history"
+                    icon={LuChartScatter}
+                    text="Blood Pressure "
                   />
                 </div>
                 <BottomLinks />

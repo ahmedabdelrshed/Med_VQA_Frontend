@@ -24,6 +24,7 @@ import ShareChat from "../pages/ShareChat";
 import HealthyProfile from "../pages/HealthyProfile";
 import HealthyLayout from "../layouts/HealthyLayout";
 import DiabetesHistory from "../pages/DiabetesHistory";
+import BloodPressureHistory from "../pages/BloodPressureHistory";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -71,6 +72,10 @@ const router = createBrowserRouter(
         <Route path="healthy-profile" element={<HealthyLayout />}>
           <Route index element={<HealthyProfile />} />
           <Route path="diabetes-history" element={<DiabetesHistory />} />
+          <Route
+            path="blood-pressure-history"
+            element={<BloodPressureHistory />}
+          />
         </Route>
       </Route>
 

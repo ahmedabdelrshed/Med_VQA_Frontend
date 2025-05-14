@@ -10,7 +10,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { ChartData, ChartOptions } from "chart.js";
-import { LevelTypeDiabetes, PredictionDiabetes } from "../../Types";
+import { LevelTypeDiabetes, Prediction } from "../../Types";
 import { formatDate } from "../../utils/getTime";
 
 // Register Chart.js components
@@ -27,7 +27,7 @@ ChartJS.register(
 const BloodSugarChar = ({
   mockDataPrediction,
 }: {
-  mockDataPrediction: PredictionDiabetes[];
+  mockDataPrediction: Prediction[];
 }) => {
   const mockData = mockDataPrediction;
   interface LevelInfo {
