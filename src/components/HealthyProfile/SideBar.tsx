@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CiLogout } from "react-icons/ci";
-import { openModel } from "../../utils/modelsFuns";
 import { GrMenu } from "react-icons/gr";
-import { IoHomeOutline } from "react-icons/io5";
 import { GiHealingShield } from "react-icons/gi";
 import { BsBarChart } from "react-icons/bs";
-import { NavLink, useNavigate } from "react-router";
+import CustomNavLink from "./CustomNavLink";
+import BottomLinks from "./BottomLinks";
 
 const SideBar = () => {
-  const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const [showOpenButton, setShowOpenButton] = useState(true);
 
@@ -20,10 +17,6 @@ const SideBar = () => {
       setShowOpenButton(true);
     }, 250);
   };
-
-  const navLinkBase =
-    "flex items-center space-x-8 justify-center py-3 w-full text-gray-700 rounded-md transition-all duration-200";
-  const activeHoverStyle = "bg-blue-100 text-blue-600";
 
   return (
     <div className=" lg:h-screen bg-[#f1f5f9] ">
@@ -65,55 +58,18 @@ const SideBar = () => {
                   <img src="/images/logo.png" className="w-34 " alt="" />
                 </div>
                 <div className="mt-8 w-full space-y-10">
-                  <NavLink
-                    end
+                  <CustomNavLink
                     to="/healthy-profile"
-                    className={({ isActive }: { isActive: boolean }) =>
-                      `${navLinkBase} ${
-                        isActive
-                          ? activeHoverStyle
-                          : "hover:bg-blue-100 hover:text-blue-600"
-                      }`
-                    }
-                  >
-                    <GiHealingShield className="w-6 h-6 text-gray-500" />
-                    <span className="xl:text-[18px]">Healthy Profile</span>
-                  </NavLink>
-
-                  <NavLink
+                    icon={GiHealingShield}
+                    text="Healthy Profile"
+                  />
+                  <CustomNavLink
                     to="/healthy-profile/diabetes-history"
-                    className={({ isActive }: { isActive: boolean }) =>
-                      `${navLinkBase} ${
-                        isActive
-                          ? activeHoverStyle
-                          : "hover:bg-blue-100 hover:text-blue-600"
-                      }`
-                    }
-                  >
-                    <BsBarChart className="w-6 h-6 text-gray-500" />
-                    <span className="xl:text-[18px]">Diabetes History</span>
-                  </NavLink>
+                    icon={BsBarChart}
+                    text="Diabetes History"
+                  />
                 </div>
-                <div className="flex flex-col justify-center items-center space-y-3">
-                  <div className="fixed bottom-20 lg:bottom-25 w-full ">
-                    <div
-                      className="flex items-center space-x-8 justify-center py-3 w-full text-gray-700 cursor-pointer hover:bg-blue-100 hover:text-blue-600 rounded-md transition-all duration-200"
-                      onClick={() => navigate("/")}
-                    >
-                      <IoHomeOutline className="w-6 h-6 text-gray-500" />
-                      <span className="xl:text-[18px]">Home page</span>
-                    </div>
-                  </div>
-                  <div className="fixed bottom-8 lg:bottom-12 w-full ">
-                    <div
-                      className="flex items-center space-x-15 justify-center py-3 w-full text-gray-700 cursor-pointer hover:bg-red-100 hover:text-red-600 rounded-md transition-all duration-200"
-                      onClick={() => openModel("logoutModal")}
-                    >
-                      <CiLogout className="w-5 h-5 xl:w-6 xl:h-6 text-gray-500" />
-                      <span className="xl:text-[18px]">Log out</span>
-                    </div>
-                  </div>
-                </div>
+                <BottomLinks />
               </ul>
             </div>
           </motion.div>

@@ -11,6 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { ChartData, ChartOptions } from "chart.js";
 import { LevelTypeDiabetes, PredictionDiabetes } from "../../Types";
+import { formatDate } from "../../utils/getTime";
 
 // Register Chart.js components
 ChartJS.register(
@@ -28,7 +29,6 @@ const BloodSugarChar = ({
 }: {
   mockDataPrediction: PredictionDiabetes[];
 }) => {
-  // Define the levels and their corresponding colors
   const mockData = mockDataPrediction;
   interface LevelInfo {
     value: number;
@@ -37,28 +37,10 @@ const BloodSugarChar = ({
 
   type LevelMap = Record<LevelTypeDiabetes, LevelInfo>;
 
-  // Define type for data points
-
-  // Define the levels with proper typing
   const levels: LevelMap = {
     Normal: { value: 0, color: "rgb(75, 192, 92)" },
     "Potentially Dangerous": { value: 1, color: "rgb(255, 159, 64)" },
     Dangerous: { value: 2, color: "rgb(255, 99, 132)" },
-  };
-
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-
-    // Format options
-    const options: Intl.DateTimeFormatOptions = {
-      month: "short",
-      day: "numeric",
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: true,
-      timeZone: "Africa/Cairo",
-    };
-    return date.toLocaleString("en-US", options);
   };
 
   const data: ChartData<"line"> = {
