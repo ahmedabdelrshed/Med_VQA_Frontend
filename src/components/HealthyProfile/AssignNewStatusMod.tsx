@@ -9,64 +9,12 @@ import {
   TIME_OF_MEASUREMENT,
 } from "../../utils/bloodSugarValues";
 import formatEgyptTime from "../../utils/getTime";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorMsg from "../../ui/ErrorMsg";
-import bloodSugarSchema from "../../validations/bloodSugarSchema";
-import { BloodSugarData, BloodSugarDataRequest } from "../../Types";
 import Select from "./SelectInput";
-import { useNewStatusMutation } from "../../store/BloodSugar/bloodSugarApi";
-import toast from "react-hot-toast";
-import { closeModel } from "../../utils/modelsFuns";
-
+import useAddNewStatusBloodSugar from "../../hooks/useAddNewStatusBloodSugar";
 const AssignNewStatusMod = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-      reset,
-    clearErrors,
-  } = useForm<BloodSugarData>({
-    resolver: yupResolver(bloodSugarSchema),
-    defaultValues: {
-      bloodSugar: "",
-      diabetesStatus: "",
-      timeOfMeasurement: "",
-      symptoms: "",
-      medicationTaken: "",
-      physicalActivity: "",
-      lastMealTime: "",
-    },
-  });
-  const [newStatus, { isLoading }] = useNewStatusMutation();
-
-  const onSubmit = async (data: BloodSugarData) => {
-    try {
-      const requestData: BloodSugarDataRequest = {
-        blood_sugar: Number(data.bloodSugar),
-        diabetes_status: data.diabetesStatus,
-        time_of_measurement: data.timeOfMeasurement,
-        symptoms: data.symptoms,
-        medication_taken: data.medicationTaken,
-        physical_activity: data.physicalActivity,
-        last_meal_time: data.lastMealTime,
-      };
-      await newStatus(requestData)
-        .unwrap()
-        .then(() => {
-          handleClose();
-          toast.success("Blood sugar status assigned successfully!");
-        });
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }
-  };
-
-  const handleClose = () => {
-    closeModel("assignNewStatusModal");
-    clearErrors();
-      reset();
-  };
+  const { errors, handleSubmit, isLoading, onSubmit, register, handleClose } =
+    useAddNewStatusBloodSugar();
   return (
     <dialog
       id="assignNewStatusModal"
@@ -100,7 +48,8 @@ const AssignNewStatusMod = () => {
               <Input
                 id="bloodSugar"
                 placeholder="Blood Sugar"
-                type="number"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 {...register("bloodSugar")}
               />
               {errors.bloodSugar && (
@@ -176,7 +125,7 @@ const AssignNewStatusMod = () => {
               >
                 Submit
               </Button>
-                          <Button
+              <Button
                 type="button"
                 className="bg-gray-500 hover:bg-gray-600"
                 onClick={handleClose}
