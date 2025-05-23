@@ -37,7 +37,6 @@ const AssignNewStatusMod = () => {
           </div>
 
           <form action="" onSubmit={handleSubmit(onSubmit)}>
-            {/* Blood Sugar Input - Full Width */}
             <div className="mb-4">
               <label
                 htmlFor="bloodSugar"

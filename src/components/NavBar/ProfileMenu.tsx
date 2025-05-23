@@ -1,11 +1,14 @@
-import { NavLink, useNavigate } from "react-router";
-import Cookies from "js-cookie";
+import { Link } from "react-router";
 import { useEffect, useRef } from "react";
+import { IoPersonCircleSharp } from "react-icons/io5";
+import { MdOutlineHealthAndSafety } from "react-icons/md";
+import { CiLogout } from "react-icons/ci";
+import { openModel } from "../../utils/modelsFuns";
+
 interface IProps {
   setShowMenu: (val: boolean) => void;
 }
 const ProfileMenu = ({ setShowMenu }: IProps) => {
-  const navigate = useNavigate();
   const refDiv = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -20,29 +23,40 @@ const ProfileMenu = ({ setShowMenu }: IProps) => {
   }, [setShowMenu]);
   return (
     <div
-      className="absolute top-[40px] right-[-7px] z-20 rounded-md px-3 py-2  "
+      className="absolute top-[48px] right-0 z-20 min-w-[180px] shadow-xl border border-slate-200 bg-white rounded-lg"
       ref={refDiv}
     >
-      <div className="bg-slate-100 w-fit  px-2 py-2  rounded-md">
-        <NavLink
+      <div className="flex flex-col py-4 space-y-2">
+        <Link
           to={"/profile"}
-          className="flex text-blue-500  items-center mb-2 py-1 cursor-pointer px-3 hover:bg-blue-400 hover:text-white rounded-md "
+          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded transition-colors duration-150 
+                text-blue-400 hover:bg-blue-50 
+            `}
         >
-          Profile
-        </NavLink>
-         <NavLink
+          <span className="text-gray-500">
+            <IoPersonCircleSharp className="w-5 h-5" />
+          </span>{" "}
+          Personal Profile
+        </Link>
+        <Link
           to={"/healthy-profile"}
-          className="flex text-blue-500  items-center mb-2 py-1 cursor-pointer px-3 hover:bg-blue-400 hover:text-white rounded-md "
+          className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded transition-colors duration-150 
+                text-blue-400 hover:bg-blue-50 
+            `}
         >
-         Healthy Profile
-        </NavLink>
+          <span className="text-gray-400">
+            <MdOutlineHealthAndSafety className="w-5 h-5" />
+          </span>{" "}
+          Healthy Profile
+        </Link>
+        <div className="border-t my-2 border-slate-200" />
         <span
-          className="flex items-center mb-2 py-1 text-red-500 cursor-pointer px-3 hover:bg-red-400 hover:text-white rounded-md "
-          onClick={() => {
-            Cookies.remove("token");
-            navigate("/");
-          }}
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded cursor-pointer text-red-500 hover:bg-red-50 hover:text-red-600 transition-colors duration-150"
+          onClick={() => openModel("logoutModal")}
         >
+          <span className="text-gray-400">
+            <CiLogout className="w-5 h-5" />
+          </span>{" "}
           Logout
         </span>
       </div>
