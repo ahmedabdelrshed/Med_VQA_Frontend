@@ -31,7 +31,7 @@ const DiabetesHistory = () => {
   };
 
   return (
-    <div className="h-screen bg-blue-50  px-4 flex items-center">
+    <div className="min-h-screen bg-blue-50  px-4 flex items-center mt-10 md:mt-0">
       <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-xl p-7 space-y-8">
         <div>
           <h1 className="text-3xl font-bold text-blue-500 italic  mb-5">

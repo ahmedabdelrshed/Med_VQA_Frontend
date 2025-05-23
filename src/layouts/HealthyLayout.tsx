@@ -4,7 +4,7 @@ import { GrMenu } from "react-icons/gr";
 
 const HealthyLayout = () => {
   return (
-    <div className="bg-[#f1f5f9] lg:flex  overflow-y-hidden">
+    <div className="bg-[#f1f5f9] lg:flex  ">
       <div className=" bg-white  lg:hidden  pb-2 pt-3 px-6 flex justify-between">
         <label htmlFor="health-drawer">
           <GrMenu className="w-7 h-7 p-1    cursor-pointer" />
