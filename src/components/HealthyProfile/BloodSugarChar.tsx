@@ -59,7 +59,8 @@ const BloodSugarChar = ({
       },
     ],
   };
-
+  const showYAxisLabels =
+    typeof window !== "undefined" && window.innerWidth >= 1024;
   // Chart options with proper typing
   const options: ChartOptions<"line"> = {
     responsive: true,
@@ -82,14 +83,18 @@ const BloodSugarChar = ({
     },
     scales: {
       y: {
-        ticks: {
-          callback: function (tickValue: number | string): string | null {
-            const levelEntry = Object.entries(levels).find(
-              ([, level]) => level.value === Number(tickValue)
-            );
-            return levelEntry ? levelEntry[0] : null;
-          },
-        },
+        ticks: showYAxisLabels
+          ? {
+              callback: function (tickValue: number | string): string | null {
+                const levelEntry = Object.entries(levels).find(
+                  ([, level]) => level.value === Number(tickValue)
+                );
+                return levelEntry ? levelEntry[0] : null;
+              },
+            }
+          : {
+              display: false, // Hide labels on smaller screens
+            },
         min: -0.5,
         max: 2.5,
         grid: {
@@ -100,7 +105,7 @@ const BloodSugarChar = ({
     },
   };
 
-  return <Line data={data} options={options} />;
+  return <Line data={data} options={options} width={"100%"} />;
 };
 
 export default BloodSugarChar;

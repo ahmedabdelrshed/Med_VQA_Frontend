@@ -92,7 +92,8 @@ const BloodPressureBubbleChart = ({
       },
     ],
   };
-
+  const showYAxisLabels =
+    typeof window !== "undefined" && window.innerWidth >= 1024;
   const options: ChartOptions<"bubble"> = {
     responsive: true,
     maintainAspectRatio: false,
@@ -133,14 +134,18 @@ const BloodPressureBubbleChart = ({
         },
       },
       y: {
-        ticks: {
-          callback: function (tickValue: string | number) {
-            const entry = Object.entries(levels).find(
-              ([, val]) => val.value === Number(tickValue)
-            );
-            return entry ? entry[0] : null;
-          },
-        },
+        ticks: showYAxisLabels
+          ? {
+              callback: function (tickValue: string | number) {
+                const entry = Object.entries(levels).find(
+                  ([, val]) => val.value === Number(tickValue)
+                );
+                return entry ? entry[0] : null;
+              },
+            }
+          : {
+              display: false, // Hide labels on smaller screens
+            },
         min: -0.5,
         max: 4.5,
 
