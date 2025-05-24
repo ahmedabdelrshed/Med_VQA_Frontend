@@ -1,6 +1,5 @@
 import * as yup from 'yup';
-import { HISTORY_OF_HIGH_BP, KNOWN_MEDICAL_CONDITIONS, PHYSICAL_ACTIVITY_LEVEL, SMOKING_STATUS, STRESS_LEVEL } from '../utils/bloodPressureValues';
-import { SYMPTOMS } from '../utils/bloodSugarValues';
+import { HISTORY_OF_HIGH_BP, KNOWN_MEDICAL_CONDITIONS, PHYSICAL_ACTIVITY_LEVEL, SMOKING_STATUS, STRESS_LEVEL, SYMPTOMS_NOW } from '../utils/bloodPressureValues';
 
 
 export const bloodPressureSchema = yup
@@ -31,7 +30,7 @@ export const bloodPressureSchema = yup
         SYMPTOMS_NOW: yup
             .string()
             .required("Current symptoms information is required")
-            .oneOf(SYMPTOMS, "Please select valid symptoms"),
+            .oneOf(SYMPTOMS_NOW, "Please select valid symptoms"),
 
         HISTORY_OF_HIGH_BP: yup
             .string()
