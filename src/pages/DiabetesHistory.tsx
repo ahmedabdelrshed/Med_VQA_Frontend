@@ -3,7 +3,7 @@ import BloodSugarChar from "../components/HealthyProfile/BloodSugarChar";
 import LogoutModel from "../components/Modals/LogoutModel";
 import { useGetBloodSugarResultsQuery } from "../store/BloodSugar/bloodSugarApi";
 import { Prediction } from "../Types";
-import AssignNewStatusMod from "../components/HealthyProfile/AssignNewStatusMod";
+import AssignNewStatusMod from "../components/HealthyProfile/AssignNewStatusBloodSugarMod";
 import { openModel } from "../utils/modelsFuns";
 
 const DiabetesHistory = () => {

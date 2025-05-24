@@ -71,3 +71,24 @@ export interface BloodSugarDataRequest  {
     physical_activity: string;
     last_meal_time: string;
 }
+
+export interface BloodPressureData {
+    SMOKING_STATUS: string;
+    PHYSICAL_ACTIVITY_LEVEL: string;
+    KNOWN_MEDICAL_CONDITIONS: string;
+    STRESS_LEVEL: string;
+    SYMPTOMS_NOW: string;
+    HISTORY_OF_HIGH_BP: string;
+    Diastolic_BP: string;
+    Systolic_BP: string;
+    Heart_Rate_BPM: string;
+    Height_cm: string;
+    Weight_kg: string;
+}
+
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+
+export interface StepProps {
+  register: UseFormRegister<BloodPressureData>;
+  errors: FieldErrors<BloodPressureData>;
+}

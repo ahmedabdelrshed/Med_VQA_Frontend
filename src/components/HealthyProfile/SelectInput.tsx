@@ -1,34 +1,34 @@
 // components/ui/Select.tsx
-import { FieldError, UseFormRegister } from "react-hook-form";
-import { BloodSugarData } from "../../Types";
+import { FieldError, UseFormRegister, Path } from "react-hook-form";
+import { BloodPressureData, BloodSugarData } from "../../Types";
 
-interface SelectProps {
+interface SelectProps<T extends BloodPressureData | BloodSugarData> {
   label: string;
-  id: keyof BloodSugarData;
+  id: Path<T>;
   options: string[];
-  register: UseFormRegister<BloodSugarData>;
+  register: UseFormRegister<T>;
   error?: FieldError;
   placeholder?: string;
 }
 
-const Select = ({
+const Select = <T extends BloodPressureData | BloodSugarData>({
   label,
   id,
   options,
   register,
   error,
   placeholder = "Select option",
-}: SelectProps) => {
+}: SelectProps<T>) => {
   return (
     <div className="mb-4">
       <label
-        htmlFor={id}
+        htmlFor={String(id)}
         className="block text-sm font-medium text-gray-700 mb-1"
       >
         {label}
       </label>
       <select
-        id={id}
+        id={String(id)}
         className={`w-full px-3 py-2 border ${
           error ? "border-red-500" : "border-gray-300"
         } rounded-md focus:outline-none`}

@@ -2,6 +2,8 @@ import { useState } from "react";
 import BloodPressureBubbleChart from "../components/HealthyProfile/BloodPressureChar";
 import { useGetBloodPressureResultsQuery } from "../store/bloodPressure/bloodPressureApi";
 import { Prediction } from "../Types";
+import AssignNewStatusBloodPressure from "../components/HealthyProfile/BloodPressureNewStatus/AssignNewStatusBloodPressure";
+import { openModel } from "../utils/modelsFuns";
 
 const BloodPressureHistory = () => {
   const [startDate, setStartDate] = useState("");
@@ -75,7 +77,7 @@ const BloodPressureHistory = () => {
 
           <div className="w-full md:w-1/3 flex justify-start md:justify-end gap-4">
             <button
-              //   onClick={() => openModel("assignNewStatusModal")}
+              onClick={() => openModel("NewBloodPressureModal")}
               className="bg-indigo-500 hover:bg-blue-600 cursor-pointer text-white font-semibold px-6 py-2 rounded-lg shadow-md mt-1 md:mt-6"
             >
               Assign New Status
@@ -104,6 +106,7 @@ const BloodPressureHistory = () => {
             : " for Last Week"}
         </p>
       </div>
+      <AssignNewStatusBloodPressure />
     </div>
   );
 };
