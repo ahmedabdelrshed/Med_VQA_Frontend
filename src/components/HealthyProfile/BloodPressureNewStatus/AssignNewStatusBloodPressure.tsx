@@ -10,8 +10,15 @@ import StepIndicator from "./StepIndicator";
 import { stepFields } from "../../../utils/bloodPressureValues";
 
 const AssignNewStatusBloodPressure = () => {
-  const { errors, handleSubmit, isLoading, onSubmit, register, trigger } =
-    useAddNewStatusBloodPressure();
+  const {
+    errors,
+    handleSubmit,
+    isLoading,
+    onSubmit,
+    register,
+    trigger,
+    handleClose,
+  } = useAddNewStatusBloodPressure();
 
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 4;
@@ -34,7 +41,10 @@ const AssignNewStatusBloodPressure = () => {
     >
       <div className="modal-box bg-white text-black flex flex-col p-6 rounded-lg max-w-3xl w-full">
         <form method="dialog">
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+          <button
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            onClick={handleClose}
+          >
             ✕
           </button>
         </form>

@@ -85,6 +85,19 @@ export interface BloodPressureData {
     Height_cm: string;
     Weight_kg: string;
 }
+export interface BloodPressureDataRequest {
+    Smoking_Status: string;
+    Physical_Activity_Level: string;
+    Known_Medical_Conditions: string;
+    Stress_Level: string;
+    Symptoms_Now: string;
+    History_of_High_BP: string;
+    Diastolic_BP: number;
+    Systolic_BP: number;
+    Heart_Rate_BPM: number;
+    Height_cm: number;
+    Weight_kg: number;
+}
 
 import { FieldErrors, UseFormRegister, UseFormTrigger } from "react-hook-form";
 

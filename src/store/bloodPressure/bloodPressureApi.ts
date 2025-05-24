@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import {  Prediction } from "../../Types";
+import { BloodPressureDataRequest, Prediction } from "../../Types";
 import { RootState } from "../store";
 
 export const bloodPressureAPI = createApi({
@@ -22,11 +22,19 @@ export const bloodPressureAPI = createApi({
             }),
             providesTags: ['predictions_blood'],
         }),
-        
+        newStatusBlood: builder.mutation<{ body: BloodPressureDataRequest }, BloodPressureDataRequest>({
+            query: (body: BloodPressureDataRequest) => ({
+                url: `/api/bloodPressurePatient/predict-blood-pressure`,
+                method: "POST",
+                body,
+            }),
+            invalidatesTags: ['predictions_blood'],
+        }),
 
     }),
 });
 
 export const {
     useGetBloodPressureResultsQuery,
+    useNewStatusBloodMutation,
 } = bloodPressureAPI;

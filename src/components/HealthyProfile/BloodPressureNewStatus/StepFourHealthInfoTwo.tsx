@@ -2,11 +2,11 @@ import { StepProps } from "../../../Types";
 import {
   STRESS_LEVEL,
   HISTORY_OF_HIGH_BP,
+  SYMPTOMS_NOW,
 } from "../../../utils/bloodPressureValues";
-import { SYMPTOMS } from "../../../utils/bloodSugarValues";
 import Select from "../SelectInput";
 
-const StepFourHealthInfoTwo = ({ register, errors,trigger }: StepProps) => {
+const StepFourHealthInfoTwo = ({ register, errors, trigger }: StepProps) => {
   return (
     <>
       <h4 className="text-lg font-semibold text-gray-700 mb-4">
@@ -19,17 +19,17 @@ const StepFourHealthInfoTwo = ({ register, errors,trigger }: StepProps) => {
           options={STRESS_LEVEL}
           register={register}
           error={errors.STRESS_LEVEL}
-                  placeholder="Select Stress Level"
+          placeholder="Select Stress Level"
           trigger={trigger}
         />
         <Select
           label="Current Symptoms"
           id="SYMPTOMS_NOW"
-          options={SYMPTOMS}
+          options={SYMPTOMS_NOW}
           register={register}
           error={errors.SYMPTOMS_NOW}
-                  placeholder="Select Symptoms"
-            trigger={trigger}
+          placeholder="Select Symptoms"
+          trigger={trigger}
         />
         <Select
           label="History of High BP"
@@ -37,8 +37,8 @@ const StepFourHealthInfoTwo = ({ register, errors,trigger }: StepProps) => {
           options={HISTORY_OF_HIGH_BP}
           register={register}
           error={errors.HISTORY_OF_HIGH_BP}
-                  placeholder="Select History"
-            trigger={trigger}
+          placeholder="Select History"
+          trigger={trigger}
         />
       </div>
     </>
