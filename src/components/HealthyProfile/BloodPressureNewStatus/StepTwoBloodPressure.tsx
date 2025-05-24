@@ -2,7 +2,7 @@ import { StepProps } from "../../../Types";
 import ErrorMsg from "../../../ui/ErrorMsg";
 import Input from "../../../ui/Input";
 
-const StepTwoBloodPressure = ({ register, errors }: StepProps) => {
+const StepTwoBloodPressure = ({ register, errors, trigger }: StepProps) => {
   return (
     <>
       <h4 className="text-lg font-semibold text-gray-700 mb-4">
@@ -22,6 +22,10 @@ const StepTwoBloodPressure = ({ register, errors }: StepProps) => {
             inputMode="numeric"
             pattern="[0-9]*"
             {...register("Systolic_BP")}
+            onChange={(e) => {
+              register("Systolic_BP").onChange(e);
+              trigger("Systolic_BP");
+            }}
           />
           {errors.Systolic_BP && <ErrorMsg msg={errors.Systolic_BP.message} />}
         </div>
@@ -39,6 +43,10 @@ const StepTwoBloodPressure = ({ register, errors }: StepProps) => {
             inputMode="numeric"
             pattern="[0-9]*"
             {...register("Diastolic_BP")}
+            onChange={(e) => {
+              register("Diastolic_BP").onChange(e);
+              trigger("Diastolic_BP");
+            }}
           />
           {errors.Diastolic_BP && (
             <ErrorMsg msg={errors.Diastolic_BP.message} />

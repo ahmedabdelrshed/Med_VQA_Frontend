@@ -6,7 +6,7 @@ import {
 import { SYMPTOMS } from "../../../utils/bloodSugarValues";
 import Select from "../SelectInput";
 
-const StepFourHealthInfoTwo = ({ register, errors }: StepProps) => {
+const StepFourHealthInfoTwo = ({ register, errors,trigger }: StepProps) => {
   return (
     <>
       <h4 className="text-lg font-semibold text-gray-700 mb-4">
@@ -19,7 +19,8 @@ const StepFourHealthInfoTwo = ({ register, errors }: StepProps) => {
           options={STRESS_LEVEL}
           register={register}
           error={errors.STRESS_LEVEL}
-          placeholder="Select Stress Level"
+                  placeholder="Select Stress Level"
+          trigger={trigger}
         />
         <Select
           label="Current Symptoms"
@@ -27,7 +28,8 @@ const StepFourHealthInfoTwo = ({ register, errors }: StepProps) => {
           options={SYMPTOMS}
           register={register}
           error={errors.SYMPTOMS_NOW}
-          placeholder="Select Symptoms"
+                  placeholder="Select Symptoms"
+            trigger={trigger}
         />
         <Select
           label="History of High BP"
@@ -35,7 +37,8 @@ const StepFourHealthInfoTwo = ({ register, errors }: StepProps) => {
           options={HISTORY_OF_HIGH_BP}
           register={register}
           error={errors.HISTORY_OF_HIGH_BP}
-          placeholder="Select History"
+                  placeholder="Select History"
+            trigger={trigger}
         />
       </div>
     </>

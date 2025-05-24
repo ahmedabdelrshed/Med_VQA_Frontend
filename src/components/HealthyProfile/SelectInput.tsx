@@ -1,5 +1,5 @@
 // components/ui/Select.tsx
-import { FieldError, UseFormRegister, Path } from "react-hook-form";
+import { FieldError, UseFormRegister, Path, UseFormTrigger } from "react-hook-form";
 import { BloodPressureData, BloodSugarData } from "../../Types";
 
 interface SelectProps<T extends BloodPressureData | BloodSugarData> {
@@ -9,6 +9,7 @@ interface SelectProps<T extends BloodPressureData | BloodSugarData> {
   register: UseFormRegister<T>;
   error?: FieldError;
   placeholder?: string;
+  trigger?:UseFormTrigger<T>
 }
 
 const Select = <T extends BloodPressureData | BloodSugarData>({
@@ -18,6 +19,7 @@ const Select = <T extends BloodPressureData | BloodSugarData>({
   register,
   error,
   placeholder = "Select option",
+  trigger,
 }: SelectProps<T>) => {
   return (
     <div className="mb-4">
@@ -33,6 +35,12 @@ const Select = <T extends BloodPressureData | BloodSugarData>({
           error ? "border-red-500" : "border-gray-300"
         } rounded-md focus:outline-none`}
         {...register(id)}
+        onChange={(e) => {
+          register(id).onChange(e);
+          if (trigger) {
+            trigger(id);
+          }
+        }}
       >
         <option value="" disabled selected>
           {placeholder}

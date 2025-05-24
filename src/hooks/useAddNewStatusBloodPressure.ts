@@ -10,9 +10,10 @@ const useAddNewStatusBloodPressure = () => {
         formState: { errors },
         reset,
         clearErrors,
+        trigger,
     } = useForm<BloodPressureData>({
         resolver: yupResolver(bloodPressureSchema),
-        mode: "onSubmit",
+        
         shouldUnregister: true,
         defaultValues: {
             SMOKING_STATUS: '',
@@ -56,6 +57,7 @@ const useAddNewStatusBloodPressure = () => {
         isLoading,
         onSubmit,
         handleClose,
+        trigger,
     }
 }
 

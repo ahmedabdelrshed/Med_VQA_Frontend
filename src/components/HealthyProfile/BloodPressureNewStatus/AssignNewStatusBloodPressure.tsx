@@ -7,9 +7,10 @@ import StepTwoBloodPressure from "./StepTwoBloodPressure";
 import StepThreeHealthInfoOne from "./StepThreeHealthInfoOne";
 import StepFourHealthInfoTwo from "./StepFourHealthInfoTwo";
 import StepIndicator from "./StepIndicator";
+import { stepFields } from "../../../utils/bloodPressureValues";
 
 const AssignNewStatusBloodPressure = () => {
-  const { errors, handleSubmit, isLoading, onSubmit, register } =
+  const { errors, handleSubmit, isLoading, onSubmit, register, trigger } =
     useAddNewStatusBloodPressure();
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -19,9 +20,11 @@ const AssignNewStatusBloodPressure = () => {
     setCurrentStep((prev) => Math.min(prev + 1, totalSteps));
   const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
-  const handleNextStep = (e: React.FormEvent) => {
+  const handleNextStep = async (e: React.FormEvent) => {
     e.preventDefault();
-    nextStep();
+    const currentFields = stepFields[currentStep];
+    const valid = await trigger(currentFields);
+    if (valid) nextStep();
   };
 
   return (
@@ -52,18 +55,34 @@ const AssignNewStatusBloodPressure = () => {
               currentStep === 4 ? handleSubmit(onSubmit) : handleNextStep
             }
           >
-            {currentStep === 1 && (
-              <StepOneMeasurements register={register} errors={errors} />
-            )}
-            {currentStep === 2 && (
-              <StepTwoBloodPressure register={register} errors={errors} />
-            )}
-            {currentStep === 3 && (
-              <StepThreeHealthInfoOne register={register} errors={errors} />
-            )}
-            {currentStep === 4 && (
-              <StepFourHealthInfoTwo register={register} errors={errors} />
-            )}
+            <div className={`${currentStep === 1 ? "block" : "hidden"}`}>
+              <StepOneMeasurements
+                register={register}
+                errors={errors}
+                trigger={trigger}
+              />
+            </div>
+            <div className={`${currentStep === 2 ? "block" : "hidden"}`}>
+              <StepTwoBloodPressure
+                register={register}
+                errors={errors}
+                trigger={trigger}
+              />
+            </div>
+            <div className={`${currentStep === 3 ? "block" : "hidden"}`}>
+              <StepThreeHealthInfoOne
+                register={register}
+                errors={errors}
+                trigger={trigger}
+              />
+            </div>
+            <div className={`${currentStep === 4 ? "block" : "hidden"}`}>
+              <StepFourHealthInfoTwo
+                register={register}
+                errors={errors}
+                trigger={trigger}
+              />
+            </div>
 
             <div className="flex justify-end space-x-3 mt-6">
               {currentStep > 1 && (

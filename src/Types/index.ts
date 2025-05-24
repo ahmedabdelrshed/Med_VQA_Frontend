@@ -62,7 +62,7 @@ export interface BloodSugarData {
     lastMealTime: string;
 }
 
-export interface BloodSugarDataRequest  {
+export interface BloodSugarDataRequest {
     blood_sugar: number;
     diabetes_status: string;
     time_of_measurement: string;
@@ -86,9 +86,10 @@ export interface BloodPressureData {
     Weight_kg: string;
 }
 
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister, UseFormTrigger } from "react-hook-form";
 
 export interface StepProps {
-  register: UseFormRegister<BloodPressureData>;
-  errors: FieldErrors<BloodPressureData>;
+    register: UseFormRegister<BloodPressureData>;
+    errors: FieldErrors<BloodPressureData>;
+    trigger: UseFormTrigger<BloodPressureData>;
 }

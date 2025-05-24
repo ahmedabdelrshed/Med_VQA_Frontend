@@ -6,7 +6,7 @@ import {
 } from "../../../utils/bloodPressureValues";
 import Select from "../SelectInput";
 
-const StepThreeHealthInfoOne = ({ register, errors }: StepProps) => {
+const StepThreeHealthInfoOne = ({ register, errors, trigger }: StepProps) => {
   return (
     <>
       <h4 className="text-lg font-semibold text-gray-700 mb-4">
@@ -20,6 +20,7 @@ const StepThreeHealthInfoOne = ({ register, errors }: StepProps) => {
           register={register}
           error={errors.SMOKING_STATUS}
           placeholder="Select Smoking Status"
+          trigger={trigger}
         />
         <Select
           label="Physical Activity Level"
@@ -28,6 +29,7 @@ const StepThreeHealthInfoOne = ({ register, errors }: StepProps) => {
           register={register}
           error={errors.PHYSICAL_ACTIVITY_LEVEL}
           placeholder="Select Activity Level"
+          trigger={trigger}
         />
         <Select
           label="Known Medical Conditions"
@@ -36,6 +38,7 @@ const StepThreeHealthInfoOne = ({ register, errors }: StepProps) => {
           register={register}
           error={errors.KNOWN_MEDICAL_CONDITIONS}
           placeholder="Select Medical Conditions"
+          trigger={trigger}
         />
       </div>
     </>

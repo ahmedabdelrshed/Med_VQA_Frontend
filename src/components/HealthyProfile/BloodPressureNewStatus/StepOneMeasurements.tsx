@@ -2,7 +2,7 @@ import { StepProps } from "../../../Types";
 import ErrorMsg from "../../../ui/ErrorMsg";
 import Input from "../../../ui/Input";
 
-const StepOneMeasurements = ({ register, errors }: StepProps) => (
+const StepOneMeasurements = ({ register, errors, trigger }: StepProps) => (
   <>
     <h4 className="text-lg font-semibold text-gray-700 mb-4">
       Physical Measurements
@@ -20,6 +20,10 @@ const StepOneMeasurements = ({ register, errors }: StepProps) => (
           placeholder="Height in cm"
           inputMode="numeric"
           {...register("Height_cm")}
+          onChange={(e) => {
+            register("Height_cm").onChange(e);
+            trigger("Height_cm");
+          }}
         />
         {errors.Height_cm && <ErrorMsg msg={errors.Height_cm.message} />}
       </div>
@@ -35,6 +39,10 @@ const StepOneMeasurements = ({ register, errors }: StepProps) => (
           placeholder="Weight in kg"
           inputMode="numeric"
           {...register("Weight_kg")}
+          onChange={(e) => {
+            register("Weight_kg").onChange(e);
+            trigger("Weight_kg");
+          }}
         />
         {errors.Weight_kg && <ErrorMsg msg={errors.Weight_kg.message} />}
       </div>
