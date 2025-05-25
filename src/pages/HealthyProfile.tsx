@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 
 const HealthyProfile = () => {
+
   const healthyTips = [
     {
       title: "Water Intake",
@@ -31,33 +32,77 @@ const HealthyProfile = () => {
   ];
 
   return (
-    <div className="min-h-screen flex items-center bg-gradient-to-br from-blue-50  to-green-50 ">
-      <div className=" w-full py-12 px-4 sm:px-6 lg:px-8  ">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-10 ">
-            <p className="italic  text-lg  text-gray-600">
-              Follow these essential steps to improve your healthy :
-            </p>
+    <div className="min-h-screen flex flex-col  bg-gradient-to-br from-blue-50 to-green-50 py-5 px-4 sm:px-6 lg:px-10">
+      {/* Obesity Level Box */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="w-full sm:w-[48%] lg:w-[32%] bg-white rounded-2xl shadow-md p-4 mb-3"
+      >
+        <div>
+          {/* Image + Title */}
+          <div className="flex justify-between items-center">
+             <div className="flex items-center gap-3 ">
+            <img
+              src="/images/obesity.png" // Update if stored elsewhere
+              alt="Obesity Icon"
+              className="w-10 h-10"
+            />
+            <h2 className="text-lg font-semibold text-gray-700">
+              Obesity Status
+            </h2>
           </div>
+            <div className="text-sm text-blue-400 bg-gray-100 rounded-full px-3 py-1 font-bold">
+              Overweight
+            </div>
+         </div>
+          <p className="text-gray-500 text-[13px] mb-1">
+            Last Assign Date: <span className="font-medium"> 25 may 2023 </span>
+          </p>
 
-          {/* First two cards */}
-          <div className="flex flex-wrap justify-between">
-            {healthyTips.slice(0, 2).map((tip, index) => (
-              <Card key={index} tip={tip} delay={index * 0.2} />
-            ))}
-          </div>
+          <div className="flex justify-between items-center">
+             <a
+            // href={`/reports/${obesityLevel.toLowerCase()}.pdf`}
+            download
+            className="text-sm text-blue-500  hover:text-blue-700"
+          >
+            📄 Download Report
+            </a>
+            <button
+              // onClick={handleAssignNewStatus}
+              className="text-sm bg-blue-400  hover:bg-blue-500 cursor-pointer text-white px-3 py-1 rounded-md transition"
+            >
+              Assign New Status
+            </button>
+         </div>
+        </div>
+      </motion.div>
 
-          {/* Middle card */}
-          <div className="flex justify-center mt-8">
-            <Card tip={healthyTips[2]} delay={0.4} />
-          </div>
+      <div className="max-w-6xl w-full">
+        <div className="mb-4">
+          <p className="italic text-lg text-gray-600">
+            Follow these essential steps to improve your health:
+          </p>
+        </div>
 
-          {/* Last two cards */}
-          <div className="flex flex-wrap justify-between mt-8">
-            {healthyTips.slice(3).map((tip, index) => (
-              <Card key={index + 3} tip={tip} delay={(index + 3) * 0.2} />
-            ))}
-          </div>
+        {/* First two cards */}
+        <div className="flex flex-wrap justify-between">
+          {healthyTips.slice(0, 2).map((tip, index) => (
+            <Card key={index} tip={tip} delay={index * 0.2} />
+          ))}
+        </div>
+
+        {/* Middle card */}
+        <div className="flex justify-center mt-4">
+          <Card tip={healthyTips[2]} delay={0.4} />
+        </div>
+
+        {/* Last two cards */}
+        <div className="flex flex-wrap justify-between mt-8">
+          {healthyTips.slice(3).map((tip, index) => (
+            <Card key={index + 3} tip={tip} delay={(index + 3) * 0.2} />
+          ))}
         </div>
       </div>
     </div>
@@ -76,7 +121,7 @@ const Card = ({
     animate={{ scale: 1 }}
     transition={{ duration: 0.7, delay, ease: "easeOut" }}
     whileHover={{ scale: 1.05 }}
-    className="w-sm bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 mb-3 md:m-0"
+    className="w-full sm:w-[48%] lg:w-[32%] bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 mb-3"
   >
     <div className="flex items-center gap-4 mb-2">
       <div className="text-4xl">{tip.icon}</div>
