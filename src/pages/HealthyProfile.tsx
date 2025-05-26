@@ -33,7 +33,6 @@ const HealthyProfile = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center bg-gradient-to-br from-blue-50 to-green-50 py-10 px-4 sm:px-6 lg:px-10">
-      {/* Obesity Level Box */}
       <ObesityCard />
       <div className="max-w-6xl w-full">
         <div className="mb-3">
