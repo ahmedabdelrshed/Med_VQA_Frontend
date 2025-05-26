@@ -1,4 +1,4 @@
-import { StepProps } from "../../../../Types";
+import { BloodPressureData, StepProps } from "../../../../Types";
 import {
   STRESS_LEVEL,
   HISTORY_OF_HIGH_BP,
@@ -6,7 +6,7 @@ import {
 } from "../../../../utils/bloodPressureValues";
 import Select from "../../../../ui/SelectInput";
 
-const StepFourHealthInfoTwo = ({ register, errors, trigger }: StepProps) => {
+const StepFourHealthInfoTwo = ({ register, errors, trigger }: StepProps<BloodPressureData>) => {
   return (
     <>
       <h4 className="text-lg font-semibold text-gray-700 mb-4">

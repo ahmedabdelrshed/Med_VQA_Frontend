@@ -1,4 +1,4 @@
-import { StepProps } from "../../../../Types";
+import { BloodPressureData, StepProps } from "../../../../Types";
 import {
   SMOKING_STATUS,
   PHYSICAL_ACTIVITY_LEVEL,
@@ -6,7 +6,7 @@ import {
 } from "../../../../utils/bloodPressureValues";
 import Select from "../../../../ui/SelectInput";
 
-const StepThreeHealthInfoOne = ({ register, errors, trigger }: StepProps) => {
+const StepThreeHealthInfoOne = ({ register, errors, trigger }: StepProps<BloodPressureData>) => {
   return (
     <>
       <h4 className="text-lg font-semibold text-gray-700 mb-4">

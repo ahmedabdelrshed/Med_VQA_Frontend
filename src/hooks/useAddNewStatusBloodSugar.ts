@@ -50,7 +50,7 @@ const useAddNewStatusBloodSugar = () => {
     };
 
     const handleClose = () => {
-        closeModel("assignNewStatusModal");
+        closeModel("assignNewStatusModal    ");
         clearErrors();
         reset();
     };

@@ -1,15 +1,15 @@
 import { useState } from "react";
 import Button from "../../../../ui/Button";
 import formatEgyptTime from "../../../../utils/getTime";
-import useAddNewStatusBloodPressure from "../../../../hooks/useAddNewStatusBloodPressure";
-import StepOneMeasurements from "./StepOneMeasurements";
-import StepTwoBloodPressure from "./StepTwoBloodPressure";
-import StepThreeHealthInfoOne from "./StepThreeHealthInfoOne";
-import StepFourHealthInfoTwo from "./StepFourHealthInfoTwo";
-import StepIndicator from "./StepIndicator";
-import { stepFields } from "../../../../utils/bloodPressureValues";
+import StepIndicator from "../../BloodPressure/BloodPressureNewStatus/StepIndicator";
+import useAddNewStatusObesity from "../../../../hooks/useAddNewStatusObesity";
+import StepOneMeasurementsObesity from "./StepOneMeasurementsObesity";
+import StepTwoFoodAndEatingHabits from "./StepTwoFoodAndEatingHabits";
+import StepThreeLifestyle from "./StepThreeLifestyle";
+import StepFourAlcoholAndTransportation from "./StepFourAlcoholAndTransportation";
+import { stepFieldsObesity } from "../../../../utils/obesityValues";
 
-const AssignNewStatusBloodPressure = () => {
+const ObesityNewStatus = () => {
   const {
     errors,
     handleSubmit,
@@ -18,8 +18,7 @@ const AssignNewStatusBloodPressure = () => {
     register,
     trigger,
     handleClose,
-
-  } = useAddNewStatusBloodPressure();
+  } = useAddNewStatusObesity();
 
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 4;
@@ -30,18 +29,18 @@ const AssignNewStatusBloodPressure = () => {
 
   const handleNextStep = async (e: React.FormEvent) => {
     e.preventDefault();
-    const currentFields = stepFields[currentStep];
+    const currentFields = stepFieldsObesity[currentStep];
     const valid = await trigger(currentFields);
     if (valid) nextStep();
   };
   const onClose = () => {
-    setCurrentStep(1); // Reset to first step when closing
+    setCurrentStep(1);
     handleClose();
   };
 
   return (
     <dialog
-      id="NewBloodPressureModal"
+      id="NewObesityModal"
       className="modal fixed inset-0 flex justify-center items-center"
     >
       <div className="modal-box bg-white text-black flex flex-col p-6 rounded-lg max-w-3xl w-full">
@@ -56,7 +55,7 @@ const AssignNewStatusBloodPressure = () => {
 
         <div className="overflow-y-auto max-h-[80vh]">
           <h3 className="text-lg font-bold mb-4 text-blue-500 italic text-center">
-            Assign New Blood Pressure Status
+            Assign New Obesity Status
           </h3>
 
           <div className="flex justify-between mb-4 text-sm text-gray-600">
@@ -71,30 +70,31 @@ const AssignNewStatusBloodPressure = () => {
             }
           >
             <div className={`${currentStep === 1 ? "block" : "hidden"}`}>
-              <StepOneMeasurements
-                register={register}
+              <StepOneMeasurementsObesity
                 errors={errors}
+                register={register}
                 trigger={trigger}
               />
             </div>
             <div className={`${currentStep === 2 ? "block" : "hidden"}`}>
-              <StepTwoBloodPressure
-                register={register}
+              <StepTwoFoodAndEatingHabits
                 errors={errors}
+                register={register}
                 trigger={trigger}
               />
             </div>
             <div className={`${currentStep === 3 ? "block" : "hidden"}`}>
-              <StepThreeHealthInfoOne
-                register={register}
+              <StepThreeLifestyle
                 errors={errors}
+                register={register}
                 trigger={trigger}
               />
             </div>
+
             <div className={`${currentStep === 4 ? "block" : "hidden"}`}>
-              <StepFourHealthInfoTwo
-                register={register}
+              <StepFourAlcoholAndTransportation
                 errors={errors}
+                register={register}
                 trigger={trigger}
               />
             </div>
@@ -134,4 +134,4 @@ const AssignNewStatusBloodPressure = () => {
   );
 };
 
-export default AssignNewStatusBloodPressure;
+export default ObesityNewStatus;

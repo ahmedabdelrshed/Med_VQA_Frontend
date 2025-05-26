@@ -99,10 +99,44 @@ export interface BloodPressureDataRequest {
     Weight_kg: number;
 }
 
-import { FieldErrors, UseFormRegister, UseFormTrigger } from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormRegister, UseFormTrigger } from "react-hook-form";
 
-export interface StepProps {
-    register: UseFormRegister<BloodPressureData>;
-    errors: FieldErrors<BloodPressureData>;
-    trigger: UseFormTrigger<BloodPressureData>;
+export interface StepProps<T extends FieldValues> {
+  register: UseFormRegister<T>;
+  errors: FieldErrors<T>;
+  trigger: UseFormTrigger<T>;
+}
+
+export interface ObesityData {
+    Height: string;
+    Weight: string;
+    family_history: string;
+    FAVC: string;
+    FCVC: string;
+    NCP: string;
+    CAEC: string;
+    SMOKE: string;
+    CH2O: string;
+    SCC: string;
+    FAF: string;
+    TUE: string;
+    CALC: string;
+    MTRANS: string;
+}
+
+export interface ObesityDataRequest {
+    Height: number;
+    Weight: number;
+    family_history: string;
+    FAVC: string;
+    FCVC: number;
+    NCP: number;
+    CAEC: string;
+    SMOKE: string;
+    CH2O: number;
+    SCC: string;
+    FAF: number;
+    TUE: number;
+    CALC: string;
+    MTRANS: string;
 }

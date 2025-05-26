@@ -59,7 +59,6 @@ const useAddNewStatusBloodPressure = () => {
 
     const handleClose = () => {
         closeModel("NewBloodPressureModal");
-        console.log('object')
         clearErrors();
         reset();
     };

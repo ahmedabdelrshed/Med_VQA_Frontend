@@ -1,8 +1,8 @@
-import { StepProps } from "../../../../Types";
+import { BloodPressureData, StepProps } from "../../../../Types";
 import ErrorMsg from "../../../../ui/ErrorMsg";
 import Input from "../../../../ui/Input";
 
-const StepOneMeasurements = ({ register, errors, trigger }: StepProps) => (
+const StepOneMeasurements = ({ register, errors, trigger }: StepProps<BloodPressureData>) => (
   <>
     <h4 className="text-lg font-semibold text-gray-700 mb-4">
       Physical Measurements

@@ -5,6 +5,8 @@ import {
   formatDateObesity,
   readableStatus,
 } from "../../../../utils/obesityValues";
+import { openModel } from "../../../../utils/modelsFuns";
+import ObesityNewStatus from "../obesityNewStatus/ObesityNewStatus";
 
 const ObesityCard = () => {
   const { data, isLoading, isFetching } = useGetObesityLevelQuery();
@@ -32,7 +34,7 @@ const ObesityCard = () => {
               alt="Obesity Icon"
               className="w-10 h-10"
             />
-            <h2 className="text-lg font-semibold text-gray-700">
+            <h2 className="text-sm font-semibold text-gray-700">
               Obesity Status
             </h2>
           </div>
@@ -77,13 +79,16 @@ const ObesityCard = () => {
           )}
 
           <button
-            // onClick={handleAssignNewStatus}
+            onClick={() => {
+              openModel("NewObesityModal");
+            }}
             className="text-sm bg-blue-400 hover:bg-blue-500 cursor-pointer text-white px-3 py-1 rounded-md transition"
           >
             Assign New Status
           </button>
         </div>
       </div>
+      <ObesityNewStatus />
     </motion.div>
   );
 };

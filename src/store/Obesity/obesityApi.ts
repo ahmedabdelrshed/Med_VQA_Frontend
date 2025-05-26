@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
+import { ObesityDataRequest } from "../../Types";
 
 interface Prediction {
     predictionResult: string;
@@ -20,16 +21,23 @@ export const obesityApi = createApi({
     }),
     tagTypes: ["prediction-obesity"],
     endpoints: (builder) => ({
-        getObesityLevel: builder.query<{ data: Prediction },void>({
+        getObesityLevel: builder.query<{ data: Prediction }, void>({
             query: () => ({
                 url: `/api/obesity/getReports`,
             }),
             providesTags: ['prediction-obesity'],
         }),
-
+        newStatusObesity: builder.mutation<{ body: ObesityDataRequest }, ObesityDataRequest>({
+            query: (body: ObesityDataRequest) => ({
+                url: `/api/obesity/predict`,
+                method: "POST",
+                body,
+            }),
+            invalidatesTags: ['prediction-obesity'],
+        }),
 
     }),
 });
 
 export const {
-    useGetObesityLevelQuery } = obesityApi;
+    useGetObesityLevelQuery, useNewStatusObesityMutation } = obesityApi;
