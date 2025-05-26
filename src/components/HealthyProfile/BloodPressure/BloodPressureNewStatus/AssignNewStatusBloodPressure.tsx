@@ -1,13 +1,13 @@
 import { useState } from "react";
-import Button from "../../../ui/Button";
-import formatEgyptTime from "../../../utils/getTime";
-import useAddNewStatusBloodPressure from "../../../hooks/useAddNewStatusBloodPressure";
+import Button from "../../../../ui/Button";
+import formatEgyptTime from "../../../../utils/getTime";
+import useAddNewStatusBloodPressure from "../../../../hooks/useAddNewStatusBloodPressure";
 import StepOneMeasurements from "./StepOneMeasurements";
 import StepTwoBloodPressure from "./StepTwoBloodPressure";
 import StepThreeHealthInfoOne from "./StepThreeHealthInfoOne";
 import StepFourHealthInfoTwo from "./StepFourHealthInfoTwo";
 import StepIndicator from "./StepIndicator";
-import { stepFields } from "../../../utils/bloodPressureValues";
+import { stepFields } from "../../../../utils/bloodPressureValues";
 
 const AssignNewStatusBloodPressure = () => {
   const {

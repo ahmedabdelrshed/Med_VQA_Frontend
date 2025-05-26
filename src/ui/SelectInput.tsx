@@ -1,6 +1,11 @@
 // components/ui/Select.tsx
-import { FieldError, UseFormRegister, Path, UseFormTrigger } from "react-hook-form";
-import { BloodPressureData, BloodSugarData } from "../../Types";
+import {
+  FieldError,
+  UseFormRegister,
+  Path,
+  UseFormTrigger,
+} from "react-hook-form";
+import { BloodPressureData, BloodSugarData } from "../Types";
 
 interface SelectProps<T extends BloodPressureData | BloodSugarData> {
   label: string;
@@ -9,7 +14,7 @@ interface SelectProps<T extends BloodPressureData | BloodSugarData> {
   register: UseFormRegister<T>;
   error?: FieldError;
   placeholder?: string;
-  trigger?:UseFormTrigger<T>
+  trigger?: UseFormTrigger<T>;
 }
 
 const Select = <T extends BloodPressureData | BloodSugarData>({

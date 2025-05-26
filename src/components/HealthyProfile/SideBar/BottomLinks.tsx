@@ -1,6 +1,6 @@
 import { IoHomeOutline } from "react-icons/io5";
 import { useNavigate } from "react-router";
-import { openModel } from "../../utils/modelsFuns";
+import { openModel } from "../../../utils/modelsFuns";
 import { CiLogout } from "react-icons/ci";
 
 const BottomLinks = () => {

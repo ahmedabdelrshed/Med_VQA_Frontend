@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
+import ObesityCard from "../components/HealthyProfile/ObesityStatus/ObesityCard/ObesityCard";
 
 const HealthyProfile = () => {
-
   const healthyTips = [
     {
       title: "Water Intake",
@@ -32,58 +32,18 @@ const HealthyProfile = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col  bg-gradient-to-br from-blue-50 to-green-50 py-5 px-4 sm:px-6 lg:px-10">
+    <div className="min-h-screen flex flex-col justify-center bg-gradient-to-br from-blue-50 to-green-50 py-10 px-4 sm:px-6 lg:px-10">
       {/* Obesity Level Box */}
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="w-full sm:w-[48%] lg:w-[32%] bg-white rounded-2xl shadow-md p-4 mb-3"
-      >
-        <div>
-          {/* Image + Title */}
-          <div className="flex justify-between items-center">
-             <div className="flex items-center gap-3 ">
-            <img
-              src="/images/obesity.png" // Update if stored elsewhere
-              alt="Obesity Icon"
-              className="w-10 h-10"
-            />
-            <h2 className="text-lg font-semibold text-gray-700">
-              Obesity Status
-            </h2>
-          </div>
-            <div className="text-sm text-blue-400 bg-gray-100 rounded-full px-3 py-1 font-bold">
-              Overweight
-            </div>
-         </div>
-          <p className="text-gray-500 text-[13px] mb-1">
-            Last Assign Date: <span className="font-medium"> 25 may 2023 </span>
-          </p>
-
-          <div className="flex justify-between items-center">
-             <a
-            // href={`/reports/${obesityLevel.toLowerCase()}.pdf`}
-            download
-            className="text-sm text-blue-500  hover:text-blue-700"
-          >
-            📄 Download Report
-            </a>
-            <button
-              // onClick={handleAssignNewStatus}
-              className="text-sm bg-blue-400  hover:bg-blue-500 cursor-pointer text-white px-3 py-1 rounded-md transition"
-            >
-              Assign New Status
-            </button>
-         </div>
-        </div>
-      </motion.div>
-
+      <ObesityCard />
       <div className="max-w-6xl w-full">
-        <div className="mb-4">
-          <p className="italic text-lg text-gray-600">
-            Follow these essential steps to improve your health:
-          </p>
+        <div className="mb-3">
+          <div className="flex items-center my-2">
+            <div className="flex-grow border-t border-gray-300"></div>
+            <span className="mx-4 text-gray-600 italic text-lg whitespace-nowrap">
+              Improvements → Healthy
+            </span>
+            <div className="flex-grow border-t border-gray-300"></div>
+          </div>
         </div>
 
         {/* First two cards */}
@@ -99,7 +59,7 @@ const HealthyProfile = () => {
         </div>
 
         {/* Last two cards */}
-        <div className="flex flex-wrap justify-between mt-8">
+        <div className="flex flex-wrap justify-between mt-4">
           {healthyTips.slice(3).map((tip, index) => (
             <Card key={index + 3} tip={tip} delay={(index + 3) * 0.2} />
           ))}
@@ -121,9 +81,9 @@ const Card = ({
     animate={{ scale: 1 }}
     transition={{ duration: 0.7, delay, ease: "easeOut" }}
     whileHover={{ scale: 1.05 }}
-    className="w-full sm:w-[48%] lg:w-[32%] bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 mb-3"
+    className="w-full sm:w-[48%] lg:w-[32%] bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 mb-2"
   >
-    <div className="flex items-center gap-4 mb-2">
+    <div className="flex items-center gap-4 mb-1">
       <div className="text-4xl">{tip.icon}</div>
       <h2 className="text-xl font-semibold text-gray-800">{tip.title}</h2>
     </div>

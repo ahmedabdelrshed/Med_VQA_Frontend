@@ -1,10 +1,10 @@
-import { StepProps } from "../../../Types";
+import { StepProps } from "../../../../Types";
 import {
   STRESS_LEVEL,
   HISTORY_OF_HIGH_BP,
   SYMPTOMS_NOW,
-} from "../../../utils/bloodPressureValues";
-import Select from "../SelectInput";
+} from "../../../../utils/bloodPressureValues";
+import Select from "../../../../ui/SelectInput";
 
 const StepFourHealthInfoTwo = ({ register, errors, trigger }: StepProps) => {
   return (

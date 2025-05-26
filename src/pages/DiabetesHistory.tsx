@@ -1,9 +1,9 @@
 import { useState } from "react";
-import BloodSugarChar from "../components/HealthyProfile/BloodSugarChar";
+import BloodSugarChar from "../components/HealthyProfile/BloodSugar/BloodSugarChar";
 import LogoutModel from "../components/Modals/LogoutModel";
 import { useGetBloodSugarResultsQuery } from "../store/BloodSugar/bloodSugarApi";
 import { Prediction } from "../Types";
-import AssignNewStatusMod from "../components/HealthyProfile/AssignNewStatusBloodSugarMod";
+import AssignNewStatusMod from "../components/HealthyProfile/BloodSugar/AssignNewStatusBloodSugarMod";
 import { openModel } from "../utils/modelsFuns";
 
 const DiabetesHistory = () => {
@@ -95,9 +95,7 @@ const DiabetesHistory = () => {
             </div>
           ) : (
             data?.data && (
-              <BloodSugarChar
-                mockDataPrediction={data.data as Prediction[]}
-              />
+              <BloodSugarChar mockDataPrediction={data.data as Prediction[]} />
             )
           )}
         </div>

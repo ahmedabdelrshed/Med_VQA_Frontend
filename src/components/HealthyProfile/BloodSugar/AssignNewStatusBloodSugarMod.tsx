@@ -1,5 +1,5 @@
-import Button from "../../ui/Button";
-import Input from "../../ui/Input";
+import Button from "../../../ui/Button";
+import Input from "../../../ui/Input";
 import {
   DIABETES_STATUS,
   LAST_MEAL_TIME,
@@ -7,11 +7,11 @@ import {
   PHYSICAL_ACTIVITY,
   SYMPTOMS,
   TIME_OF_MEASUREMENT,
-} from "../../utils/bloodSugarValues";
-import formatEgyptTime from "../../utils/getTime";
-import ErrorMsg from "../../ui/ErrorMsg";
-import Select from "./SelectInput";
-import useAddNewStatusBloodSugar from "../../hooks/useAddNewStatusBloodSugar";
+} from "../../../utils/bloodSugarValues";
+import formatEgyptTime from "../../../utils/getTime";
+import ErrorMsg from "../../../ui/ErrorMsg";
+import Select from "../../../ui/SelectInput";
+import useAddNewStatusBloodSugar from "../../../hooks/useAddNewStatusBloodSugar";
 const AssignNewStatusMod = () => {
   const { errors, handleSubmit, isLoading, onSubmit, register, handleClose } =
     useAddNewStatusBloodSugar();

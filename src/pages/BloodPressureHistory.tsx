@@ -1,8 +1,8 @@
 import { useState } from "react";
-import BloodPressureBubbleChart from "../components/HealthyProfile/BloodPressureChar";
+import BloodPressureBubbleChart from "../components/HealthyProfile/BloodPressure/BloodPressureChar";
 import { useGetBloodPressureResultsQuery } from "../store/bloodPressure/bloodPressureApi";
 import { Prediction } from "../Types";
-import AssignNewStatusBloodPressure from "../components/HealthyProfile/BloodPressureNewStatus/AssignNewStatusBloodPressure";
+import AssignNewStatusBloodPressure from "../components/HealthyProfile/BloodPressure/BloodPressureNewStatus/AssignNewStatusBloodPressure";
 import { openModel } from "../utils/modelsFuns";
 
 const BloodPressureHistory = () => {

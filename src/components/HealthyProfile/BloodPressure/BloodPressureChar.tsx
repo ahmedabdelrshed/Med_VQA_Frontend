@@ -10,8 +10,8 @@ import {
 } from "chart.js";
 import { Bubble } from "react-chartjs-2";
 import { ChartData, ChartOptions } from "chart.js";
-import { Prediction } from "../../Types";
-import { formatDate } from "../../utils/getTime";
+import { Prediction } from "../../../Types";
+import { formatDate } from "../../../utils/getTime";
 
 ChartJS.register(
   CategoryScale,

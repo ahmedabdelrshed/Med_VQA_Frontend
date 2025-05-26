@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import SideBar from "../components/HealthyProfile/SideBar";
+import SideBar from "../components/HealthyProfile/SideBar/SideBar";
 import { GrMenu } from "react-icons/gr";
 
 const HealthyLayout = () => {

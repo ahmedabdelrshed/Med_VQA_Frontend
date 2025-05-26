@@ -1,6 +1,6 @@
-import { StepProps } from "../../../Types";
-import ErrorMsg from "../../../ui/ErrorMsg";
-import Input from "../../../ui/Input";
+import { StepProps } from "../../../../Types";
+import ErrorMsg from "../../../../ui/ErrorMsg";
+import Input from "../../../../ui/Input";
 
 const StepOneMeasurements = ({ register, errors, trigger }: StepProps) => (
   <>

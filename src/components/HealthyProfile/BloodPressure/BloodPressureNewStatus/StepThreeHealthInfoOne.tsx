@@ -1,10 +1,10 @@
-import { StepProps } from "../../../Types";
+import { StepProps } from "../../../../Types";
 import {
   SMOKING_STATUS,
   PHYSICAL_ACTIVITY_LEVEL,
   KNOWN_MEDICAL_CONDITIONS,
-} from "../../../utils/bloodPressureValues";
-import Select from "../SelectInput";
+} from "../../../../utils/bloodPressureValues";
+import Select from "../../../../ui/SelectInput";
 
 const StepThreeHealthInfoOne = ({ register, errors, trigger }: StepProps) => {
   return (

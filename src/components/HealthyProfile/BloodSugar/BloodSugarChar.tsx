@@ -10,8 +10,8 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { ChartData, ChartOptions } from "chart.js";
-import { LevelTypeDiabetes, Prediction } from "../../Types";
-import { formatDate } from "../../utils/getTime";
+import { LevelTypeDiabetes, Prediction } from "../../../Types";
+import { formatDate } from "../../../utils/getTime";
 
 // Register Chart.js components
 ChartJS.register(
