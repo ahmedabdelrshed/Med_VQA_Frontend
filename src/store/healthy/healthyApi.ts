@@ -5,6 +5,13 @@ import { HealthyDataRequest } from "../../Types";
 interface Prediction {
     health_tier: string;
     createdAt: string;
+    activity_level: string;
+    has_diabetes: boolean;
+    has_heart_disease: boolean;
+    has_hypertension: boolean;
+    height_cm: number;
+    is_smoker: boolean;
+    weight_kg: number;
 }
 export const healthyApi = createApi({
     reducerPath: "healthyApi",

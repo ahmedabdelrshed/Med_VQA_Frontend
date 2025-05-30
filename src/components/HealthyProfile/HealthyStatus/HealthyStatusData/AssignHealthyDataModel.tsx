@@ -7,8 +7,13 @@ import { healthStepFields } from "../../../../utils/healthyValues";
 import StepOneMeasurementsHealthy from "./StepOneMeasurementsHealthy";
 import StepTwoMedicalHistoryHealthy from "./StepTwoMedicalHistoryHealthy";
 import StepThreeMedicalLifestyle from "./StepThreeMedicalLifestyle";
+import { HealthyData } from "../../../../Types";
 
-const AssignHealthyDataModel = () => {
+const AssignHealthyDataModel = ({
+  updateHealthData,
+}: {
+  updateHealthData: HealthyData;
+}) => {
   const {
     errors,
     handleSubmit,
@@ -17,7 +22,7 @@ const AssignHealthyDataModel = () => {
     register,
     trigger,
     handleClose,
-  } = useAddNewStatusHealthy();
+  } = useAddNewStatusHealthy(updateHealthData);
 
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;

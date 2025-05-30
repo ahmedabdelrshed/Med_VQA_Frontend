@@ -5,7 +5,7 @@ import { closeModel } from "../utils/modelsFuns";
 import { healthSchema } from "../validations/healthySchema";
 import { useNewStatusHealthyMutation } from "../store/healthy/healthyApi";
 import toast from "react-hot-toast";
-const useAddNewStatusHealthy = () => {
+const useAddNewStatusHealthy = (updateData:HealthyData) => {
     const {
         register,
         handleSubmit,
@@ -17,13 +17,7 @@ const useAddNewStatusHealthy = () => {
         resolver: yupResolver(healthSchema),
         shouldUnregister: true,
         defaultValues: {
-            is_smoker: '',
-            activity_level: '',
-            has_diabetes: '',
-            has_hypertension: '',
-            has_heart_disease: '',
-            height_cm: '',
-            weight_kg: '',
+            ...updateData,
         },
     });
     const [newStatusHealthy, { isLoading }] = useNewStatusHealthyMutation();

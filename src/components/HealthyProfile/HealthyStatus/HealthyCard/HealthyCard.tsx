@@ -14,6 +14,15 @@ const HealthyCard = () => {
   const isEmpty = !result || Object.keys(result).length === 0;
   const displayStatus = (result?.health_tier as string) || "";
 
+  const healthyData = {
+    height_cm: String(result?.height_cm) || "",
+    weight_kg: String(result?.weight_kg) || "",
+    has_diabetes: result?.has_diabetes ? "Yes" : "No",
+    has_hypertension: result?.has_hypertension ? "Yes" : "No",
+    has_heart_disease: result?.has_heart_disease ? "Yes" : "No",
+    is_smoker: result?.is_smoker ? "Yes" : "No",
+    activity_level: result?.activity_level || "",
+  };
   return (
     <motion.div
       initial={{ scale: 0 }}
@@ -80,7 +89,7 @@ const HealthyCard = () => {
             </>
           )}
         </div>
-        <AssignHealthyDataModel />
+        <AssignHealthyDataModel updateHealthData={healthyData} />
       </div>
     </motion.div>
   );
