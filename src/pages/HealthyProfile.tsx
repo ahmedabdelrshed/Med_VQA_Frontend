@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ObesityCard from "../components/HealthyProfile/ObesityStatus/ObesityCard/ObesityCard";
+import HealthyCard from "../components/HealthyProfile/HealthyStatus/HealthyCard/HealthyCard";
 
 const HealthyProfile = () => {
   const healthyTips = [
@@ -32,8 +33,11 @@ const HealthyProfile = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col justify-center bg-gradient-to-br from-blue-50 to-green-50 py-10 px-4 sm:px-6 lg:px-10">
-      <ObesityCard />
+    <div className="min-h-screen flex flex-col justify-center bg-gradient-to-br from-blue-50 to-green-50 py-8 px-4 sm:px-6 lg:px-10">
+      <div className="lg:flex gap-55 items-center justify-center ">
+        <HealthyCard />
+        <ObesityCard />
+      </div>
       <div className="max-w-6xl w-full">
         <div className="mb-3">
           <div className="flex items-center my-2">

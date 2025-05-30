@@ -6,6 +6,7 @@ import { questionsApi } from './questions/questionsApi'
 import { bloodSugarAPI } from './BloodSugar/bloodSugarApi'
 import { bloodPressureAPI } from './bloodPressure/bloodPressureApi'
 import { obesityApi } from './Obesity/obesityApi'
+import { healthyApi } from './healthy/healthyApi'
 import questionReducer from './questions/questionSlice'
 export const store = configureStore({
     reducer: {
@@ -17,12 +18,13 @@ export const store = configureStore({
         [bloodSugarAPI.reducerPath]: bloodSugarAPI.reducer,
         [bloodPressureAPI.reducerPath]: bloodPressureAPI.reducer,
         [obesityApi.reducerPath]: obesityApi.reducer,
+        [healthyApi.reducerPath]: healthyApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,
         }).concat(chatAPI.middleware).concat(questionsApi.middleware).concat(bloodSugarAPI.middleware)
-            .concat(bloodPressureAPI.middleware).concat(obesityApi.middleware),
+            .concat(bloodPressureAPI.middleware).concat(obesityApi.middleware).concat(healthyApi.middleware),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -23,7 +23,7 @@ const ObesityCard = () => {
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="w-full sm:w-[48%] lg:w-[32%] bg-white rounded-2xl shadow-md p-4 mb-2"
+      className="w-full sm:w-[48%] lg:w-[55%] xl:w-[32%] bg-white rounded-2xl shadow-md p-4 mb-2"
     >
       <div>
         {/* Header */}
@@ -49,9 +49,9 @@ const ObesityCard = () => {
         </div>
         {!isEmpty && (
           <p className="text-gray-500 text-[13px] mb-1">
-            Last Assign Date:
+            Last Assign Date: 
             <span className="font-medium">
-              {formatDateObesity(result?.date)}
+               {" "} {formatDateObesity(result?.date)}
             </span>
           </p>
         )}
