@@ -34,7 +34,7 @@ const HealthyProfile = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center bg-gradient-to-br from-blue-50 to-green-50 py-8 px-4 sm:px-6 lg:px-10">
-      <div className="lg:flex gap-55 items-center justify-center ">
+      <div className="lg:flex gap-10 xl:gap-55  justify-center flex-wrap items-stretch ">
         <HealthyCard />
         <ObesityCard />
       </div>
