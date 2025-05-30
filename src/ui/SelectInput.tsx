@@ -5,9 +5,9 @@ import {
   Path,
   UseFormTrigger,
 } from "react-hook-form";
-import { BloodPressureData, BloodSugarData, ObesityData } from "../Types";
+import { BloodPressureData, BloodSugarData, HealthyData, ObesityData } from "../Types";
 
-interface SelectProps<T extends BloodPressureData | BloodSugarData | ObesityData> {
+interface SelectProps<T extends BloodPressureData | BloodSugarData | ObesityData | HealthyData> {
   label: string;
   id: Path<T>;
   options: string[];
@@ -17,7 +17,7 @@ interface SelectProps<T extends BloodPressureData | BloodSugarData | ObesityData
   trigger?: UseFormTrigger<T>;
 }
 
-const Select = <T extends BloodPressureData | BloodSugarData | ObesityData>({
+const Select = <T extends BloodPressureData | BloodSugarData | ObesityData | HealthyData>({
   label,
   id,
   options,

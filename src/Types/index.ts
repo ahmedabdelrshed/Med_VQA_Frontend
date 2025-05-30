@@ -102,9 +102,9 @@ export interface BloodPressureDataRequest {
 import { FieldErrors, FieldValues, UseFormRegister, UseFormTrigger } from "react-hook-form";
 
 export interface StepProps<T extends FieldValues> {
-  register: UseFormRegister<T>;
-  errors: FieldErrors<T>;
-  trigger: UseFormTrigger<T>;
+    register: UseFormRegister<T>;
+    errors: FieldErrors<T>;
+    trigger: UseFormTrigger<T>;
 }
 
 export interface ObesityData {
@@ -139,4 +139,23 @@ export interface ObesityDataRequest {
     TUE: number;
     CALC: string;
     MTRANS: string;
+}
+
+export interface HealthyData {
+    height_cm: string;
+    weight_kg: string;
+    has_diabetes: string;
+    has_hypertension: string;
+    has_heart_disease: string;
+    is_smoker: string;
+    activity_level: string;
+}
+export interface HealthyDataRequest {
+    height_cm: number;
+    weight_kg: number;
+    has_diabetes: number;
+    has_hypertension: number;
+    has_heart_disease: number;
+    is_smoker: number;
+    activity_level: string;
 }

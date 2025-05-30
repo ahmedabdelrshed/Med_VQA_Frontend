@@ -3,6 +3,7 @@ import { formatDateObesity } from "../../../../utils/obesityValues";
 import { openModel } from "../../../../utils/modelsFuns";
 import SkeletonObesityCard from "../../ObesityStatus/ObesityCard/SkeletonObesityCard";
 import { useGetHealthyStatusQuery } from "../../../../store/healthy/healthyApi";
+import AssignHealthyDataModel from "../HealthyStatusData/AssignHealthyDataModel";
 
 const HealthyCard = () => {
   const { data, isLoading, isFetching } = useGetHealthyStatusQuery();
@@ -53,7 +54,7 @@ const HealthyCard = () => {
           {isEmpty ? (
             <button
               onClick={() => {
-                openModel("NewObesityModal");
+                openModel("NewHealthyModal");
               }}
               className="text-sm bg-[#09ade3] hover:bg-blue-500 cursor-pointer text-white px-3 py-1 ml-auto rounded-md transition"
             >
@@ -70,7 +71,7 @@ const HealthyCard = () => {
               </p>
               <button
                 onClick={() => {
-                  openModel("NewObesityModal");
+                  openModel("NewHealthyModal");
                 }}
                 className="text-[10px] xl:text-sm bg-[#09ade3] hover:bg-blue-500 cursor-pointer text-white px-3 py-1 ml-auto rounded-md transition"
               >
@@ -79,6 +80,7 @@ const HealthyCard = () => {
             </>
           )}
         </div>
+        <AssignHealthyDataModel />
       </div>
     </motion.div>
   );

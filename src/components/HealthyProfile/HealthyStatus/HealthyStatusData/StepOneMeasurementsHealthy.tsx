@@ -1,12 +1,12 @@
-import { ObesityData, StepProps } from "../../../../Types";
+import { HealthyData,StepProps } from "../../../../Types";
 import ErrorMsg from "../../../../ui/ErrorMsg";
 import Input from "../../../../ui/Input";
 
-const StepOneMeasurementsObesity = ({
+const StepOneMeasurementsHealthy = ({
   register,
   errors,
   trigger,
-}: StepProps<ObesityData> ) => {
+}: StepProps<HealthyData> ) => {
   return (
     <>
       <h4 className="text-lg font-semibold text-gray-700 mb-4">
@@ -24,13 +24,13 @@ const StepOneMeasurementsObesity = ({
             id="Height"
             placeholder="Enter height"
             inputMode="numeric"
-            {...register("Height")}
+            {...register("height_cm")}
             onChange={(e) => {
-              register("Height").onChange(e);
-              trigger("Height");
+              register("height_cm").onChange(e);
+              trigger("height_cm");
             }}
           />
-          {errors.Height && <ErrorMsg msg={errors.Height.message} />}
+          {errors.height_cm && <ErrorMsg msg={errors.height_cm.message} />}
         </div>
         <div>
           <label
@@ -43,17 +43,17 @@ const StepOneMeasurementsObesity = ({
             id="Weight"
             placeholder="Enter weight"
             inputMode="numeric"
-            {...register("Weight")}
+            {...register("weight_kg")}
             onChange={(e) => {
-              register("Weight").onChange(e);
-              trigger("Weight");
+              register("weight_kg").onChange(e);
+              trigger("weight_kg");
             }}
           />
-          {errors.Weight && <ErrorMsg msg={errors.Weight.message} />}
+          {errors.weight_kg && <ErrorMsg msg={errors.weight_kg.message} />}
         </div>
       </div>
     </>
   );
 };
 
-export default StepOneMeasurementsObesity;
+export default StepOneMeasurementsHealthy;

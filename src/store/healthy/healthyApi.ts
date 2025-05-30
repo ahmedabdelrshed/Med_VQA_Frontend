@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
+import { HealthyDataRequest } from "../../Types";
 
 interface Prediction {
     health_tier: string;
@@ -25,10 +26,18 @@ export const healthyApi = createApi({
             }),
             providesTags: ['prediction-healthy'],
         }),
-       
+        newStatusHealthy: builder.mutation<{ body: HealthyDataRequest }, HealthyDataRequest>({
+            query: (body: HealthyDataRequest) => ({
+                url: `/api/health/health-record`,
+                method: "POST",
+                body,
+            }),
+            invalidatesTags: ['prediction-healthy'],
+        }),
+
 
     }),
 });
 
 export const {
-    useGetHealthyStatusQuery } = healthyApi;
+    useGetHealthyStatusQuery, useNewStatusHealthyMutation } = healthyApi;

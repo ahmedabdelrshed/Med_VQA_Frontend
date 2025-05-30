@@ -22,11 +22,11 @@ export const obesitySchema = yup.object({
     Weight: yup
         .string()
         .required("Weight is required")
-        .test("is-number", "Weight must be a number", value => !isNaN(Number(value)))
-        .test("is-valid-range", "Weight must be between 30 and 300 kg", value => {
-            const num = Number(value);
-            return num >= 30 && num <= 300;
-        }),
+            .test("is-number", "Weight must be a number", value => !isNaN(Number(value)))
+            .test("is-valid-range", "Weight must be between 30 and 300 kg", value => {
+                const num = Number(value);
+                return num >= 30 && num <= 300;
+            }),
 
     family_history: yup
         .string()
