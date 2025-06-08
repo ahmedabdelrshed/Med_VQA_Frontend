@@ -33,7 +33,7 @@ export const questionsApi = createApi({
         }),
         addQuestion: builder.mutation<void, { chatId: string; body: FormData }>({
             query: ({ chatId, body }) => ({
-                url: `/question/${chatId}`,
+                url: `/question/questionImage/${chatId}`,
                 method: "POST",
                 body,
             }),

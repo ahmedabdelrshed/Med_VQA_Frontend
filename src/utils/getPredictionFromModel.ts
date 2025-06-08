@@ -1,6 +1,6 @@
 import axios from "axios";
 type res = {
-    label:string
+    prediction:string
 }
 const getPredictionFromModel = async (image: File | Blob,setLoadingPrediction:(value:boolean)=>void) => {
     try {
@@ -8,7 +8,7 @@ const getPredictionFromModel = async (image: File | Blob,setLoadingPrediction:(v
         formData.append("file", image, "image.jpg");
 
         const response = await axios.post<res>(
-            "https://a7med95-model-medical-v1.hf.space/predict",
+            "https://a7med95-detect-organ.hf.space/predict",
             formData,
             {
                 headers: {
@@ -17,7 +17,7 @@ const getPredictionFromModel = async (image: File | Blob,setLoadingPrediction:(v
             }
         );
         setLoadingPrediction(false)
-        return response.data.label;
+        return response.data.prediction;
     } catch (error) {
         console.log(error)
     }
