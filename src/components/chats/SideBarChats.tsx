@@ -6,7 +6,7 @@ import {
 import ChatTitle from "./ChatTitle";
 import ChatTitleSkeleton from "./ChatTitleSkeleton";
 import { IoCreateOutline } from "react-icons/io5";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { CgProfile } from "react-icons/cg";
 import { CiLogout } from "react-icons/ci";
 import { useState } from "react";
@@ -31,7 +31,7 @@ const SideBarChats = () => {
     });
   };
   return (
-    <>
+    <div className="lg:h-screen overflow-hidden">
       {showOpenButton && !open && (
         <div className="px-9 pt-6 pb-2 hidden  lg:block">
           <BsMenuButtonWide
@@ -59,14 +59,21 @@ const SideBarChats = () => {
                   className="drawer-overlay"
                 ></label>
                 <ul className="menu bg-gray-300 min-h-full text-base-content  w-60 px-3 ">
-                  <div className="bg-gray-300 w-full  pb-2 pt-4 mb-5 px-6 flex justify-between  ">
+                  <div className="bg-gray-300 w-full  pb-2 pt-4 mb-7  flex justify-between  ">
                     <BsMenuButtonWide
                       className="w-8 h-8 p-1  hidden lg:block hover:bg-gray-400 hover:rounded-md  cursor-pointer"
                       onClick={handleClose}
                     />
+                    <Link to={"/"}>
+                      <img
+                        src="/images/logo.png"
+                        className="w-26 mt-2"
+                        alt=""
+                      />
+                    </Link>
                     <IoCreateOutline
                       onClick={onCreateChat}
-                      className="w-8 h-8 p-1 ml-auto hover:bg-gray-400 hover:rounded-md  cursor-pointer"
+                      className="w-8 h-8 p-1  hover:bg-gray-400 hover:rounded-md  cursor-pointer"
                     />
                   </div>
                   <div className="h-[65vh] overflow-auto  over overflow-x-hidden">
@@ -113,7 +120,7 @@ const SideBarChats = () => {
           </>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 
