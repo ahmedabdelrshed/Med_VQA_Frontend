@@ -30,9 +30,11 @@ export type TChat = {
 
 export type TQuestion = {
     _id: string,
-    question: string,
+    symptoms: string,
     imageUrl: string,
     answer: string,
+    type: "Symptoms" | "Image",
+    responseVoiceUrl: string,
     chatId: string,
     createdAt: string,
 }

@@ -48,7 +48,7 @@ const QuestionForm = () => {
     }
   };
   return (
-    <div className="absolute  border-3 border-[#6178ff] rounded-xl  bottom-3  lg:bottom-16 left-1/2 transform -translate-x-1/2 bg-white px-4 py-4 shadow-lg w-[90%] max-w-xl ">
+    <div className="absolute  border-3 border-[#6178ff] rounded-xl  bottom-3  lg:bottom-8 left-1/2 transform -translate-x-1/2 bg-white px-4 py-4 shadow-lg w-[90%] max-w-xl ">
       <TextInput value={question} onChange={setQuestion} />
       <div className="flex justify-between items-center ">
         <ImageUpload

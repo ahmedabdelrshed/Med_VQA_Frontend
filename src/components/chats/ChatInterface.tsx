@@ -16,7 +16,7 @@ const ChatInterface = () => {
       ) : questions?.data.length ? (
         <div className="">
           <ButtonShareShat />
-            <div className="h-[58vh] lg:h-[72vh]">
+            <div className="h-[58vh] lg:h-[79vh]">
             <QuestionsList Questions={questions.data} />
         </div>
         </div>

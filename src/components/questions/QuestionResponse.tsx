@@ -8,8 +8,8 @@ const QuestionResponse = ({
   isNew: boolean;
 }) => {
   return (
-    <div className="w-fit max-w-sm  py-1 lg:py-2 text-sm lg:text-[16px] gradient-bg  text-white rounded-full px-4 ml-auto">
-      <h1 className="text-center">
+    <div className="w-fit max-w-sm  py-1 lg:py-2 text-sm lg:text-[16px] gradient-bg  text-white rounded-md px-4 ml-auto">
+      <h1 className="whitespace-pre-line">
         {isNew ? (
           <>
             <span>{response.split(" ")[0]} </span>
@@ -24,6 +24,7 @@ const QuestionResponse = ({
           response
         )}
       </h1>
+      
     </div>
   );
 };
