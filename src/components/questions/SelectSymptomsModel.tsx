@@ -35,9 +35,9 @@ const SelectSymptomsModel = () => {
   return (
     <dialog
       id="selectSymptomsModal"
-      className="modal fixed inset-0 flex justify-center items-start "
+      className="modal fixed inset-0 flex justify-center items-center "
     >
-      <div className="modal-box bg-white text-black mt-28 flex flex-col p-6 rounded-lg w-full max-w-3xl max-h-[80vh] overflow-y-auto">
+      <div className="modal-box bg-white text-black flex flex-col p-6 rounded-lg w-full max-w-3xl max-h-[80vh] overflow-y-auto">
         <form method="dialog">
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
