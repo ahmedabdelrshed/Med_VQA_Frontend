@@ -56,7 +56,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           className="flex px-4 ml-3 bg-gray-300 rounded-xl py-1 cursor-pointer w-fit text-sm items-center"
           onClick={() => document.getElementById("inputImage")?.click()}
         >
-          <IoMdAddCircleOutline className="w-5.5 h-5.5 text-gray-700 mr-3 bg-gray-400 rounded-2xl p-1" />{" "}
+          <IoMdAddCircleOutline className="w-4 h-4 lg:w-5.5 lg:h-5.5 text-gray-700 mr-3 bg-gray-400 rounded-2xl p-1" />{" "}
           Image <CiImageOn className="w-4 h-4 ml-1 mt-[3px]" />
         </div>
       )}

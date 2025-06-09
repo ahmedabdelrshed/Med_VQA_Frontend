@@ -38,7 +38,16 @@ export const questionsApi = createApi({
                 body,
             }),
             invalidatesTags: [{ type: "questions", id: "LIST" }],
-        }), deleteQuestion: builder.mutation({
+        }),
+        addQuestionSymptoms: builder.mutation<void, { chatId: string; body: {symptoms: string[]} }>({
+            query: ({ chatId, body }) => ({
+                url: `/question/questionSymptoms/${chatId}`,
+                method: "POST",
+                body,
+            }),
+            invalidatesTags: [{ type: "questions", id: "LIST" }],
+        })
+        , deleteQuestion: builder.mutation({
             query: (id: string) => ({
                 url: `/question/${id}`,
                 method: "DELETE",
@@ -57,5 +66,5 @@ export const questionsApi = createApi({
     keepUnusedDataFor: 0
 });
 
-export const { useGetQuestionsQuery, useAddQuestionMutation, useDeleteQuestionMutation, useUpdateQuestionMutation } =
+export const { useGetQuestionsQuery, useAddQuestionMutation, useDeleteQuestionMutation, useUpdateQuestionMutation,useAddQuestionSymptomsMutation } =
     questionsApi;
