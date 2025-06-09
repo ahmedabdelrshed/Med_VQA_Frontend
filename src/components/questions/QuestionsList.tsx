@@ -11,6 +11,18 @@ interface IProps {
 }
 const QuestionsList = ({ Questions }: IProps) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const currentlyPlayingRef = useRef<HTMLAudioElement | null>(null);
+
+  const handlePlay = (newAudio: HTMLAudioElement) => {
+    if (
+      currentlyPlayingRef.current &&
+      currentlyPlayingRef.current !== newAudio
+    ) {
+      currentlyPlayingRef.current.pause();
+      currentlyPlayingRef.current.currentTime = 0;
+    }
+    currentlyPlayingRef.current = newAudio;
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -35,6 +47,8 @@ const QuestionsList = ({ Questions }: IProps) => {
           <QuestionResponse
             response={question.answer}
             isNew={!isFirstRender.current && index === Questions.length - 1}
+            responseVoiceUrl={question.responseVoiceUrl}
+            onPlay={handlePlay}
           />
         </div>
       ))}
