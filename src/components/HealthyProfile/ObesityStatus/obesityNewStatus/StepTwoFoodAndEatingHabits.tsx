@@ -13,9 +13,9 @@ const StepTwoFoodAndEatingHabits = ({
       <h4 className="text-lg font-semibold text-gray-700 mb-4">
         Food & Eating Habits
       </h4>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 ">
         <Select
-          label="Family History"
+          label="Has a family member suffered or suffers from overweight?"
           id="family_history"
           options={FAMILY_HISTORY}
           register={register}
@@ -24,7 +24,7 @@ const StepTwoFoodAndEatingHabits = ({
           placeholder="Select Family History"
         />
         <Select
-          label="High-Calorie Food (FAVC)"
+          label="Do you eat high caloric food frequently?"
           id="FAVC"
           options={FAVC}
           register={register}
@@ -33,9 +33,9 @@ const StepTwoFoodAndEatingHabits = ({
           trigger={trigger}
         />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-3">
         <RadioGroup
-          label="Vegetable Consumption (FCVC)"
+          label="Vegetable Consumption Per Day"
           name="FCVC"
           options={[1, 2, 3]}
           register={register}
@@ -43,7 +43,7 @@ const StepTwoFoodAndEatingHabits = ({
           trigger={trigger}
         />
         <RadioGroup
-          label="Main Meals Per Day (NCP)"
+          label="Main Meals Per Day "
           name="NCP"
           options={[1, 2, 3, 4]}
           register={register}
@@ -53,7 +53,7 @@ const StepTwoFoodAndEatingHabits = ({
       </div>
 
       <Select
-        label="Snacking (CAEC)"
+        label="Do you eat any food between meals?"
         id="CAEC"
         options={CAEC}
         register={register}

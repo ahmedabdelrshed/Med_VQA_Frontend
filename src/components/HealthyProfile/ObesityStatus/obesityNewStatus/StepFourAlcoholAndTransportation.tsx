@@ -14,7 +14,7 @@ const StepFourAlcoholAndTransportation = ({
       </h4>
       <div className="grid grid-cols-2 gap-4">
         <Select
-          label="Alcohol Consumption (CALC)"
+          label="How often do you drink alcohol?"
           id="CALC"
           options={CALC}
           register={register}
@@ -23,7 +23,7 @@ const StepFourAlcoholAndTransportation = ({
           trigger={trigger}
         />
         <Select
-          label="Transportation Mode (MTRANS)"
+          label="Which transportation do you usually use?"
           id="MTRANS"
           options={MTRANS}
           register={register}

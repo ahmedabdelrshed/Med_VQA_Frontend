@@ -25,7 +25,7 @@ const StepThreeLifestyle = ({
         />
 
         <Select
-          label="Calories Monitoring"
+          label="Do you monitor the calories you eat daily?"
           id="SCC"
           options={SCC}
           register={register}
@@ -35,9 +35,9 @@ const StepThreeLifestyle = ({
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4 mb-5">
         <RadioGroup
-          label="Water Intake (CH2O)"
+          label="Water Intake Consumption Per Day (liters)"
           name="CH2O"
           options={[1, 2, 3]}
           register={register}
@@ -45,7 +45,7 @@ const StepThreeLifestyle = ({
           trigger={trigger}
         />
         <RadioGroup
-          label="Physical Activity (FAF)"
+          label="How often do you have physical activity?"
           name="FAF"
           options={[0, 1, 2, 3]}
           register={register}
@@ -53,6 +53,9 @@ const StepThreeLifestyle = ({
           trigger={trigger}
         />
       </div>
+      <label className="block text-sm font-medium text-gray-700 mb-1 ">
+       How much time do you use technological devices (hours)?
+    </label>
       <Input
         id="TUE"
         placeholder="Technology Usage (hours)"
