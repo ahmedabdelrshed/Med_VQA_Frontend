@@ -88,7 +88,7 @@ const ProfileImage = ({
         {!selectedImage ? (
           <Button
             width="w-fit"
-            className="px-6 bg-indigo-500 mb-3 hover:bg-indigo-600 "
+            className="px-6 bg-blue-500 mb-3 hover:bg-blue-600 "
             onClick={() => {
               document.getElementById("imageUpload")?.click();
             }}

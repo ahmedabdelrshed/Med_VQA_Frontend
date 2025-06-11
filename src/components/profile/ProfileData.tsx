@@ -113,7 +113,7 @@ const ProfileData = ({
             Confirm Password
           </label>
           <InputPassword
-            placeholder="Please Enter your Confirm Password"
+            placeholder="Confirm Password"
             {...register("confirmPassword")}
           />
           {errors.confirmPassword && (
@@ -121,7 +121,7 @@ const ProfileData = ({
           )}
         </div>
         <Button
-          className="px-6 bg-indigo-500 mb-3 hover:bg-indigo-600 "
+          className="px-6 bg-blue-500 mb-3 hover:bg-blue-600 "
           type="submit"
           disabled={Object.keys(errors).length > 0 || loading}
           isLoading={loading}
