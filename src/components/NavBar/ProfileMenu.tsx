@@ -4,6 +4,7 @@ import { IoPersonCircleSharp } from "react-icons/io5";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { CiLogout } from "react-icons/ci";
 import { openModel } from "../../utils/modelsFuns";
+import LogoutModel from "../Modals/LogoutModel";
 
 interface IProps {
   setShowMenu: (val: boolean) => void;
@@ -59,6 +60,7 @@ const ProfileMenu = ({ setShowMenu }: IProps) => {
           </span>{" "}
           Logout
         </span>
+        <LogoutModel />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { useNavigate } from "react-router";
 import { openModel } from "../../../utils/modelsFuns";
 import { CiLogout } from "react-icons/ci";
+import LogoutModel from "../../Modals/LogoutModel";
 
 const BottomLinks = () => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const BottomLinks = () => {
           <span className="xl:text-[18px]">Log out</span>
         </div>
       </div>
+      <LogoutModel />
     </div>
   );
 };

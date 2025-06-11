@@ -69,12 +69,37 @@ const router = createBrowserRouter(
           />
         </Route>
         <Route path="/share/:id" element={<ShareChat />} />
-        <Route path="healthy-profile" element={<HealthyLayout />}>
-          <Route index element={<HealthyProfile />} />
-          <Route path="diabetes-history" element={<DiabetesHistory />} />
+        <Route
+          path="healthy-profile"
+          element={
+            <ProtectedRoute>
+              <HealthyLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <HealthyProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="diabetes-history"
+            element={
+              <ProtectedRoute>
+                <DiabetesHistory />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="blood-pressure-history"
-            element={<BloodPressureHistory />}
+            element={
+              <ProtectedRoute>
+                <BloodPressureHistory />
+              </ProtectedRoute>
+            }
           />
         </Route>
       </Route>

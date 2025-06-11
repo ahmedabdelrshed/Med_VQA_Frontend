@@ -11,6 +11,8 @@ import { CgProfile } from "react-icons/cg";
 import { CiLogout } from "react-icons/ci";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import LogoutModel from "../Modals/LogoutModel";
+import { openModel } from "../../utils/modelsFuns";
 
 const SideBarChats = () => {
   const { isLoading, data } = useGetChatsQuery();
@@ -104,10 +106,7 @@ const SideBarChats = () => {
                     <div
                       className=" flex items-center space-x-14 px-5 w-full text-gray-600   cursor-pointer"
                       onClick={() => {
-                        const modal = document.getElementById(
-                          "logoutModal"
-                        ) as HTMLDialogElement | null;
-                        modal?.showModal();
+                       openModel("logoutModal");
                       }}
                     >
                       <CiLogout className="w-5 h-5 xl:w-6 xl:h-6   " />
@@ -119,6 +118,7 @@ const SideBarChats = () => {
             </motion.div>
           </>
         )}
+        <LogoutModel />
       </AnimatePresence>
     </div>
   );
