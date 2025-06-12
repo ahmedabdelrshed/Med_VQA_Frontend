@@ -1,11 +1,14 @@
 import { useForm } from "react-hook-form";
 import { HealthyData } from "../Types";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { closeModel } from "../utils/modelsFuns";
+import { closeModel, openModel } from "../utils/modelsFuns";
 import { healthSchema } from "../validations/healthySchema";
 import { useNewStatusHealthyMutation } from "../store/healthy/healthyApi";
 import toast from "react-hot-toast";
-const useAddNewStatusHealthy = (updateData:HealthyData) => {
+import { useLocation } from "react-router";
+const useAddNewStatusHealthy = (updateData: HealthyData) => {
+    const location = useLocation();
+    const isHomePage = location.pathname === "/";
     const {
         register,
         handleSubmit,
@@ -22,7 +25,7 @@ const useAddNewStatusHealthy = (updateData:HealthyData) => {
     });
     const [newStatusHealthy, { isLoading }] = useNewStatusHealthyMutation();
     const onSubmit = async (data: HealthyData) => {
-        console.log(data)
+
         try {
             const requestData = {
                 height_cm: Number(data.height_cm),
@@ -36,15 +39,18 @@ const useAddNewStatusHealthy = (updateData:HealthyData) => {
 
             await newStatusHealthy(requestData)
                 .unwrap()
-                .then(() => {
+                .then((res: { health_status: string }) => {
                     handleClose();
-                    toast.success("Healthy status assigned successfully!");
+                    if (isHomePage) {
+                        openModel("HealthPredictionResultModal")
+                        localStorage.setItem("health_status", res.health_status);
+                    } else
+                        toast.success("Healthy status assigned successfully!");
                 });
         } catch (error) {
             console.error("Error submitting form:", error);
         }
     };
-
     const handleClose = () => {
         closeModel("NewHealthyModal");
         clearErrors();

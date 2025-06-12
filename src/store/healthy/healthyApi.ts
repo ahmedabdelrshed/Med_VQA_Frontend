@@ -33,7 +33,7 @@ export const healthyApi = createApi({
             }),
             providesTags: ['prediction-healthy'],
         }),
-        newStatusHealthy: builder.mutation<{ body: HealthyDataRequest }, HealthyDataRequest>({
+        newStatusHealthy: builder.mutation<{ health_status: string }, HealthyDataRequest>({
             query: (body: HealthyDataRequest) => ({
                 url: `/api/health/health-record`,
                 method: "POST",

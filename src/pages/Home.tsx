@@ -1,7 +1,9 @@
+import {  useEffect } from "react";
 import ContactUS from "../components/ContactUS/ContactUS";
 import Features from "../components/Features/Features";
 import AssignHealthyDataModel from "../components/HealthyProfile/HealthyStatus/HealthyStatusData/AssignHealthyDataModel";
 import FillOrSkipHealthyDataModel from "../components/HealthyProfile/HealthyStatus/HomeHealthyRecord/FillOrSkipHealthyDataModel";
+import HealthPredictionResultModal from "../components/HealthyProfile/HealthyStatus/HomeHealthyRecord/HealthPredictionResultModal";
 import Hero from "../components/Hero/Hero";
 import HowItWorks from "../components/HowItWork/HowItWork";
 import LogoutModel from "../components/Modals/LogoutModel";
@@ -11,9 +13,12 @@ import { openModel } from "../utils/modelsFuns";
 
 const Home = () => {
   const { isHasHealthRecord } = useAppSelector((state) => state.auth.user);
-  if (isHasHealthRecord) {
-    openModel("FillOrSkipHealthyDataModel");
-  }
+
+  useEffect(() => {
+    if (!isHasHealthRecord) {
+      openModel("FillOrSkipHealthyDataModel");
+    }
+  }, [isHasHealthRecord]);
   const defaultHealthyData = {
     height_cm: "",
     weight_kg: "",
@@ -33,6 +38,7 @@ const Home = () => {
       <HowItWorks />
       <ContactUS />
       <LogoutModel />
+      <HealthPredictionResultModal />
       <FillOrSkipHealthyDataModel />
       <AssignHealthyDataModel updateHealthData={defaultHealthyData} />
     </div>

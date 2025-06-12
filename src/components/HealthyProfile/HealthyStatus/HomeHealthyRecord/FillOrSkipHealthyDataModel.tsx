@@ -6,10 +6,6 @@ const FillOrSkipHealthyDataModel = () => {
   return (
     <dialog
       id="FillOrSkipHealthyDataModel"
-      open
-      aria-modal="true"
-      role="dialog"
-      aria-labelledby="health-data-title"
       className="modal fixed inset-0 flex justify-center items-start bg-black/50 z-50"
     >
       <div className="modal-box relative bg-white text-black mt-28 p-6 rounded-lg shadow-xl max-w-md w-full">
