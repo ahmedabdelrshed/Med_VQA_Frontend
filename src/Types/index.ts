@@ -161,3 +161,18 @@ export interface HealthyDataRequest {
     is_smoker: number;
     activity_level: string;
 }
+
+export type Medication = {
+    name: string;
+    dosage?: string;
+    frequency?: string;
+    route?: string;
+};
+
+export type TreatPrescriptionData = {
+    data?: {
+        medications: Medication[] | [];
+        instructions: string[] | [];
+        tests: string[] | [];
+    };
+};

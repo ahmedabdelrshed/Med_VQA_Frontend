@@ -6,6 +6,7 @@ import { BsBarChart } from "react-icons/bs";
 import CustomNavLink from "./CustomNavLink";
 import BottomLinks from "./BottomLinks";
 import { LuChartScatter } from "react-icons/lu";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 const SideBar = () => {
   const [open, setOpen] = useState(true);
@@ -58,7 +59,7 @@ const SideBar = () => {
                   />
                   <img src="/images/logo.png" className="w-34 " alt="" />
                 </div>
-                <div className="mt-8 w-full space-y-10">
+                <div className="mt-8 w-full space-y-5">
                   <CustomNavLink
                     to="/healthy-profile"
                     icon={GiHealingShield}
@@ -73,6 +74,11 @@ const SideBar = () => {
                     to="/healthy-profile/blood-pressure-history"
                     icon={LuChartScatter}
                     text="Blood Pressure "
+                  />
+                  <CustomNavLink
+                  to="/healthy-profile/treatment-prescription"
+                  icon={IoDocumentTextOutline}
+                  text="Treat Prescription"
                   />
                 </div>
                 <BottomLinks />

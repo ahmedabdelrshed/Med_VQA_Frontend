@@ -25,6 +25,7 @@ import HealthyProfile from "../pages/HealthyProfile";
 import HealthyLayout from "../layouts/HealthyLayout";
 import DiabetesHistory from "../pages/DiabetesHistory";
 import BloodPressureHistory from "../pages/BloodPressureHistory";
+import TreatPrescription from "../components/HealthyProfile/TreatPrescription/TreatPrescription";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -98,6 +99,14 @@ const router = createBrowserRouter(
             element={
               <ProtectedRoute>
                 <BloodPressureHistory />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="treatment-prescription"
+            element={
+              <ProtectedRoute>
+                <TreatPrescription />
               </ProtectedRoute>
             }
           />
