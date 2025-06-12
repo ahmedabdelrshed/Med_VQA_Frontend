@@ -13,12 +13,13 @@ import { openModel } from "../utils/modelsFuns";
 
 const Home = () => {
   const { isHasHealthRecord } = useAppSelector((state) => state.auth.user);
+  const { token } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
-    if (!isHasHealthRecord) {
+    if (!isHasHealthRecord && token) {
       openModel("FillOrSkipHealthyDataModel");
     }
-  }, [isHasHealthRecord]);
+  }, [isHasHealthRecord, token]);
   const defaultHealthyData = {
     height_cm: "",
     weight_kg: "",

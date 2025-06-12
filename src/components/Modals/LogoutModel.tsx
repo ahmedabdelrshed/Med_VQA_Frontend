@@ -1,12 +1,16 @@
 import { useNavigate } from "react-router";
 import Button from "../../ui/Button";
 import Cookies from "js-cookie";
+import { useAppDispatch } from "../../store/hooks";
+import { actLogout } from "../../store/auth/authSlice";
 
 const LogoutModel = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const onLogout = () => {
     setTimeout(() => {
       Cookies.remove("token");
+      dispatch(actLogout());
       navigate("/");
     }, 1500);
     };
