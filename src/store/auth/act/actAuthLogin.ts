@@ -11,6 +11,7 @@ type TResponse = {
         firstName: string;
         lastName: string;
         avatar: string;
+        isHasHealthRecord: boolean;
     };
     token: string;
 };

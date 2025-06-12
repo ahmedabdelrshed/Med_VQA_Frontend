@@ -25,7 +25,7 @@ const StepThreeMedicalLifestyle = ({
         <Select
           label="Select your Physical Activity Level"
           id="activity_level"
-          options={["Low", "Medium", "High"]}
+          options={["Low", "Moderate", "High"]}
           register={register}
           error={errors.activity_level}
           placeholder="Select Physical Activity Level"

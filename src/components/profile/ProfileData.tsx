@@ -107,7 +107,7 @@ const ProfileData = ({
         </div>
         <div>
           <label
-            htmlFor="confirm_password"
+            htmlFor="confirmPassword"
             className="block text-sm font-medium text-gray-700"
           >
             Confirm Password

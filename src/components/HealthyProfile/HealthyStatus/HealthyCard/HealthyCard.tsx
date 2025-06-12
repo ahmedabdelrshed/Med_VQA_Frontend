@@ -22,7 +22,7 @@ const HealthyCard = () => {
     has_heart_disease: result?.has_heart_disease ? "Yes" : "No",
     is_smoker: result?.is_smoker ? "Yes" : "No",
     activity_level: result?.activity_level || "",
-  };
+  };  
   return (
     <motion.div
       initial={{ scale: 0 }}

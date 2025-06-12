@@ -45,5 +45,5 @@ export const healthSchema = yup.object({
     activity_level: yup
         .string()
         .required("Activity level is required")
-        .oneOf(["Low", "Medium", "High"], "Please select a valid activity level"),
+        .oneOf(["Low", "Moderate", "High"], "Please select a valid activity level"),
 });

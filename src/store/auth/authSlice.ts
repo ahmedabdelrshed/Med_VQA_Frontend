@@ -19,6 +19,7 @@ interface IAuthState {
         firstName: string;
         lastName: string;
         avatar: string;
+        isHasHealthRecord: boolean
     };
     token: string | null;
     loading: boolean;
@@ -30,6 +31,8 @@ const initialState: IAuthState = {
         email: "",
         firstName: "",
         lastName: "",
+        avatar: "",
+        isHasHealthRecord: false
     },
     token: Cookies.get("token") || null,
     loading: false,
@@ -57,7 +60,8 @@ const authSlice = createSlice({
                 email: "",
                 firstName: "",
                 lastName: "",
-                avatar: ""
+                avatar: "",
+                isHasHealthRecord: false
             };
             state.token = null;
             Cookies.remove("token");

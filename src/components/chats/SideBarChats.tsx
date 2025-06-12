@@ -11,7 +11,6 @@ import { CgProfile } from "react-icons/cg";
 import { CiLogout } from "react-icons/ci";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import LogoutModel from "../Modals/LogoutModel";
 import { openModel } from "../../utils/modelsFuns";
 
 const SideBarChats = () => {
@@ -118,7 +117,6 @@ const SideBarChats = () => {
             </motion.div>
           </>
         )}
-        <LogoutModel />
       </AnimatePresence>
     </div>
   );
