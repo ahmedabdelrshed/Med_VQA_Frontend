@@ -6,7 +6,7 @@ import actChangePassword from "./act/actChangePassword";
 import actResendVerifyEmail from "./act/actResendVerifyEmail";
 import actConfirmVerifyEmail from "./act/actConfirmVerifyEmail";
 import Cookies from "js-cookie";
-import calExpiresDate from "../../utils/decodedToken";
+import calExpiresDateOfToken from "../../utils/decodedToken";
 import actUpdateUser from "../user/act/actUpdateUser";
 import actDelProfileImage from "../user/act/actDelProfileImage";
 import actContactUs from "../user/act/actContactUs";
@@ -66,7 +66,11 @@ const authSlice = createSlice({
             state.token = null;
             Cookies.remove("token");
             Cookies.remove("user");
-
+        },
+        updateHealthStatus: (state) => {
+            state.user.isHasHealthRecord = true;
+            const expire = calExpiresDateOfToken(state.token as string)
+            Cookies.set("user", JSON.stringify(state.user), { expires: expire });
         }
     },
     extraReducers: (builder) => {
@@ -78,7 +82,7 @@ const authSlice = createSlice({
             state.loading = false;
             state.user = action.payload.user;
             state.token = action.payload.token;
-            const expireDay = calExpiresDate(state.token)
+            const expireDay = calExpiresDateOfToken(state.token)
             Cookies.set("token", action.payload.token, { expires: expireDay });
             Cookies.set("user", JSON.stringify(action.payload.user), { expires: expireDay });
         });
@@ -154,7 +158,7 @@ const authSlice = createSlice({
         builder.addCase(actUpdateUser.fulfilled, (state, action) => {
             state.loading = false;
             state.user = action.payload.updatedUser;
-            const expire = calExpiresDate(state.token as string)
+            const expire = calExpiresDateOfToken(state.token as string)
             Cookies.set("user", JSON.stringify(action.payload.updatedUser), { expires: expire });
         });
         builder.addCase(actUpdateUser.rejected, (state, action) => {
@@ -173,8 +177,8 @@ const authSlice = createSlice({
             state.loading = false;
             state.error = action.payload as string;
         });
-         // Contact Us Submit
-         builder.addCase(actContactUs.pending, (state) => {
+        // Contact Us Submit
+        builder.addCase(actContactUs.pending, (state) => {
             state.loading = true;
             state.error = null;
         })
@@ -189,4 +193,4 @@ const authSlice = createSlice({
 })
 
 export default authSlice.reducer;
-export const { setUserEmail, setUser, actLogout, resetUi } = authSlice.actions;
+export const { setUserEmail, setUser, actLogout, resetUi, updateHealthStatus } = authSlice.actions;

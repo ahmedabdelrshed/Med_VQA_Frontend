@@ -6,9 +6,12 @@ import { healthSchema } from "../validations/healthySchema";
 import { useNewStatusHealthyMutation } from "../store/healthy/healthyApi";
 import toast from "react-hot-toast";
 import { useLocation } from "react-router";
+import { useAppDispatch } from "../store/hooks";
+import { updateHealthStatus } from "../store/auth/authSlice";
 const useAddNewStatusHealthy = (updateData: HealthyData) => {
     const location = useLocation();
     const isHomePage = location.pathname === "/";
+    const dispatch = useAppDispatch();
     const {
         register,
         handleSubmit,
@@ -43,6 +46,7 @@ const useAddNewStatusHealthy = (updateData: HealthyData) => {
                     handleClose();
                     if (isHomePage) {
                         openModel("HealthPredictionResultModal")
+                        dispatch(updateHealthStatus())
                         localStorage.setItem("health_status", res.health_status);
                     } else
                         toast.success("Healthy status assigned successfully!");
