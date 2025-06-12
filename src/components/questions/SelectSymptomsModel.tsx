@@ -18,8 +18,8 @@ const SelectSymptomsModel = () => {
     );
   };
   const handleSubmit = () => {
-    if (selectedSymptoms.length === 0) {
-      toast.error("Please select at least one symptom.");
+    if (selectedSymptoms.length < 3) {
+      toast.error("Please select at least Three symptom.");
       return;
     }
     if (chatId) {

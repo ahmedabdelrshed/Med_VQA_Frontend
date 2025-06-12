@@ -36,14 +36,16 @@ const QuestionForm = () => {
       image as File,
       setLoadingPrediction
     );
-    body.append("response", response as string);
-    if (chatId) addQuestion({ chatId, body });
-    setImage(null);
+    if (response) {
+      body.append("response", response as string);
+      if (chatId) addQuestion({ chatId, body });
+      setImage(null);
+    }
     const inputElement = document.getElementById(
       "inputImage"
     ) as HTMLInputElement;
     if (inputElement) {
-      inputElement.value = ""; // Reset the value of the file input
+      inputElement.value = ""; 
     }
   };
   return (

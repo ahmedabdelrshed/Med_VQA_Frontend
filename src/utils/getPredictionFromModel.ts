@@ -1,7 +1,10 @@
 import axios from "axios";
 import { brain_model, chest_model, breast_model, bone_heel_model, kidney_model, gallbladder_model } from "./diseases_models";
+import { openModel } from "./modelsFuns";
+import toast from "react-hot-toast";
 type res = {
     prediction: string
+    confidence: number
 }
 const getPredictionFromModel = async (image: File | Blob, setLoadingPrediction: (value: boolean) => void) => {
     try {
@@ -17,6 +20,14 @@ const getPredictionFromModel = async (image: File | Blob, setLoadingPrediction: 
                 },
             }
         );
+        if (response.data.confidence < 0.6) {
+            toast.error("The detected organ is not accurate. You can select symptoms manually instead.");
+            setTimeout(() => {
+                openModel("selectSymptomsModal");
+            }, 1600);
+
+            return;
+        }
         let organ = response.data.prediction;
         let disease = "";
         let boneResult: {
