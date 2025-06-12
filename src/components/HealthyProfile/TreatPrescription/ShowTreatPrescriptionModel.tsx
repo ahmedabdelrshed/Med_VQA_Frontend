@@ -6,7 +6,7 @@ const ShowTreatPrescriptionModel = ({ data }: TreatPrescriptionData) => {
     if (!data) {
   return (
     <div className="p-4 text-center text-gray-600">
-      No treatment prescription found.
+      No treatment prescription found Try again.
     </div>
   );
 }
