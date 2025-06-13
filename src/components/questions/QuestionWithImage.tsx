@@ -1,11 +1,10 @@
-import { BiSolidEdit } from "react-icons/bi";
 import ImageWithSkeleton from "./ImageWithSkeleton";
 import { MdDelete } from "react-icons/md";
 import { useState } from "react";
 import { useAppDispatch } from "../../store/hooks";
 import {
   setDeleteQuestionID,
-  setUpdatedQuestion,
+  
 } from "../../store/questions/questionSlice";
 import { useLocation } from "react-router";
 
@@ -25,13 +24,7 @@ const QuestionWithImage = ({ imageUrl,  id }: IProps) => {
     ) as HTMLDialogElement | null;
     modal?.showModal();
   };
-  const onUpdateQuestion = () => {
-    dispatch(setUpdatedQuestion({ id }));
-    const modal = document.getElementById(
-      "UpdateQuestionModal"
-    ) as HTMLDialogElement | null;
-    modal?.showModal();
-  };
+  
   return (
     <div
       className="max-w-sm mt-2 w-fit"
@@ -45,12 +38,8 @@ const QuestionWithImage = ({ imageUrl,  id }: IProps) => {
             isHovered ? "opacity-100" : "opacity-0"
           }  transition-opacity duration-200`}
         >
-          <BiSolidEdit
-            className="w-4 text-indigo-600 cursor-pointer"
-            onClick={onUpdateQuestion}
-          />
           <MdDelete
-            className="w-4 text-red-600 cursor-pointer"
+            className="w-4 text-red-600 cursor-pointer ml-auto"
             onClick={onDeleteQuestion}
           />
         </div>
