@@ -60,7 +60,7 @@ const getPredictionFromModel = async (image: File | Blob, setLoadingPrediction: 
                 break;
         }
         setLoadingPrediction(false)
-        return `The organ detected is ${organ} and the disease predicted is ${disease}`;
+        return `The organ detected is ${organ} and ${disease}`;
     } catch (error) {
         console.log(error)
     }
