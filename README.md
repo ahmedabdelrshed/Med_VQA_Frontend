@@ -1,50 +1,89 @@
-# React + TypeScript + Vite
+# Medical VQA Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered Medical Visual Question Answering application built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Medical VQA is a web application that allows users to analyze medical images through an AI-powered question-answering system. The application provides an intuitive interface for healthcare professionals and researchers to interact with medical images and get detailed insights.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Interactive chat interface for image analysis
+- Real-time medical image processing
+- User authentication and profile management
+- Responsive design for all devices
+- Chart visualizations using Chart.js
+- Modern animations using Lottie
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- React 19
+- TypeScript
+- Vite
+- Redux Toolkit
+- TailwindCSS
+- DaisyUI
+- Chart.js
+- Lottie React
+- React Router
+- React Hook Form
+- Yup Validation
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Prerequisites
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Node.js (v16 or higher)
+- npm or yarn
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Installation
+
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd med-vqa-frontend
+
+2. Install dependencies:
+
+npm install
+
+3. Start the development server:
+
+npm run dev
+
+Available Scripts
+npm run dev - Starts development server
+npm run build - Creates production build
+npm run preview - Preview production build
+npm run lint - Run ESLint
+
+
+Project Structure
+
+src/
+├── Animations/      # Lottie animation files
+├── components/      # Reusable components
+├── config/         # Configuration files
+├── hooks/          # Custom React hooks
+├── layouts/        # Layout components
+├── pages/          # Page components
+├── store/          # Redux store setup
+├── Types/          # TypeScript type definitions
+├── utils/          # Utility functions
+└── validations/    # Form validation schemas
+
+Contributing
+Fork the repository
+Create your feature branch (git checkout -b feature/AmazingFeature)
+Commit your changes (git commit -m 'Add some AmazingFeature')
+Push to the branch (git push origin feature/AmazingFeature)
+Open a Pull Request
+License
+This project is licensed under the MIT License - see the LICENSE file for details
+
+Similar code found with 3 license types - View matches
+
+
+This README.md provides a comprehensive overview of your project, including setup instructions, available scripts, project structure, and contribution guidelines. It's based on the technology stack visible in your [package.json](package.json) and project structure.
+
+The README can be placed at the root of your project directory, replacing the existing React+TypeScript+Vite template README.This README.md provides a comprehensive overview of your project, including setup instructions, available scripts, project structure, and contribution guidelines. It's based on the technology stack visible in your [package.json](package.json) and project structure.
+
+The README can be placed at the root of your project directory, replacing the existing React+TypeScript+Vite
