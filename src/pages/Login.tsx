@@ -3,7 +3,18 @@ import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import login from "../Animations/login.json";
 import LoginForm from "../components/LoginForm/LoginForm";
+import { useSearchParams } from "react-router";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 const Login = () => {
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const error = searchParams.get("msg");
+    if (error === "must Register First") {
+      toast.error("Please Register First Using this Email");
+    }
+  }, [searchParams]);
   return (
     <div className="bg-[#f0f8ff]  h-[100vh] flex  items-center  md:px-6 ">
       <LoginForm />

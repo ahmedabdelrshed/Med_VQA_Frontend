@@ -40,6 +40,7 @@ const router = createBrowserRouter(
             </ProtectedRoute>
           }
         />
+        <Route path="login?msg" element={<Login />} />
         <Route path="login" element={<Login />} />
         <Route path="confirmEmail" element={<ConfirmationEmail />} />
         <Route
