@@ -18,20 +18,24 @@ const Register = () => {
   }, [error]);
 
   return (
-    <div className="bg-[#f0f8ff]  h-[100vh] flex  items-center  md:px-6 ">
+    <div className="bg-[#f0f8ff]  h-[100vh] flex  items-center  md:px-6 dark:bg-black">
       <motion.div
-        className="bg-[#f9fafb] w-[88%]  md:w-md h-fit m-auto  xl:max-w-xl xl:w-[35%] xl:ml-20  px-4 pb-3 pt-2 rounded-lg  shadow-lg  "
+        className="bg-transparent w-[88%] dark:bg-gray-900  md:w-md h-fit m-auto  xl:max-w-xl xl:w-[35%] xl:ml-20  px-4 pb-3 pt-2 rounded-lg  shadow-lg  "
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
         viewport={{ once: true }}
       >
-        <h1 className=" text-2xl lg:text-3xl text-[#118df0]   mt-2 mb-1 lg:mb-5 text-center font-bold  italic ">
+        <h1
+          className=" text-2xl lg:text-3xl text-[#118df0]   mt-2 mb-1 lg:mb-5 text-center font-bold  italic 
+          
+        "
+        >
           Register Page
         </h1>
 
         <RegisterForm />
-        <div className="mt-3 text-center text-gray-600">
+        <div className="mt-3 text-center text-gray-600 dark:bg-gray-900 ">
           Already have an account? {"  "}
           <Link className="font-semibold text-indigo-600" to="/login">
             Login

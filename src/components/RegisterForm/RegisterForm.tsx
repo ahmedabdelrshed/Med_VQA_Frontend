@@ -16,8 +16,11 @@ const RegisterForm = () => {
     emailAvailabilityStatus,
   } = useRegister();
   return (
-    <form className="space-y-2" onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col md:flex-row md:space-x-4  ">
+    <form
+      className="space-y-2 dark:bg-gray-900 "
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <div className="flex flex-col md:flex-row md:space-x-4  dark:bg-gray-900 ">
         <div className="w-full mb-4 md:mb-0">
           <LabelInput inputName="firstName" label="First Name" />
           <Input {...register("firstName")} placeholder="First Name" />
@@ -53,23 +56,23 @@ const RegisterForm = () => {
       <div className="relative">
         <LabelInput inputName="dateOfBirth" label="Date of Birth" />
         <Input type="date" width={"w-full"} {...register("DateOfBirth")} />
-              {/* <MdOutlineDateRange className="absolute top-10 lg:hidden right-3" /> */}
+        {/* <MdOutlineDateRange className="absolute top-10 lg:hidden right-3" /> */}
         {errors.DateOfBirth && <ErrorMsg msg={errors.DateOfBirth?.message} />}
       </div>
       <div className="flex flex-wrap space-x-8 lg:space-x-25 my-4">
         <LabelInput inputName="gender" label="Gender" />
 
         <div className="flex space-x-6 lg:space-x-15">
-          <label className="flex items-center gap-1">
+          <label className="flex items-center gap-1 dark:text-gray-200 cursor-pointer">
             <input
               type="radio"
               value="Male"
-              className="accent-blue-500"
+              className="accent-blue-500 "
               {...register("gender")}
             />
             Male
           </label>
-          <label className="flex items-center gap-1">
+          <label className="flex items-center gap-1 dark:text-gray-200 cursor-pointer">
             <input
               type="radio"
               value="Female"
@@ -78,8 +81,8 @@ const RegisterForm = () => {
             />
             Female
           </label>
-              </div>
-              {errors.gender  && <ErrorMsg msg={errors.gender?.message} />}
+        </div>
+        {errors.gender && <ErrorMsg msg={errors.gender?.message} />}
       </div>
       <div>
         <LabelInput inputName="password" label="Password" />

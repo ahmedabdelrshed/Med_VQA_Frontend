@@ -16,7 +16,7 @@ const Login = () => {
     }
   }, [searchParams]);
   return (
-    <div className="bg-[#f0f8ff]  h-[100vh] flex  items-center  md:px-6 ">
+    <div className="bg-[#f0f8ff]  h-[100vh] flex  items-center  md:px-6 dark:bg-black">
       <LoginForm />
       <motion.div
         initial={{ opacity: 0, x: 50 }}
