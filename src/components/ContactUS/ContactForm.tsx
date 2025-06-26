@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import actContactUs from "../../store/user/act/actContactUs";
 import { motion } from "framer-motion";
+import Input from "../../ui/Input";
 
 const ContactForm = () => {
   const dispatch = useAppDispatch();
@@ -41,69 +42,64 @@ const ContactForm = () => {
     <motion.form
       onSubmit={handleSubmit(onSubmit)}
       autoComplete="off"
-      className="p-6  w-[100%]  xl:w-[50%]   flex flex-col  rounded-lg shadow-lg"
+      className="p-6 w-full xl:w-[50%] flex flex-col rounded-lg shadow-lg 
+             bg-transparent dark:bg-black 
+             transition-colors duration-300"
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.6 }}
       viewport={{ once: true }}
     >
-      <div className="flex flex-col md:flex-row md:space-x-4  ">
+      {/* Name Fields */}
+      <div className="flex flex-col md:flex-row md:space-x-4">
         <div className="w-full mb-4 md:mb-0">
           <label
             htmlFor="firstName"
-            className="block text-sm  font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-200"
           >
             First Name
           </label>
-          <input
-            type="text"
+          <Input
             id="firstName"
             {...register("firstName")}
             placeholder="First Name"
-            autoComplete="new-password"
-            className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-2.5 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
           />
           {errors.firstName && <ErrorMsg msg={errors.firstName?.message} />}
         </div>
-        <div className="w-full ">
+
+        <div className="w-full">
           <label
             htmlFor="lastName"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-200"
           >
             Last Name
           </label>
-          <input
-            type="text"
+          <Input
             id="lastName"
             {...register("lastName")}
             placeholder="Last Name"
-            autoComplete="new-password"
-            className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-2.5 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
           />
           {errors.lastName && <ErrorMsg msg={errors.lastName?.message} />}
         </div>
       </div>
+
+      {/* Email */}
       <div className="my-4">
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-200"
         >
           Email address
         </label>
-        <input
-          type="text"
-          id="email"
-          placeholder="Email Address"
-          {...register("email")}
-          autoComplete="new-password"
-          className="mt-4 block w-full rounded-md border-[1.5px] border-gray-300 px-4 py-2.5 placeholder-gray-400 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 text-lg"
-        />
+        <Input id="email" placeholder="Email Address" {...register("email")} />
         {errors.email && <ErrorMsg msg={errors.email?.message} />}
       </div>
+
+      {/* Message */}
       <div className="my-2">
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-200"
         >
           Message
         </label>
@@ -111,15 +107,24 @@ const ContactForm = () => {
           id="message"
           {...register("message")}
           rows={4}
-          className="block p-2.5 w-full shadow-sm text-lg text-gray-900  mt-3 rounded-lg border-[1.5px] border-gray-300  focus:outline-none  focus:ring-blue-500  focus:border-blue-500 "
+          className="block p-2.5 w-full shadow-sm text-lg 
+                 text-gray-900 dark:text-white 
+                 mt-3 rounded-lg border-[1.5px] 
+                 border-gray-300 dark:border-gray-600 
+                 bg-white dark:bg-gray-700 
+                 placeholder-gray-400 dark:placeholder-gray-500 
+                 focus:outline-none focus:ring-blue-500 focus:border-blue-500 
+                 transition-colors duration-300"
           placeholder="Write your message here..."
         ></textarea>
         {errors.message && <ErrorMsg msg={errors.message?.message} />}
       </div>
+
+      {/* Submit Button */}
       <Button
         width="w-fit"
         isLoading={loading}
-        className="bg-blue-600 mt-2 px-6 hover:bg-blue-500"
+        className="bg-blue-600 mt-2 px-6 hover:bg-blue-500 text-white"
         disabled={Object.keys(errors).length > 0 || loading}
       >
         Send Message

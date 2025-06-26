@@ -19,11 +19,14 @@ const ContactUS = () => {
     lottie.playSegments([startFrame, endFrame], true);
   }, []);
   return (
-    <section className="bg-slate-100 mb-4 lg:px-16" id="contact">
+    <section
+      className="bg-slate-100 dark:bg-black lg:px-16 transition-colors duration-300"
+      id="contact"
+    >
       <div className="py-8 px-4">
         {/* Heading */}
         <motion.h2
-          className="mb-4 text-4xl italic font-bold tracking-wide text-blue-600 text-center"
+          className="mb-4 text-4xl italic font-bold tracking-wide text-blue-600 dark:text-blue-400 text-center"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -34,7 +37,7 @@ const ContactUS = () => {
 
         {/* Paragraph */}
         <motion.p
-          className="mb-8 lg:mb-10 italic xl:px-96 text-center text-gray-600 sm:text-xl"
+          className="mb-8 lg:mb-10 italic xl:px-96 text-center text-gray-600 dark:text-gray-300 sm:text-xl"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -45,7 +48,7 @@ const ContactUS = () => {
         </motion.p>
 
         {/* Form & Animation */}
-        <div className="flex  items-center ">
+        <div className="flex items-center flex-col-reverse xl:flex-row">
           <ContactForm />
 
           <motion.div
@@ -58,12 +61,13 @@ const ContactUS = () => {
             <Lottie
               animationData={contact}
               loop
-              autoplay={false} // We manually control it
+              autoplay={false}
               lottieRef={lottieRef}
             />
           </motion.div>
         </div>
       </div>
+
       <DoneContact />
     </section>
   );

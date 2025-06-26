@@ -24,7 +24,7 @@ const ProfileMenu = ({ setShowMenu }: IProps) => {
   }, [setShowMenu]);
   return (
     <div
-      className="absolute top-[48px] right-0 z-20 min-w-[180px] shadow-xl border border-slate-200 bg-white rounded-lg"
+      className="absolute top-[48px] right-0 z-20 min-w-[180px] shadow-xl border border-slate-200 bg-white rounded-lg dark:bg-gray-800 dark:border-gray-700"
       ref={refDiv}
     >
       <div className="flex flex-col py-4 space-y-2">
@@ -32,6 +32,7 @@ const ProfileMenu = ({ setShowMenu }: IProps) => {
           to={"/profile"}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded transition-colors duration-150 
                 text-blue-400 hover:bg-blue-50 
+                dark:hover:bg-gray-700 dark:text-blue-300 dark:hover:text-blue-400
             `}
         >
           <span className="text-gray-500">
@@ -43,6 +44,8 @@ const ProfileMenu = ({ setShowMenu }: IProps) => {
           to={"/healthy-profile"}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded transition-colors duration-150 
                 text-blue-400 hover:bg-blue-50 
+                dark:hover:bg-gray-700 dark:text-blue-300 dark:hover:text-blue-400
+
             `}
         >
           <span className="text-gray-400">
@@ -52,7 +55,9 @@ const ProfileMenu = ({ setShowMenu }: IProps) => {
         </Link>
         <div className="border-t my-2 border-slate-200" />
         <span
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded cursor-pointer text-red-500 hover:bg-red-50 hover:text-red-600 transition-colors duration-150"
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded cursor-pointer text-red-500 hover:bg-red-50 hover:text-red-600 transition-colors duration-150
+          dark:hover:bg-gray-700 dark:text-red-400 dark:hover:text-red-500
+          "
           onClick={() => openModel("logoutModal")}
         >
           <span className="text-gray-400">

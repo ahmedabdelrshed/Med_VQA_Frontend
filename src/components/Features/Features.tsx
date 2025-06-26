@@ -31,14 +31,17 @@ const features = [
 
 const Features = () => {
   return (
-    <div className="py-10 lg:py-6 lg:h-[90vh] bg-[#f9fafb]" id="features">
+    <div
+      className="py-10 lg:py-6 lg:h-[90vh] bg-[#f9fafb] dark:bg-black"
+      id="features"
+    >
       <div className="mx-auto max-w-2xl text-center mb-5">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="font-bold tracking-tight text-[#2a6da6] text-4xl lg:text-3xl"
+          className="font-bold tracking-tight text-[#2a6da6] dark:text-blue-300 text-4xl lg:text-3xl"
         >
           Why Choose Our Platform?
         </motion.h2>
@@ -47,14 +50,14 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="mt-4 text-lg leading-8 text-gray-600"
+          className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300"
         >
           Advanced features designed to support medical professionals in their
           diagnostic process
         </motion.p>
       </div>
 
-      <div className="flex  items-center  md:px-18">
+      <div className="flex items-center md:px-18">
         <div className="w-full xl:w-1/2">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 items-stretch">
             {features.map(({ description, icon, name }, index) => (
@@ -86,14 +89,14 @@ const Features = () => {
           </div>
         </div>
         <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-        viewport={{ once: true }}
-        className="hidden w-[43%] mx-auto pl-33 xl:block "
-      >
-        <Lottie animationData={doctor} />
-      </motion.div>
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          viewport={{ once: true }}
+          className="hidden w-[43%] mx-auto pl-33 xl:block"
+        >
+          <Lottie animationData={doctor} />
+        </motion.div>
       </div>
     </div>
   );
