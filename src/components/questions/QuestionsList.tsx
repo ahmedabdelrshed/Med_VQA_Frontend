@@ -49,6 +49,7 @@ const QuestionsList = ({ Questions }: IProps) => {
             isNew={!isFirstRender.current && index === Questions.length - 1}
             responseVoiceUrl={question.responseVoiceUrl}
             onPlay={handlePlay}
+            scrollRef={messagesEndRef}
           />
         </div>
       ))}

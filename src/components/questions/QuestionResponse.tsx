@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect,  RefObject } from "react";
 import { IoVolumeHighOutline } from "react-icons/io5";
 import { TypeAnimation } from "react-type-animation";
 
@@ -7,11 +7,13 @@ const QuestionResponse = ({
   isNew,
   responseVoiceUrl,
   onPlay,
+  scrollRef,
 }: {
   response: string;
   isNew: boolean;
   responseVoiceUrl: string;
   onPlay: (audioElement: HTMLAudioElement) => void;
+  scrollRef?: RefObject<HTMLDivElement | null>;
 }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -46,6 +48,15 @@ const QuestionResponse = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (isNew && scrollRef?.current) {
+      const interval = setInterval(() => {
+        scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+
+      return () => clearInterval(interval);
+    }
+  }, [isNew, scrollRef]);
   return (
     <div>
       <div className="w-fit max-w-sm py-1 lg:py-2 text-sm lg:text-[16px] gradient-bg text-white rounded-md px-4 ml-auto">
@@ -55,7 +66,7 @@ const QuestionResponse = ({
               <span>{response.split(" ")[0]} </span>
               <TypeAnimation
                 sequence={[response.split(" ").slice(1).join(" ")]}
-                speed={30}
+                speed={40}
                 wrapper="span"
                 cursor={false}
               />
